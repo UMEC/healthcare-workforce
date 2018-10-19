@@ -1,0 +1,19 @@
+# General
+.env
+.DS_Store
+.AppleDouble
+.LSOverride
+*.log
+log
+
+# Hide package manager
+app/**/node_modules
+
+bower_components
+.npmrc
+
+# Compiled Outputs
+app/ui/dist
+
+# File Maps
+*.map
