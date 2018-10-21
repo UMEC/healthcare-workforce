@@ -1,0 +1,11 @@
+// the font-prefix variable is a specific to @ibm/plex.
+// It's necessary to find the font files...
+$font-prefix: ''; 
+@import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';
+
+// Font Stacks
+// .class-name { font-family: $plex-sans; }
+$plex-mono: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
+$plex-sans: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+$plex-sans-condensed: 'IBM Plex Sans Condensed', 'Helvetica Neue', Arial, sans-serif;
+$plex-serif: 'IBM Plex Serif', 'Georgia', Times, serif;
