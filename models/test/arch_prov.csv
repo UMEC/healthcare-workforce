@@ -1,0 +1,7 @@
+Service,Physician,PA,NP,RN,Psychiatrist,LCSW,CHMC,MFT,PharmD,MA,Educator
+A1,X,X,,,,,,,,,
+A2,X,X,,,X,,,,,,
+A3,X,X,X,X,,,,,,X,
+A4,X,X,X,X,X,,,,,X,
+A5,X,X,X,X,,X,X,X,X,X,X
+A6,X,X,X,X,X,X,X,X,X,X,X
