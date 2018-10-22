@@ -11,6 +11,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "formidable": "^1.2.1",
+    "uuid-random": "^1.0.6",
     "xlsx": "^0.14.0",
     "xlsx-style": "^0.8.13"
   }
