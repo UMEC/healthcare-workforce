@@ -1,8 +1,13 @@
 const DIR_ANALYTICS_FILES = "C:/workdir/analytics/";
 let router = require('express').Router();
 var fs = require('fs');
+var ps = require('python-shell');
 
-/* Retrieve the list of known analytics model requests. */
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json())
+
+/* Retrieve the list of known analytics model responses. */
 router.get('/', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/json'});
     fs.readdir(DIR_ANALYTICS_FILES, function(err, items) {
@@ -24,7 +29,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/json'});
+    /*res.writeHead(200, {'Content-Type': 'text/json'});
     var uuid = require('uuid-random');
     var reqData = {};
     reqData.id = uuid();
@@ -36,6 +41,18 @@ router.post('/', (req, res) => {
         }
 
         res.write(reqDataJson);
+        res.end();
+    });*/
+    var options = {
+        mode: 'text',
+        args: [JSON.stringify(req.body.params)]
+    };
+
+    ps.PythonShell.run('../../models/gateway/analyticmodel.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        console.log('Model response: %j', results);
+        res.write(JSON.stringify(results));
         res.end();
     }); 
 });
