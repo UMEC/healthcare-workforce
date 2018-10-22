@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "formidable": "^1.2.1",
     "uuid-random": "^1.0.6",
     "xlsx": "^0.14.0",
