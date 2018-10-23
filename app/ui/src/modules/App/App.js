@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
-import UserInfo from '../../components/UserInfo';
+import Home from '../Home';
+import Admin from '../Admin';
 import './App.scss';
 
 class App extends Component {
@@ -26,7 +27,6 @@ class App extends Component {
           <MainNavigation />
           <Route exact path="/" component={Home} />
           <Route exact path="/admin" component={Admin} />
-          <UserInfo />
         </div>
       </Router>
     );
@@ -46,18 +46,6 @@ let MainNavigation = () => {
       </Link>
     </nav>
   )
-};
-
-let Home = () => {
-  return (
-    <p>Home</p>
-  );
-};
-
-let Admin = () => {
-  return (
-    <p>Super Secret Admin</p>
-  );
 };
 
 export default App;
