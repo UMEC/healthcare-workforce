@@ -4,16 +4,16 @@ A source code repository for UMEC healthcare workforce needs, such as modelling,
 
 The analytical model relies upon Python; it is probably a good idea to install a conda environment as this will take care of most of the dependencies.
 
-https://conda.io/docs/user-guide/install/index.html
+[Conda Installation](https://conda.io/docs/user-guide/install/index.html)
 
 However the following packages will also need to be installed:
-PuLP (a Linear Program optimization capability)
-GLPK (GNU Linear Programming Kit)
+* PuLP (a Linear Program optimization capability)
+* GLPK (GNU Linear Programming Kit)
 
 Conveniently these can be installed as part of the conda distribution.
 
-conda install -c conda-forge pulp
-conda install -c conda-forge glpk
+* conda install -c conda-forge pulp
+* conda install -c conda-forge glpk
 
 # Contribution Guidelines
 
