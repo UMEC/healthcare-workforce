@@ -1,7 +1,8 @@
 # Gateway to python analytic model. 
 # NodeJS will invoke this gateway in order to execute the analytic model, and retrieve the resulting output.
 import sys
-
+import time
+time.sleep(30)
 response = { 
 	"input_data" : sys.argv[1],
 	"output_data" : [
