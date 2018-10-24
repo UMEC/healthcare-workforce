@@ -18,7 +18,7 @@ class App extends Component {
   }
 }
 
-// Temp 👇
+// Temp
 
 let MainNavigation = () => {
   return (
