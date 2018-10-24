@@ -21,8 +21,8 @@ app.use(session(sess));
 
 
 // Use Api routes in the App
-app.use('/api/source', require("./api/source"))
-app.use('/api/analytics', require("./api/analytics"))
-app.use('/api/user', require("./api/user"))
+app.use('/api/source', require("./server/api/source"))
+app.use('/api/analytics', require("./server/api/analytics"))
+app.use('/api/user', require("./server/api/user"))
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 5000)
