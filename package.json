@@ -12,7 +12,15 @@
     "coverageReporters": [
       "text",
       "html"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
     ]
+  },
+  "jest-junit": {
+    "output": "test-results/jest/result.xml",
+    "usePathForSuiteName": "true"
   },
   "author": "",
   "license": "ISC",
@@ -35,6 +43,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.26.1",
     "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
     "superagent": "^4.0.0-beta.5",
     "supertest": "^3.3.0",
     "supertest-session": "^3.3.0"
