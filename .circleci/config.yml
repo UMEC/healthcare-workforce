@@ -36,6 +36,7 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y python3 && sudo apt-get install python-pip
       - run: echo "alias python=python3" >> ~/.bashrc
       - run: source ~/.bashrc
+      - run: pip install pandas
       - run: npm run lint
       - run: npm run test
       - store_test_results:
