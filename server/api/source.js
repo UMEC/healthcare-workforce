@@ -1,6 +1,6 @@
 /* Directories for file uploading and processing */
-const DIR_PROCESSED_FILES = 'C:/workdir/processed/';
-const DIR_UPLOADED_FILES = 'C:/workdir/upload/';
+const DIR_PROCESSED_FILES = './';
+const DIR_UPLOADED_FILES = './';
 const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
