@@ -2,7 +2,7 @@ import React from 'react';
 
 let Panel = (props) => {
   return (
-    <aside>
+    <aside className="panel">
       this is the Panel
     </aside>
   );
