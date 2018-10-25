@@ -4,7 +4,10 @@
 # It receives a JSON formatted instruction via the command line in
 # the form:
 #
-# python model_manip.py '{"request_type": "provider_profile", "value": "Psych"}'
+# python model_manip.py
+#
+# Then send a string similar to the following in via std in:
+# {"request_type": "provider_profile", "value": "Psych"}
 #
 # It responds via std out with a JSON string that includes the originating call
 # and an additional response string (which in itself is a JSON string)
@@ -12,9 +15,15 @@
 import pandas as pd
 import json
 import sys
+import os
 
-command=""
-provider_type=""
+#scriptpath = os.path.realpath(__file__)
+#print("Script path is : " + scriptpath)
+
+directory = "../test/Data Input Component CSV/"
+
+command="null"
+provider_type="null"
 
 def respond(response_msg,verb,object):
     """Prints a JSON formatted service response to std out and exits the program
@@ -28,7 +37,7 @@ def respond(response_msg,verb,object):
         object: str, mandatory
             The target for the command that was received (if any)
     """
-    response = '[{"request_type":"' + verb + '", "value": "' + object + '"},{"response":' + response_msg + '}]'
+    response = '{"request":[{"request_type":"' + verb + '", "value": "' + object + '"}],"response":[' + response_msg + ']}'
     print (response)
     sys.exit(0)
 
@@ -42,7 +51,6 @@ try:
     parsed_command = json.loads(command_string)
     provider_type = str(parsed_command["value"])
     command = str(parsed_command["request_type"])
-    directory = "./models/test/Data Input Component CSV/"
     command
     provider_type
 except Exception as e:
@@ -107,8 +115,9 @@ def strip_brackets(JSON_string):
     return result
 
 # Finally we assemble the final JSON output from the three separate bits of the profile
-out = provider_head_profile.to_json(orient='records')
-out = out + provider_supply_profile.to_json(orient='records')
-out = out + profile_services.to_json(orient='records')
+out = '{"header":' + provider_head_profile.to_json(orient='records') + ','
+out = out + '"supply":' + provider_supply_profile.to_json(orient='records') + ','
+out = out + '"services":' + profile_services.to_json(orient='records') + '}'
 # And issue them via std out and exit
+#respond(out,command,provider_type)
 respond(out,command,provider_type)
