@@ -25,10 +25,8 @@ app.use('/api/source', require("./server/api/source"))
 app.use('/api/analytics', require("./server/api/analytics"))
 app.use('/api/user', require("./server/api/user"))
 
-const server = app.listen(process.env.PORT || 5000)
-
-app.close = function() {
-  server.close();
+if (process.env.NODE_ENV !== 'unittest') {
+  app.listen(process.env.PORT || 5000)
 }
 
 module.exports = app;

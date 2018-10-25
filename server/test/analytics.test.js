@@ -7,9 +7,10 @@ const request = require('supertest');
 const session = require('supertest-session');
 const app = require('../../server');
 
+let server;
+let testSession;
+
 describe('Test the analytics API', () => {
-  const server = request(app);
-  const testSession = session(app);
   test('/api/analytics valid response for GET method', (done) => {
     server.get('/api/analytics').then((response) => {
       expect(response.statusCode).toBe(200);
@@ -61,4 +62,7 @@ describe('Test the analytics API', () => {
   });
 });
 
-afterAll(() => { app.close(); });
+beforeAll(() => {
+  server = request(app);
+  testSession = session(app);
+});

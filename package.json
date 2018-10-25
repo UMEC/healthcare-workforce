@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server/**",
-    "test": "jest server",
+    "test": "cross-env NODE_ENV=unittest jest server",
     "coverage": "jest --collectCoverageFrom=server/**.js --coverage server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
