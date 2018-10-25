@@ -12,6 +12,7 @@ function initUserSession(req) {
   }
 
   if (!req.session.user.analytics) {
+    console.log("I'm spinning up analytics");
     req.session.user.analytics = [];
   }
 }
@@ -99,7 +100,6 @@ router.get('/', (req, res) => {
 /* Create a new analytic model request. */
 router.post('/', (req, res) => {
   initUserSession(req);
-
   const modelRequest = {
     modelId: uuid(),
     status: 'new',
