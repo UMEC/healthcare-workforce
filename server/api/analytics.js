@@ -66,16 +66,24 @@ function updateModelRequestWithNewRequest(req, modelId, newStatus, params) {
 
 function invokeModelRequest(req, modelId, params) {
   console.log(`Invoking model request for modelId: ${modelId} with params: ${JSON.stringify(params)}`);
-  const options = {
-    mode: 'text',
-    args: [JSON.stringify(params)],
-  };
 
-  ps.PythonShell.run('models/gateway/analyticmodel.py', options, (err, results) => {
+  const pyshell = new ps.PythonShell('models/4.1.1 Model Manipulation/model_manip.py');
+
+  // sends a message to the Python script via stdin
+  pyshell.send(JSON.stringify(params));
+
+  pyshell.on('message', (message) => {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(`Received python message: start -->'${message}'<--- end`);
+    updateModelRequestWithResponse(req, modelId, 'completed', JSON.parse(message));
+  });
+
+  // end the input stream and allow the process to exit
+  pyshell.end((err, code, signal) => {
     if (err) throw err;
-    // results is an array consisting of messages collected during execution
-    // console.log('Model response: %j', results);
-    updateModelRequestWithResponse(req, modelId, 'completed', results);
+    console.log(`The exit code was: ${code}`);
+    console.log(`The exit signal was: ${signal}`);
+    console.log('Python finished');
   });
 }
 
