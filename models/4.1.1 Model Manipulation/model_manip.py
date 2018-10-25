@@ -17,15 +17,12 @@ import json
 import sys
 import os
 
-#scriptpath = os.path.realpath(__file__)
-#print("Script path is : " + scriptpath)
-
-directory = "../test/Data Input Component CSV/"
+directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../test/data_input_component_CSV/")
 
 command="null"
 provider_type="null"
 
-def respond(response_msg,verb,object):
+def respond(response_msg,verb,object,error_msg=None):
     """Prints a JSON formatted service response to std out and exits the program
 
         Parameters
@@ -36,7 +33,11 @@ def respond(response_msg,verb,object):
             The command that was received (if any)
         object: str, mandatory
             The target for the command that was received (if any)
+        error_msg : str, optional
+            An error message string
     """
+    if (error_msg != None):
+      response_msg = '{"error_msg":"' + error_msg + '"}'
     response = '{"request":[{"request_type":"' + verb + '", "value": "' + object + '"}],"response":[' + response_msg + ']}'
     print (response)
     sys.exit(0)
@@ -54,28 +55,27 @@ try:
     command
     provider_type
 except Exception as e:
-    respond("ERROR: Could not parse argument: " + e,command,provider_type)
+    respond(None,command,provider_type, "ERROR: Could not parse argument: "+str(e))
 
 # check to see if command is understood
 if command != "provider_profile":
-    respond("ERROR: Unknown function call.",command,provider_type)
+    respond(None,command,provider_type, "ERROR: Unknown function call.")
 
 # Next we import the relevant sheets from the Data Input Component (to begin with only three)
 
 try:
-    provider_list = pd.read_csv(directory + "provider_list.csv")
-    provider_supply = pd.read_csv(directory + "provider_supply.csv")
-    acute_service_prov_priority = pd.read_csv(directory + "acute_service_prov_priority.csv")
-except:
-    respond("ERROR: Could not read input files.",command,provider_type)
-
+    provider_list = pd.read_csv(directory + "/provider_list.csv")
+    provider_supply = pd.read_csv(directory + "/provider_supply.csv")
+    acute_service_prov_priority = pd.read_csv(directory + "/acute_service_prov_priority.csv")
+except Exception as e:
+    respond(None,command,provider_type, "ERROR: Could not read input files."+str(e))
 provider_list.head(5)
 
 # First we create the header for the provider type with their full title and wage
 provider_head_profile = provider_list.loc[provider_list['provider_abbr'] == provider_type]
 # Then we check to see if the requested provider type is in the current provider list
 if len(provider_head_profile.index) != 1:
-    respond("ERROR: Provider type is not known.",command,provider_type)
+    respond(None,command,provider_type, "ERROR: Provider type is not known.")
 provider_head_profile
 
 provider_supply.head(5)
