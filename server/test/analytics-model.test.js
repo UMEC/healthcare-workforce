@@ -13,6 +13,9 @@ describe('Test the analytics model requests', () => {
         console.log(JSON.stringify(responseJson));
         throw new Error(err);
       }
+      console.log(`test response0: ${err}`);
+      console.log(`test response1: ${JSON.stringify(responseJson)}`);
+      console.log(`test response2: ${JSON.stringify(responseJson.response[0])}`);
       expect(responseJson.response[0].header[0].provider_name).toBe('Psychiatrist');
       done();
     });
