@@ -28,7 +28,7 @@ def respond(response_msg,verb,object):
         object: str, mandatory
             The target for the command that was received (if any)
     """
-    response = '[{"request_type":' + verb + ', "value": "' + object + '"}{"response":"' + response_msg + '"}]'
+    response = '[{"request_type":"' + verb + '", "value": "' + object + '"},{"response":' + response_msg + '}]'
     print (response)
     sys.exit(0)
 
@@ -36,8 +36,6 @@ def respond(response_msg,verb,object):
 #if len(sys.argv) != 2 :
 #    respond("ERROR: Incorrect number of arguments.","null","null")
 command_string = input("")
-
-print("received input: '" + command_string + "'")
 
 # parse the command line argument into a JSON object
 try:
@@ -48,8 +46,7 @@ try:
     command
     provider_type
 except Exception as e:
-    print("Exception message: " + e)
-    respond("ERROR: Could not parse argument.",command,provider_type)
+    respond("ERROR: Could not parse argument: " + e,command,provider_type)
 
 # check to see if command is understood
 if command != "provider_profile":
