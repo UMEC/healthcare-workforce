@@ -9,13 +9,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
+    "history": "^4.7.2",
     "python-shell": "^1.0.6",
+    "react-router-redux": "^4.0.8",
     "uuid-random": "^1.0.6",
     "xlsx": "^0.14.0",
     "xlsx-style": "^0.8.13"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
   }
 }

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import UserReducer from './reducer-user';
+import analyticsIDs from './reducer-analytics';
 
 const rootReducer = combineReducers({
-  user: UserReducer
+  analyticsIDs
 });
 
 export default rootReducer;

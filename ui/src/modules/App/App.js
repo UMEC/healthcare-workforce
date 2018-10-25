@@ -37,47 +37,48 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    this.callAnalyticsPostApi()
-      .then(res => {
-        this.callAnalyticsGetApi(res.modelId).then(res2 => {
-          this.setState({ response: JSON.stringify(res2) })
-        })
-      })
-      .catch(err => console.log(err));
+    // this.callAnalyticsPostApi()
+    //   .then(res => {
+    //     this.callAnalyticsGetApi(res.modelId)
+    //     .then(res2 => {
+    //       this.setState({ response: JSON.stringify(res2) })
+    //     })
+    //   })
+    //   .catch(err => console.log(err));
   }
 
-  callAnalyticsPostApi = async () => {
-    const response = await fetch('/api/analytics', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ "params": { "type": "cost_quality_adjustment", "value": 0.5 } })
-    });
+  // callAnalyticsPostApi = async () => {
+  //   const response = await fetch('/api/analytics', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ "params": { "type": "cost_quality_adjustment", "value": 0.5 } })
+  //   });
 
-    const body = await response.json();
+  //   const body = await response.json();
 
-    if (response.status !== 200) throw Error(body.message);
-    console.log("Post respnse: " + JSON.stringify(body));
-    return body;
-  };
+  //   if (response.status !== 200) throw Error(body.message);
+  //   console.log("Post respnse: " + JSON.stringify(body));
+  //   return body;
+  // };
 
-  callAnalyticsGetApi = async (modelId) => {
-    const response = await fetch('/api/analytics/' + modelId, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    });
+  // callAnalyticsGetApi = async (modelId) => {
+  //   const response = await fetch('/api/analytics/' + modelId, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     }
+  //   });
 
-    const body = await response.json();
+  //   const body = await response.json();
 
-    if (response.status !== 200) throw Error(body.message);
-    console.log("Get response: " + JSON.stringify(body));
-    return body;
-  };
+  //   if (response.status !== 200) throw Error(body.message);
+  //   console.log("Get response: " + JSON.stringify(body));
+  //   return body;
+  // };
   
   render() {
     return (
@@ -94,7 +95,6 @@ class App extends Component {
               <ViewHeader />
               <Route exact path="/" component={Home} />
               <Route exact path="/admin" component={Admin} />
-              <p className="App-intro">{this.state.response}</p>
               Main Content Area
               <ViewFooter />
             </ViewContainer>
