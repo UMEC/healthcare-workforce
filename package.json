@@ -5,8 +5,14 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint server/**",
-    "test": "cross-env NODE_ENV=unittest jest server",
+    "test": "cross-env NODE_ENV=unittest jest server --coverage --coverageDirectory=test-results/jest",
     "coverage": "jest --collectCoverageFrom=server/**.js --coverage server"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   },
   "author": "",
   "license": "ISC",
