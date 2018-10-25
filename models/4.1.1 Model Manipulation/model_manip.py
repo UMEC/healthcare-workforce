@@ -33,20 +33,22 @@ def respond(response_msg,verb,object):
     sys.exit(0)
 
 # check to see if the correct number of command line arguments have been received
-if len(sys.argv) != 2 :
-    respond("ERROR: Incorrect number of arguments.","null","null")
+#if len(sys.argv) != 2 :
+#    respond("ERROR: Incorrect number of arguments.","null","null")
+command_string = input("")
 
-command_string=sys.argv[1]
+print("received input: '" + command_string + "'")
 
 # parse the command line argument into a JSON object
 try:
     parsed_command = json.loads(command_string)
     provider_type = str(parsed_command["value"])
     command = str(parsed_command["request_type"])
-    directory = "/Users/hopkira/Documents/healthcare-workforce/models/test/Data Input Component CSV/"
+    directory = "./models/test/Data Input Component CSV/"
     command
     provider_type
-except:
+except Exception as e:
+    print("Exception message: " + e)
     respond("ERROR: Could not parse argument.",command,provider_type)
 
 # check to see if command is understood
