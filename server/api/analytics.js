@@ -12,7 +12,6 @@ function initUserSession(req) {
   }
 
   if (!req.session.user.analytics) {
-    console.log("I'm spinning up analytics");
     req.session.user.analytics = [];
   }
 }
