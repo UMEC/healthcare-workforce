@@ -33,10 +33,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: sudo apt-get update && sudo apt-get install python3-dev && sudo apt-get install python3-pip
+      - run: sudo apt-get update && sudo apt-get install python3-dev && sudo apt-get install python3-pip && sudo apt-get install python3-pandas
       - run: echo "alias python=python3" >> ~/.bashrc
       - run: source ~/.bashrc
-      - run: sudo pip3 install pandas
       - run: npm run lint
       - run: npm run test
       - store_test_results:
