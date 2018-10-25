@@ -9,7 +9,7 @@ describe('Test the analytics model requests', () => {
   test('Check valid response model request', (done) => {
     analyticsModel.invokeModelRequest({ request_type: 'provider_profile', value: 'Psych' }, (err, responseJson) => {
       if (err) {
-        console.log("damn, found error: " + err);
+        console.log(`damn, found error: ${err}`);
         console.log(JSON.stringify(responseJson));
         throw new Error(err);
       }
