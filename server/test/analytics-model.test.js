@@ -8,6 +8,10 @@ const analyticsModel = require('../service/analytics-model');
 describe('Test the analytics model requests', () => {
   test('Check valid response model request', (done) => {
     analyticsModel.invokeModelRequest({ request_type: 'provider_profile', value: 'Psych' }, (err, responseJson) => {
+      if (err) {
+        console.log(err);
+        console.log(JSON.stringify(responseJson));
+      }
       expect(responseJson.response[0].header[0].provider_name).toBe('Psychiatrist');
       done();
     });
