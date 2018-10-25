@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   GET_ANALYTICS_IDS_REQUEST
 } from '../../actions';
+
 import { connect } from 'react-redux';
 
 class Home extends Component {
