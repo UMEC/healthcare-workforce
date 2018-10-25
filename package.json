@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint server/**",
+    "test": "jest server",
+    "coverage": "jest --collectCoverageFrom=server/**.js --coverage server"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +19,16 @@
     "uuid-random": "^1.0.6",
     "xlsx": "^0.14.0",
     "xlsx-style": "^0.8.13"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.1",
+    "jest": "^23.6.0",
+    "superagent": "^4.0.0-beta.5",
+    "supertest": "^3.3.0"
   }
 }

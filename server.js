@@ -13,9 +13,9 @@ var sess = {
     cookie: { secure: false }
 }
 if (app.get('env') === 'production') {
-    app.set('trust proxy', 1) // trust first proxy 
+    app.set('trust proxy', 1) // trust first proxy
     sess.cookie.secure = true // serve secure cookies
-}  
+}
 var session = require('express-session')
 app.use(session(sess));
 
@@ -25,4 +25,10 @@ app.use('/api/source', require("./server/api/source"))
 app.use('/api/analytics', require("./server/api/analytics"))
 app.use('/api/user', require("./server/api/user"))
 
-app.listen(process.env.PORT || 5000)
+const server = app.listen(process.env.PORT || 5000)
+
+app.close = function() {
+  server.close();
+}
+
+module.exports = app;
