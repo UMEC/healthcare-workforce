@@ -1,5 +1,5 @@
 /*
- * An analytics API that facilitates requests to an analytical model.
+ * An API that facilitates requests to an analytical model.
  */
 const router = require('express').Router();
 const bodyParser = require('body-parser');

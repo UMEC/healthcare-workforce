@@ -1,6 +1,9 @@
+/*
+ * An internal service that facilitates requests to the analytical model module.
+ */
 const ps = require('python-shell');
 
-/* Logging method for this api. */
+/* Logging method for this service. */
 function log(requestType, msg) {
   console.log(`/service/analytics:${requestType}: ${msg}`);
 }

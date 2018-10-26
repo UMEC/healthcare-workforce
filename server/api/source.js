@@ -1,6 +1,8 @@
-/* Directories for file uploading and processing */
+/*
+ * An API that facilitates uploading and downloading external data sources.
+ */
 const DIR_PROCESSED_FILES = './models/test/data_input_component_csv/';
-const DIR_UPLOADED_FILES = './';
+const DIR_UPLOADED_FILES = './models/test/data_input_component_csv/';
 const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
@@ -56,11 +58,40 @@ router.get('/', (req, res) => {
       result.name = item;
       result.modified = stats.mtime;
       result.size = stats.size;
+      result.uri = `${req.originalUrl}/${result.name}`;
       return result;
     });
     res.write(JSON.stringify(statResults));
     return res.end();
   });
+});
+
+/* Retrieve a specific external data source file. */
+router.get('/:filename', (req, res) => {
+  const { filename } = req.params;
+  const ext = filename.split('.').pop();
+
+  // validations to make sure nothing naughty is attempted
+  if(!filename || !filename.match(/^[\w\-. ]+$/g)) { // eslint-disable-line
+    res.status(400).json({ error_msg: 'Unsupported filename' });
+    res.end();
+    return;
+  }
+
+  const filePath = DIR_PROCESSED_FILES + filename;
+  try {
+    const stat = fs.statSync(filePath);
+    res.writeHead(200, {
+      'Content-Type': `application/${ext}`,
+      'Content-Disposition': `attachment;filename=${filename}`,
+      'Content-Length': stat.size,
+    });
+
+    fs.createReadStream(filePath).pipe(res);
+  } catch (err) {
+    res.status(404).json({ error_msg: 'Unknown file' });
+    res.end();
+  }
 });
 
 /* Upload a new external data source XSLX, and process it. */
