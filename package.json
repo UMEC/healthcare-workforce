@@ -4,13 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint server/**",
+    "test": "cross-env NODE_ENV=unittest jest server --coverage --coverageDirectory=test-results/jest",
+    "coverage": "jest --collectCoverageFrom=server/**.js --coverage server"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
+  },
+  "jest-junit": {
+    "output": "test-results/jest/result.xml",
+    "usePathForSuiteName": "true"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
@@ -22,6 +39,16 @@
     "xlsx-style": "^0.8.13"
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.5"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.1",
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "superagent": "^4.0.0-beta.5",
+    "supertest": "^3.3.0",
+    "supertest-session": "^3.3.0"
   }
 }

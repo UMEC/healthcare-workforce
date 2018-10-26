@@ -13,6 +13,7 @@ Thumbs.db
 .env
 *.log
 log
+test-results
 
 # Hide package manager
 **/node_modules
