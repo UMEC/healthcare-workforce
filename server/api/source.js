@@ -11,6 +11,29 @@ function log(requestType, msg) {
   console.log(`/api/source:${requestType}: ${msg}`);
 }
 
+/* Process an xslx at the given path. */
+function processXslx(res, path) {
+  const result = [];
+  result.push({ msg: 'File upload accepted for processing.' });
+  const workbook = XLSX.readFile(path);
+  const sheetNameList = workbook.SheetNames;
+  sheetNameList.forEach((sheetName) => {
+    const worksheet = workbook.Sheets[sheetName];
+    const csv = XLSX.utils.sheet_to_csv(worksheet);
+    fs.writeFile(`${DIR_PROCESSED_FILES}${sheetName}.csv`, csv, (err) => {
+      if (err) {
+        log('POST', `Encountered error processing sheet ${sheetName}: ${err}`);
+        result.push({ error_msg: `Encountered error processing sheet ${sheetName}: ${err}` });
+      } else {
+        log('POST', `Processed xslx sheet into saved csv: ${sheetName}`);
+      }
+    });
+  });
+
+  res.status(200).json(result);
+  res.end();
+}
+
 /* A temporary helper service for testing file upload. */
 router.get('/upload', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -42,12 +65,11 @@ router.get('/', (req, res) => {
 
 /* Upload a new external data source XSLX, and process it. */
 router.post('/', (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
   const form = new formidable.IncomingForm();
   form.parse(req, (err, fields, files) => {
     if (err) {
       log('POST', `File upload error: ${err}`);
-      res.write(JSON.stringify([{ error_msg: err }]));
+      res.status(200).json([{ error_msg: err }]);
       res.end();
       return;
     }
@@ -56,37 +78,21 @@ router.post('/', (req, res) => {
     const newpath = DIR_UPLOADED_FILES + files.filetoupload.name;
     // restrict supported file types
     if(!newpath || !newpath.match(/\.(xlsx)$/i)) { // eslint-disable-line
-      res.write(JSON.stringify([{ error_msg: 'Unsupported file type - must be xslx' }]));
+      res.status(200).json([{ error_msg: 'Unsupported file type - must be xslx' }]);
       res.end();
       return;
     }
 
     // move the upload to readable directory and process it
     fs.rename(oldpath, newpath, (err2) => {
-      const result = [];
-      result.push({ msg: 'File upload accepted for processing.' });
-      if (!err2) {
-        const workbook = XLSX.readFile(newpath);
-        const sheetNameList = workbook.SheetNames;
-        sheetNameList.forEach((sheetName) => {
-          const worksheet = workbook.Sheets[sheetName];
-          const csv = XLSX.utils.sheet_to_csv(worksheet);
-          fs.writeFile(`${DIR_PROCESSED_FILES}${sheetName}.csv`, csv, (err3) => {
-            if (err3) {
-              log('POST', `Encountered error processing sheet ${sheetName}: ${err3}`);
-              result.push({ error_msg: `Encountered error processing sheet ${sheetName}: ${err3}` });
-            } else {
-              // success case, the file was saved
-              log('POST', `Processed xslx sheet into saved csv: ${sheetName}`);
-            }
-          });
-        });
-      } else {
+      if (err2) {
         log('POST', `File processing error: ${err2}`);
-        result.push({ error_msg: `File processing error: ${err2}` });
+        res.status(200).json({ error_msg: `File processing error: ${err2}` });
+        res.end();
+        return;
       }
-      res.write(JSON.stringify(result));
-      res.end();
+
+      processXslx(res, newpath);
     });
   });
 });
