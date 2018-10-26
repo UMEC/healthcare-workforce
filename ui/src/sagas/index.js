@@ -1,11 +1,11 @@
 import {
-  GET_ANALYTICS_IDS_REQUEST,
-  GET_ANALYTICS_IDS_SUCCESS,
-  GET_ANALYTICS_IDS_FAILURE,
+  MODEL_INFO_REQUEST,
+  MODEL_INFO_SUCCESS,
+  MODEL_INFO_FAILURE,
 } from '../actions';
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-// import axios from 'axios';
+import axios from 'axios';
 
 // function* postAnalytics() {
 //   const response = fetch('/api/analytics', {
@@ -36,62 +36,66 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 //   return response.json();
 // };
 
-const callAnalyticsPostApi = async () => {
-  const response = await fetch('/api/analytics', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ "params": { "type": "cost_quality_adjustment", "value": 0.5 } })
-  });
-
-  const body = await response.json();
-
-  if (response.status !== 200) throw Error(body.message);
-  console.log("Post respnse: " + JSON.stringify(body));
-  return body;
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
 };
 
-const callAnalyticsGetApi = async (modelId) => {
-  const response = await fetch('/api/analytics/' + modelId, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    }
-  });
-
-  const body = await response.json();
-
-  if (response.status !== 200) throw Error(body.message);
-  console.log("Get response: " + JSON.stringify(body));
-  return body;
-};
-
-function* requestAnalyticsIDs() {
-  try {
-    const defaultModelData = yield call(callAnalyticsPostApi);
-    // const body = yield response;
-    // const modelId = yield callAnalyticsGetApi(body.modelId);
-
-    const payload = {
-      defaultModelData,
-    };
-
-    yield put({ type: GET_ANALYTICS_IDS_SUCCESS, payload });
-  } catch (error) {
-    yield put({ type: GET_ANALYTICS_IDS_FAILURE, error });
+const defaultModelParams = {
+  params: {
+    type: "cost_quality_adjustment", 
+    value: 0.5,
   }
+};
+
+const getModelInfo = (modelParams) =>  {
+  return axios.post('/api/analytics', modelParams, headers)
+    .then( response => ({ response }))
+    .catch( error => ({ error }))
 }
 
-function* requestAnalyticsWatcher() {
-  yield takeLatest(GET_ANALYTICS_IDS_REQUEST, requestAnalyticsIDs);
+const getModelData = (modelId) => {
+  let route = `/api/analytics/${modelId}`;
+  return axios.get(route, headers)
+    .then(response => ({ response }))
+    .catch(error => ({ error }));
+}
+
+// const callAnalyticsGetApi = async (modelId) => {
+//   const response = await fetch('/api/analytics/' + modelId, {
+//     method: 'GET',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//     }
+//   });
+
+//   const body = await response.json();
+
+//   if (response.status !== 200) throw Error(body.message);
+//   console.log("Get response: " + JSON.stringify(body));
+//   return body;
+// };
+
+function* requestModelInfo(modelParams = defaultModelParams) {
+  let { response, error } = yield call(getModelInfo, modelParams);
+    // const body = yield response;
+  let modelData = yield getModelData(response.data.modelId);
+
+    if (response) {
+      yield put({ type: MODEL_INFO_SUCCESS, payload: {...response.data, ...modelData.data} })
+    } else {
+      yield put({ type: MODEL_INFO_FAILURE, error })
+    } 
+}
+
+function* requestModelInfoWatcher(modelParams) {
+  yield takeLatest(MODEL_INFO_REQUEST, requestModelInfo, modelParams);
 }
 
 function* rootSaga() {
   yield all([
-    requestAnalyticsWatcher(),
+    requestModelInfoWatcher(),
   ])
 }
 

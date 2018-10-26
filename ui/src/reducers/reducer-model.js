@@ -1,7 +1,7 @@
 import { 
-  GET_ANALYTICS_IDS_REQUEST,
-  GET_ANALYTICS_IDS_SUCCESS,
-  GET_ANALYTICS_IDS_FAILURE,
+  MODEL_INFO_REQUEST,
+  MODEL_INFO_SUCCESS,
+  MODEL_INFO_FAILURE,
 } from '../actions';
 // import { actionChannel } from 'redux-saga/effects';
 
@@ -14,11 +14,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_ANALYTICS_IDS_REQUEST:
+    case MODEL_INFO_REQUEST:
       return { ...state, fetchingAnalyticsIDs: true, error: null};
-    case GET_ANALYTICS_IDS_SUCCESS:
-      return { ...state, fetchingAnalyticsIDs: false, defaultModelData: action.payload.defaultModelData };
-    case GET_ANALYTICS_IDS_FAILURE:
+    case MODEL_INFO_SUCCESS:
+      return { ...state, fetchingAnalyticsIDs: false, ...action.payload};
+    case MODEL_INFO_FAILURE:
       return {...state, error: action.error};
     default:
       return state;

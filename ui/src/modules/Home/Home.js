@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { bindActionCreators } from 'redux';
 import {
-  GET_ANALYTICS_IDS_REQUEST
+  MODEL_INFO_REQUEST
 } from '../../actions';
 
 import { connect } from 'react-redux';
@@ -12,11 +12,11 @@ class Home extends Component {
   }
 
   render() {
-    let { defaultModel } = this.props;
+    let { modelId } = this.props.model;
     return (
       <>
         <p>Home</p>
-        <p>{defaultModel}</p>
+        <p>{modelId}</p>
       </>
     );
   }
@@ -24,13 +24,13 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    defaultModelData: state.defaultModelData,
+    model: state.model,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onRequestAnalyticsIds: () => dispatch({ type: GET_ANALYTICS_IDS_REQUEST })
+    onRequestAnalyticsIds: () => dispatch({ type: MODEL_INFO_REQUEST })
   }
 };
 

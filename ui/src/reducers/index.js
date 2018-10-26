@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import analyticsIDs from './reducer-analytics';
+import model from './reducer-model';
 
 const rootReducer = combineReducers({
-  analyticsIDs
+  model
 });
 
 export default rootReducer;
