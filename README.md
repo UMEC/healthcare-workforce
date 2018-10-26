@@ -2,7 +2,23 @@
 
 A source code repository for UMEC healthcare workforce needs, such as modelling, data transformation and visualization.
 
-The analytical model relies upon Python; it is probably a good idea to install a conda environment as this will take care of most of the dependencies.
+## Documentation
+A readme for the UI is available [here](ui/README.md).
+A readme for the server is available [here](server/README.md).
+A readme for the model is available [here](models/README.md).
+
+## Getting Started - Running the Application
+This application is built on React (UI), NodeJS (server) and Python (model).
+It can be started via the following steps:
+1. Download npm
+2. `npm install` and `npm start` from the root (this) directory
+3. `npm install` and `npm start` from the ui directory
+4. Install the python environment as described below
+5. The application will be available on http://localhost:3000/
+
+### Python Installation
+
+The analytical model relies upon Python; for simplicity it is best to install a conda environment as this will take care of most of the dependencies.
 
 [Conda Installation](https://conda.io/docs/user-guide/install/index.html)
 
@@ -15,6 +31,6 @@ Conveniently these can be installed as part of the conda distribution.
 * conda install -c conda-forge pulp
 * conda install -c conda-forge glpk
 
-# Contribution Guidelines
+## Contribution Guidelines
 
-<!-- This is a Markdown Comment, it's invisible! Below is where we'll be putting docs on contributing to the project -->
+1. This project is enabled with Continuous Integration, see [UMEC/healthcare-workforce](https://circleci.com/gh/UMEC/healthcare-workforce). Create a development branch and check your build on CI, before pushing to master.
