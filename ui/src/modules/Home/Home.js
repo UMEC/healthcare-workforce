@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
+// import { bindActionCreators } from 'redux';
+import {
+  MODEL_INFO_REQUEST
+} from '../../actions';
+
 import { connect } from 'react-redux';
-import UserInfo from '../../components/UserInfo';
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.onRequestAnalyticsIds();
+  }
+
   render() {
+    let { modelId } = this.props.model;
     return (
       <>
         <p>Home</p>
-        <UserInfo>{this.props.user.name}</UserInfo>
+        <p>{modelId}</p>
       </>
     );
   }
@@ -15,8 +24,14 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    model: state.model,
   }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequestAnalyticsIds: () => dispatch({ type: MODEL_INFO_REQUEST })
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
