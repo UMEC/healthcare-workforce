@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
+import { loadStateFromLocalStorage, saveStateToLocalStorage } from './loadState';
+import throttle from 'lodash/throttle';
 
 import App from './modules/App';
 import './scss/index.scss';
@@ -15,15 +17,35 @@ import * as serviceWorker from './serviceWorker';
 const sagaMiddleware = createSagaMiddleware();
 
 // dev tools middleware
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+// https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
+
+const enhancer = composeEnhancers(
+  applyMiddleware(sagaMiddleware),
+  // other store enhancers if any
+);
+
+const persistedState = loadStateFromLocalStorage();
 
 const store = createStore(
   rootReducer,
-  compose( applyMiddleware(sagaMiddleware), reduxDevTools),
+  persistedState,
+  enhancer,
 );
 
 sagaMiddleware.run(rootSaga);
 
+// Subscribe to changes to the state store and save them to local storage
+store.subscribe(throttle(() => {
+  saveStateToLocalStorage({
+    model: store.getState().model,
+  });
+}, 1000));
 
 ReactDOM.render(
   <Provider store={store}>

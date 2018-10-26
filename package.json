@@ -32,6 +32,7 @@
     "express-session": "^1.15.6",
     "formidable": "^1.2.1",
     "history": "^4.7.2",
+    "lodash": "^4.17.11",
     "python-shell": "^1.0.6",
     "react-router-redux": "^4.0.8",
     "uuid-random": "^1.0.6",

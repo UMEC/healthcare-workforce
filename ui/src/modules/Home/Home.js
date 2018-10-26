@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 // import { bindActionCreators } from 'redux';
-import {
-  MODEL_INFO_REQUEST
-} from '../../actions';
 
 import { connect } from 'react-redux';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.onRequestAnalyticsIds();
+    // this.props.onRequestAnalyticsIds();
   }
 
   render() {
@@ -28,10 +25,4 @@ function mapStateToProps(state) {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onRequestAnalyticsIds: () => dispatch({ type: MODEL_INFO_REQUEST })
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
