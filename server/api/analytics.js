@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const ps = require('python-shell');
 const bodyParser = require('body-parser');
 const uuid = require('uuid-random');
+const analyticsModel = require('../service/analytics-model');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -37,7 +37,7 @@ function updateModelRequestWithResponse(req, modelId, newStatus, data) {
         thisItem.data = data;
         req.session.user.analytics[key] = thisItem;
         req.session.save();
-        console.log(`Received model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
+        console.log(`Processed model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
         return;
       }
     }
@@ -62,29 +62,6 @@ function updateModelRequestWithNewRequest(req, modelId, newStatus, params) {
       return;
     }
   }
-}
-
-function invokeModelRequest(req, modelId, params) {
-  console.log(`Invoking model request for modelId: ${modelId} with params: ${JSON.stringify(params)}`);
-
-  const pyshell = new ps.PythonShell('models/4.1.1 Model Manipulation/model_manip.py');
-
-  // sends a message to the Python script via stdin
-  pyshell.send(JSON.stringify(params));
-
-  pyshell.on('message', (message) => {
-    // received a message sent from the Python script (a simple "print" statement)
-    console.log(`Received python message: start -->'${message}'<--- end`);
-    updateModelRequestWithResponse(req, modelId, 'completed', JSON.parse(message));
-  });
-
-  // end the input stream and allow the process to exit
-  pyshell.end((err, code, signal) => {
-    if (err) throw err;
-    console.log(`The exit code was: ${code}`);
-    console.log(`The exit signal was: ${signal}`);
-    console.log('Python finished');
-  });
 }
 
 /* Retrieve the list of known analytics model requests. */
@@ -121,7 +98,15 @@ router.post('/', (req, res) => {
   res.end();
 
   Promise.resolve()
-    .then(() => invokeModelRequest(req, modelRequest.modelId, modelRequest.params));
+    .then(() => {
+      analyticsModel.invokeModelRequest(modelRequest.params, (err, responseJson) => {
+        if (err) {
+          updateModelRequestWithResponse(req, modelRequest.modelId, 'failed', { error_msg: err });
+        } else {
+          updateModelRequestWithResponse(req, modelRequest.modelId, 'completed', responseJson);
+        }
+      });
+    });
 });
 
 /* Get an existing analytic model request. */
@@ -166,7 +151,15 @@ router.put('/:modelId', (req, res) => {
   res.end();
 
   Promise.resolve()
-    .then(() => invokeModelRequest(req, modelId, params));
+    .then(() => {
+      analyticsModel.invokeModelRequest(params, (err, responseJson) => {
+        if (err) {
+          updateModelRequestWithResponse(req, modelId, 'failed', { error_msg: err });
+        } else {
+          updateModelRequestWithResponse(req, modelId, 'completed', responseJson);
+        }
+      });
+    });
 });
 
 /* Persist an existing analytic model request against the current user.

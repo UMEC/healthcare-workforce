@@ -17,7 +17,7 @@ import json
 import sys
 import os
 
-directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../test/data_input_component_CSV/")
+directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../test/data_input_component_csv/")
 
 command="null"
 provider_type="null"

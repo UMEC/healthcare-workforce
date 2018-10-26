@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: umec/node-python:0.1
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -32,10 +32,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: sudo apt-get update && sudo apt-get install -y python3
-      - run: echo "alias python=python3" >> ~/.bashrc
-      - run: source ~/.bashrc
       - run: npm run lint
       - run: npm run test
       - store_test_results:
