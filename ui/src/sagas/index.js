@@ -1,4 +1,5 @@
 import {
+  INITIAL_MODEL_INFO_REQUEST,
   MODEL_INFO_REQUEST,
   MODEL_INFO_SUCCESS,
   MODEL_INFO_FAILURE,
@@ -77,25 +78,33 @@ const getModelData = (modelId) => {
 //   return body;
 // };
 
-function* requestModelInfo(modelParams = defaultModelParams) {
+function* requestModelInfo(modelParams) {
   let { response, error } = yield call(getModelInfo, modelParams);
-    // const body = yield response;
-  let modelData = yield getModelData(response.data.modelId);
+  // const body = yield response;
+  
+  if (response) {
 
-    if (response) {
-      yield put({ type: MODEL_INFO_SUCCESS, payload: {...response.data, ...modelData.data} })
-    } else {
-      yield put({ type: MODEL_INFO_FAILURE, error })
-    } 
+    let modelData = yield getModelData(response.data.modelId);
+
+    yield put({ type: MODEL_INFO_SUCCESS, payload: {...response.data, ...modelData.data} })
+  } else {
+    yield put({ type: MODEL_INFO_FAILURE, error })
+  } 
 }
 
 function* requestModelInfoWatcher(modelParams) {
   yield takeLatest(MODEL_INFO_REQUEST, requestModelInfo, modelParams);
 }
 
+function* requestInitialModelInfoWatcher(modelParams = defaultModelParams) {
+  if (localStorage.getItem('state')) return;
+  yield takeLatest(INITIAL_MODEL_INFO_REQUEST, requestModelInfo, modelParams);
+}
+
 function* rootSaga() {
   yield all([
     requestModelInfoWatcher(),
+    requestInitialModelInfoWatcher(),
   ])
 }
 
