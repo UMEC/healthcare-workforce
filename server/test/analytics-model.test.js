@@ -1,21 +1,14 @@
 /*
- * A series of tests for the analytics model service.
- * Some of these requests require session context,
- * to mock an application user making consecutive requests.
+ * A series of tests for requests to the underlying analytics model engine.
  */
 const analyticsModel = require('../service/analytics-model');
 
-describe('Test the analytics model requests', () => {
+describe('Test analytics model requests', () => {
   test('Check valid response model request', (done) => {
     analyticsModel.invokeModelRequest({ request_type: 'provider_profile', value: 'Psych' }, (err, responseJson) => {
-      if (err) {
-        console.log(`damn, found error: ${err}`);
-        console.log(JSON.stringify(responseJson));
-        throw new Error(err);
-      }
-      console.log(`test response0: ${err}`);
-      console.log(`test response1: ${JSON.stringify(responseJson)}`);
-      console.log(`test response2: ${JSON.stringify(responseJson.response[0])}`);
+      if (err) throw new Error(err);
+      if (responseJson.response[0].error_msg) throw new Error(responseJson.response[0].error_msg);
+
       expect(responseJson.response[0].header[0].provider_name).toBe('Psychiatrist');
       done();
     });
