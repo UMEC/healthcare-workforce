@@ -1,3 +1,6 @@
+/*
+ * An API that facilitates user related operations.
+ */
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 
