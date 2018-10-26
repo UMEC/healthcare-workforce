@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from '../Home';
 import Admin from '../Admin';
@@ -11,6 +12,10 @@ import ViewContainer from '../../components/ViewContainer';
 import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
 
+import {
+  INITIAL_MODEL_INFO_REQUEST
+} from '../../actions';
+
 import './App.scss';
 
 class App extends Component {
@@ -19,6 +24,10 @@ class App extends Component {
     this.state = {
       response: '',
     }
+  }
+
+  componentDidMount() {
+    this.props.onRequestAnalyticsIds();
   }
   
   render() {
@@ -61,4 +70,10 @@ let MainNavigation = () => {
   )
 };
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequestAnalyticsIds: () => dispatch({ type: INITIAL_MODEL_INFO_REQUEST })
+  }
+};
+
+export default connect(null, mapDispatchToProps)(App);
