@@ -37,7 +37,7 @@ function updateModelRequestWithResponse(req, modelId, newStatus, data) {
         thisItem.data = data;
         req.session.user.analytics[key] = thisItem;
         req.session.save();
-        console.log(`Processed model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
+        log('POST|PUT', `Processed model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
         return;
       }
     }
@@ -58,7 +58,7 @@ function updateModelRequestWithNewRequest(req, modelId, newStatus, params) {
       thisItem.params = params;
       req.session.user.analytics[key] = thisItem;
       req.session.save();
-      console.log(`Updated model request for:  ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
+      log('PUT', `Updated model request for:  ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
       return;
     }
   }
@@ -118,7 +118,7 @@ router.get('/:modelId', (req, res) => {
 
   if (!modelRequest) {
     res.status(404);
-    res.send('Unknown modelId');
+    res.send(JSON.stringify({ error_msg: 'Unknown modelId' }));
     res.end();
     return;
   }
@@ -137,7 +137,7 @@ router.put('/:modelId', (req, res) => {
   let modelRequest = getModelRequest(req, modelId);
   if (!modelRequest) {
     res.status(404);
-    res.send('Unknown modelId');
+    res.send(JSON.stringify({ error_msg: 'Unknown modelId' }));
     res.end();
     return;
   }
@@ -162,7 +162,8 @@ router.put('/:modelId', (req, res) => {
     });
 });
 
-/* Persist an existing analytic model request against the current user.
+/*
+ * Persist an existing analytic model request against the current user.
  * Must have a current user context.
  */
 router.post('/:modelId/persist', (req, res) => {
@@ -170,5 +171,10 @@ router.post('/:modelId/persist', (req, res) => {
   res.send('Not implemented');
   res.end();
 });
+
+/* Logging method for this api. */
+function log(requestType, msg) {
+  console.log(`/api/analytics:${requestType}: ${msg}`);
+}
 
 module.exports = router;
