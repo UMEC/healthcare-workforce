@@ -1,50 +1,50 @@
-provider_type,provider_abbr
-Physician,Phys
-Physicial Assistant,PA
-Nurse Practitioner,NP
-Registered Nurse,RN
-Doctor of Pharmacy,PharmD
-Medical Assistant,MA
-Educator,Educ
-Psychiatrist,Psych
-Licensed Clinical Social Worker,LCSW
-Certified Mental Health Counselor,CMHC
-Marriage and Family Therapists,MFT
-<<end>>,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
-,
+provider_name,provider_abbr,provider_mean_wage
+Physician,Phys," $177,958.00 "
+Physicial Assistant,PA," $105,690.00 "
+Nurse Practitioner,NP," $95,994.00 "
+Registered Nurse,RN," $57,595.00 "
+Psychiatrist,Psych," $204,194.00 "
+Licensed Clinical Social Worker,LCSW," $62,000.00 "
+Certified Mental Health Counselor,CMHC," $52,500.00 "
+Marriage and Family Therapists,MFT," $55,590.00 "
+Doctor of Pharmacy,PharmD," $125,000.00 "
+Medical Assistant,MA," $32,500.00 "
+Educator,Educ," $55,652.00 "
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
