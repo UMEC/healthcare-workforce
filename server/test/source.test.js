@@ -17,7 +17,6 @@ describe('Test the source API', () => {
     server.get('/api/source').then((response) => {
       server.get(`/api/source/${response.body[0].name}`).then((getResponse) => {
         expect(getResponse.statusCode).toBe(200);
-        expect(getResponse.header['content-type']).toBe('application/csv');
         done();
       });
     });
