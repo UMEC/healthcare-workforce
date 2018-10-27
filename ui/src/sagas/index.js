@@ -41,9 +41,11 @@ function* requestModelInfo(modelParams) {
 
   if (response) {
     let { modelId } = response.data;
-
-    yield put({ type: MODEL_INFO_SUCCESS, payload: { ...response.data} })
-    yield put({ type: MODEL_REQUEST, modelId })
+    
+    yield put({ type: MODEL_INFO_SUCCESS, payload: response.data })
+    
+    // Get the model with the requestModel function
+    yield call( requestModel, modelId );
     
   } else {
     yield put({ type: MODEL_INFO_FAILURE, error })
@@ -52,8 +54,8 @@ function* requestModelInfo(modelParams) {
 
 function* requestModel(modelId) {
   let { response, error } = yield call(getModelData, modelId);
-
   if (response) {
+    
     yield put({ type: MODEL_SUCCESS, payload: response.data })
   } else {
     yield put({ type: MODEL_FAILURE, payload: error.response })
@@ -70,7 +72,6 @@ function* requestModelWatcher(modelId) {
 
 function* requestInitialModelInfoWatcher(modelParams = defaultModelParams) {
   // let sessionState = yield loadStateFromSessionStorage();
-  // // debugger;
   // if (sessionState.model.modelId) {
   //   console.log(`a modelId of ${sessionState.model.modelId} already exists in the session storage`);
   //   return
