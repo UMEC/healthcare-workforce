@@ -1,5 +1,5 @@
 model_version,model_date,model_updated_by,,
-0.2,10/24/2018,Richard Hopkins,,
+.4,2018-10-27,Anne Fischer,,
 ,,,,
 ,This document is the Input Data Component of the Workforce Optimization Tool for further information please see XXXXXXX,,,
 ,,,,
@@ -10,13 +10,13 @@ model_version,model_date,model_updated_by,,
 ,derived data,"These cells are mastered elsewhere in the tool, please change them there",,
 ,sheet name,Sheet names are also used by the tool to navigate the Input Data spreadsheet and should not be changed,,
 ,,,,
-,Model History,,,
+,Data Model History,,,
 ,,,,
 ,Version,Author,Date,Summary of changes
 ,0.1,Richard Hopkins,10/23/2018,First version based on existing data sources
 ,0.2,Richard Hopkins,10/24/2018,"Enhancements based on internal team feedback, splitting of serice/provider maps into three tabs to make model extension easier."
-,,,,
-,,,,
+,0.3,Anne Fischer,2018-10-24,Re-architected tabs and simplified data model
+,0.4,Anne Fischer,2018-10-17,
 ,,,,
 ,,,,
 ,,,,
