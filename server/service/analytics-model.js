@@ -1,7 +1,15 @@
+/*
+ * An internal service that facilitates requests to the analytical model module.
+ */
 const ps = require('python-shell');
 
+/* Logging method for this service. */
+function log(requestType, msg) {
+  console.log(`/service/analytics:${requestType}: ${msg}`);
+}
+
 this.invokeModelRequest = (params, callback) => {
-  console.log(`Invoking model request with params: ${JSON.stringify(params)}`);
+  log('POST|PUT', `Invoking model request with params: ${JSON.stringify(params)}`);
 
   const pyshell = new ps.PythonShell('models/4.1.1 Model Manipulation/model_manip.py');
 
@@ -15,7 +23,7 @@ this.invokeModelRequest = (params, callback) => {
   // end the input stream and allow the process to exit
   pyshell.end((err, code, signal) => {
     if (err) {
-      console.log(`Received python error - exit code ${code}, signal ${signal}, error ${err}`);
+      log('POST|PUT', `Received python error - exit code ${code}, signal ${signal}, error ${err}`);
       callback(err);
     }
   });

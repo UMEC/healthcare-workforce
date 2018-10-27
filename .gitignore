@@ -27,3 +27,6 @@ app/ui/dist
 
 # File Maps
 *.map
+
+# Uploads into root
+*.xslx

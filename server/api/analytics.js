@@ -1,3 +1,6 @@
+/*
+ * An API that facilitates requests to an analytical model.
+ */
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const uuid = require('uuid-random');
@@ -6,6 +9,12 @@ const analyticsModel = require('../service/analytics-model');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
+/* Logging method for this api. */
+function log(requestType, msg) {
+  console.log(`/api/analytics:${requestType}: ${msg}`);
+}
+
+/* Initialize user session. */
 function initUserSession(req) {
   if (!req.session.user) {
     req.session.user = {};
@@ -16,6 +25,7 @@ function initUserSession(req) {
   }
 }
 
+/* Retrieve a model request by id. */
 function getModelRequest(req, id) {
   for (const key of Object.keys(req.session.user.analytics)) { // eslint-disable-line
     if (req.session.user.analytics[key].modelId === id) {
@@ -26,6 +36,7 @@ function getModelRequest(req, id) {
   return null;
 }
 
+/* Update an existing model request with new data received. */
 function updateModelRequestWithResponse(req, modelId, newStatus, data) {
   req.session.reload((err) => {
     if (err) throw err;
@@ -37,13 +48,14 @@ function updateModelRequestWithResponse(req, modelId, newStatus, data) {
         thisItem.data = data;
         req.session.user.analytics[key] = thisItem;
         req.session.save();
-        console.log(`Processed model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
+        log('POST|PUT', `Processed model response for: ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
         return;
       }
     }
   });
 }
 
+/* Update an existing model request with new parameters. */
 function updateModelRequestWithNewRequest(req, modelId, newStatus, params) {
   for (let key of Object.keys(req.session.user.analytics)) { // eslint-disable-line
     const thisItem = req.session.user.analytics[key];
@@ -58,7 +70,7 @@ function updateModelRequestWithNewRequest(req, modelId, newStatus, params) {
       thisItem.params = params;
       req.session.user.analytics[key] = thisItem;
       req.session.save();
-      console.log(`Updated model request for:  ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
+      log('PUT', `Updated model request for:  ${req.session.user.analytics[key].modelId} with status ${newStatus}`);
       return;
     }
   }
@@ -71,13 +83,12 @@ router.get('/', (req, res) => {
   const allRequests = [];
   Object.keys(req.session.user.analytics).forEach((key) => {
     const item = Object.assign({}, req.session.user.analytics[key]);
-    // interested in everything except the actual data
+    // remove data from list request - only present for specific /:{modelId} requests
     item.data = undefined;
     allRequests.push(item);
   });
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify(allRequests));
+  res.status(200).json(allRequests);
   return res.end();
 });
 
@@ -93,10 +104,10 @@ router.post('/', (req, res) => {
 
   req.session.user.analytics.push(modelRequest);
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify(modelRequest));
+  res.status(200).json(modelRequest);
   res.end();
 
+  // start an async request to the model
   Promise.resolve()
     .then(() => {
       analyticsModel.invokeModelRequest(modelRequest.params, (err, responseJson) => {
@@ -117,14 +128,12 @@ router.get('/:modelId', (req, res) => {
   const modelRequest = getModelRequest(req, modelId);
 
   if (!modelRequest) {
-    res.status(404);
-    res.send('Unknown modelId');
+    res.status(404).json({ error_msg: 'Unknown modelId' });
     res.end();
     return;
   }
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify(modelRequest));
+  res.status(200).json(modelRequest);
   res.end();
 });
 
@@ -137,7 +146,7 @@ router.put('/:modelId', (req, res) => {
   let modelRequest = getModelRequest(req, modelId);
   if (!modelRequest) {
     res.status(404);
-    res.send('Unknown modelId');
+    res.send(JSON.stringify({ error_msg: 'Unknown modelId' }));
     res.end();
     return;
   }
@@ -146,10 +155,10 @@ router.put('/:modelId', (req, res) => {
 
   modelRequest = getModelRequest(req, modelId);
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify(modelRequest));
+  res.status(200).json(modelRequest);
   res.end();
 
+  // start an async model request
   Promise.resolve()
     .then(() => {
       analyticsModel.invokeModelRequest(params, (err, responseJson) => {
@@ -162,7 +171,8 @@ router.put('/:modelId', (req, res) => {
     });
 });
 
-/* Persist an existing analytic model request against the current user.
+/*
+ * Persist an existing analytic model request against the current user.
  * Must have a current user context.
  */
 router.post('/:modelId/persist', (req, res) => {
