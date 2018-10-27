@@ -27,3 +27,4 @@ app/ui/dist
 
 # File Maps
 *.map
+models/test/.DS_Store
