@@ -9,14 +9,14 @@ describe('Test analytics model requests', () => {
       if (err) throw new Error(err);
       if (responseJson.response[0].error_msg) throw new Error(responseJson.response[0].error_msg);
 
-      expect(responseJson.response[0].header[0].provider_name).toBe('Psychiatrist');
+      expect(responseJson.response.provider.provider_name).toBe('Psychiatrist');
       done();
     });
   });
 
   test('Check valid response model request for invalid arguments', (done) => {
     analyticsModel.invokeModelRequest({ myparam1: 'myvalue1' }, (err, responseJson) => {
-      expect(responseJson.response[0].error_msg).toBe('ERROR: Could not parse argument: \'value\'');
+      expect(responseJson.response.error_msg).toBe('ERROR: Could not parse argument: \'value\'');
       done();
     });
   });
