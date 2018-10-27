@@ -8,7 +8,8 @@ import {
   MODEL_INFO_FAILURE,
 } from '../actions';
 
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { all, call, put, fork, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { loadStateFromSessionStorage } from '../loadState';
 
@@ -17,24 +18,30 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-const defaultModelParams = {
-  params: {
-    type: "cost_quality_adjustment", 
-    value: 0.5,
+const defaultModelParams = { 
+  params: { 
+    request_type: "provider_profile",
+    value: "Psych",
   }
 };
 
 const getModelInfo = (modelParams) =>  {
   return axios.post('/api/analytics', modelParams, headers)
-    .then( response => ({ response }))
-    .catch( error => ({ error }))
+  .then( response => ({ response }))
+  .catch( error => ({ error }))
 }
 
 const getModelData = (modelId) => {
   let route = `/api/analytics/${modelId}`;
+  
   return axios.get(route, headers)
-    .then(response => ({ response }))
-    .catch(error => ({ error }));
+  .then( response => ({ response }))
+  
+  // .then(response =>{ 
+  //   debugger;
+  //   return response })
+  .catch(error => ({ error }));
+
 }
 function* requestModelInfo(modelParams) {
   let { response, error } = yield call(getModelInfo, modelParams);
@@ -43,7 +50,7 @@ function* requestModelInfo(modelParams) {
     let { modelId } = response.data;
     
     yield put({ type: MODEL_INFO_SUCCESS, payload: response.data })
-    
+    // debugger;
     // Get the model with the requestModel function
     yield call( requestModel, modelId );
     
@@ -53,10 +60,18 @@ function* requestModelInfo(modelParams) {
 }
 
 function* requestModel(modelId) {
+  // TODO: Only call the model success if a status of completed is returned from 
+  // `aoi/analytics/{modelId}`
+  // a better way to do this would be to chech the status of the response with 
+  // a set timeout function that periodically checks to see if this has completed 
+  // on the model's end (in python) and when the status is complete, then when a 
+  // satus of complete is returned -- use put() to add the data to state.
+  yield call(delay, 1000)
+  
   let { response, error } = yield call(getModelData, modelId);
+  debugger;
   if (response) {
-    
-    yield put({ type: MODEL_SUCCESS, payload: response.data })
+    yield put({ type: MODEL_SUCCESS, payload: response.data.data.response })
   } else {
     yield put({ type: MODEL_FAILURE, payload: error.response })
   }
