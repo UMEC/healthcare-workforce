@@ -1,0 +1,207 @@
+prev_encounter,prev_category,prev_service,prev_age_start,prev_age_stop,prev_sex
+Well-Child Visits-A,Patient History,Patient History (6),0,1,both
+Well-Child Visits-A,Behavioral Health Screenings,Developmental Screening (1),0,1,both
+Well-Child Visits-A,Behavioral Health Screenings,Developmental Surveillance (5),0,1,both
+Well-Child Visits-A,Behavioral Health Screenings,Psychosocial/Behavioral Surveillance (6),0,1,both
+Well-Child Visits-A,Behavioral Health Screenings,Maternal Depression Screening (4),0,1,both
+Well-Child Visits-A,Measurements,length/height & weight (6),0,1,both
+Well-Child Visits-A,Measurements,head circumference (6),0,1,both
+Well-Child Visits-A,Measurements,weight for length (6),0,1,both
+Well-Child Visits-A,Measurements,BP (6),0,1,both
+Well-Child Visits-A,Physical Exam,Physical Exam (6),0,1,both
+Well-Child Visits-A,Sensory Screening,Vision (6),0,1,both
+Well-Child Visits-A,Sensory Screening,Hearing (4),0,1,both
+Well-Child Visits-A,Physical Screening,Physical Screening,0,1,both
+Well-Child Visits-A,Immunization,Hep B (1),0,1,both
+Well-Child Visits-A,Immunization,Rotavirus (2),0,1,both
+Well-Child Visits-A,Immunization,DTaP (3),0,1,both
+Well-Child Visits-A,Immunization,Hib (2),0,1,both
+Well-Child Visits-A,Immunization,PCV12 (2),0,1,both
+Well-Child Visits-A,Immunization,IPV (2),0,1,both
+Well-Child Visits-A,Immunization,flu (1),0,1,both
+Well-Child Visits-A,Lab,Newborn Blood (1),0,1,both
+Well-Child Visits-A,Lab,Newborn Bilirubin (1),0,1,both
+Well-Child Visits-A,Lab,Anemia (1),0,1,both
+Well-Child Visits-A,Lab,Lead (2),0,1,both
+Well-Child Visits-A,Oral Health,Identify Dental Home (2),0,1,both
+Well-Child Visits-A,Oral Health,Fluoride Supplementation (2),0,1,both
+Well-Child Visits-A,Anticipatory Guidance ,Anticipatory Guidance (6),0,1,both
+Well Child Visits-B,Patient History,Patient History (7),1,4,both
+Well Child Visits-B,Behavioral Health Screenings,Developmental Screening (2),1,4,both
+Well Child Visits-B,Behavioral Health Screenings,Autism Spectrum Disorder Screening (2),1,4,both
+Well Child Visits-B,Behavioral Health Screenings,Developmental Surveillance (5),1,4,both
+Well Child Visits-B,Behavioral Health Screenings,Psychosocial/Behavioral Surveillance (7),1,4,both
+Well Child Visits-B,Measurements,length/height & weight (7),1,4,both
+Well Child Visits-B,Measurements,head circumference (4),1,4,both
+Well Child Visits-B,Measurements,weight for length (3),1,4,both
+Well Child Visits-B,Measurements,BMI (4),1,4,both
+Well Child Visits-B,Measurements,BP (7),1,4,both
+Well Child Visits-B,Physical Exam,Physical Exam (7),1,4,both
+Well Child Visits-B,Sensory Screening,Vision (7),1,4,both
+Well Child Visits-B,Sensory Screening,Hearing (7),1,4,both
+Well Child Visits-B,Physical Screening,Physical Screening,1,4,both
+Well Child Visits-B,Immunization,Hep B (1),1,4,both
+Well Child Visits-B,Immunization,DTap(1),1,4,both
+Well Child Visits-B,Immunization,Hib (1),1,4,both
+Well Child Visits-B,Immunization,PCV13(1),1,4,both
+Well Child Visits-B,Immunization,Polio (1),1,4,both
+Well Child Visits-B,Immunization,Flu (7),1,4,both
+Well Child Visits-B,Immunization,MMR (1),1,4,both
+Well Child Visits-B,Immunization,VAR (1),1,4,both
+Well Child Visits-B,Immunization,Hep A (2) ,1,4,both
+Well Child Visits-B,Lab,Anemia (7),1,4,both
+Well Child Visits-B,Lab,Lead (5),1,4,both
+Well Child Visits-B,Lab,Dyslipidemia (2),1,4,both
+Well Child Visits-B,Oral Health,Identify Dental Home (6),1,4,both
+Well Child Visits-B,Oral Health,Fluoride Varnish (1),1,4,both
+Well Child Visits-B,Oral Health,Fluoride Supplementation (6),1,4,both
+Well Child Visits-B,Anticipatory Guidance ,Anticipatory Guidance (7),1,4,both
+Well Child Visits-C,Patient History,Patient History (6),5,10,both
+Well Child Visits-C,Behavioral Health Screenings,Developmental Screening (6),5,10,both
+Well Child Visits-C,Behavioral Health Screenings,Developmental Surveillance (6),5,10,both
+Well Child Visits-C,Behavioral Health Screenings,Psychosocial/Behavioral Surveillance (6),5,10,both
+Well Child Visits-C,Measurements,length/height & weight (6),5,10,both
+Well Child Visits-C,Measurements,BMI (6),5,10,both
+Well Child Visits-C,Measurements,BP (6),5,10,both
+Well Child Visits-C,Physical Exam,Physical Exam (6),5,10,both
+Well Child Visits-C,Sensory Screening,Vision (6),5,10,both
+Well Child Visits-C,Sensory Screening,Hearing (6),5,10,both
+Well Child Visits-C,Physical Screening,Obesity Screening,5,10,both
+Well Child Visits-C,Immunization,DTaP (1),5,10,both
+Well Child Visits-C,Immunization,Polio (1),5,10,both
+Well Child Visits-C,Immunization,Hib (6),5,10,both
+Well Child Visits-C,Immunization,MMR (1),5,10,both
+Well Child Visits-C,Immunization,VAR (1),5,10,both
+Well Child Visits-C,Immunization,Flu (6),5,10,both
+Well Child Visits-C,Lab,Anemia (6),5,10,both
+Well Child Visits-C,Lab,Lead (5),5,10,both
+Well Child Visits-C,Lab,Dyslipidemia (3),5,10,both
+Well Child Visits-C,Lab,TB*,5,10,both
+Well Child Visits-C,Oral Health,Identify Dental Home (2),5,10,both
+Well Child Visits-C,Oral Health,Fluoride Supplementation (6),5,10,both
+Well Child Visits-C,Anticipatory Guidance ,Anticipatory Guidance (6),5,10,both
+Well Child Visits-C,Anticipatory Guidance ,Anticipatory Guidance ,5,10,both
+Well Child Visits-D,Anticipatory Guidance ,Anticipatory Guidance ,11,21,both
+Well Child Visits-D,Patient History,Patient History (11),11,21,both
+Well Child Visits-C,Behavioral Health Screenings,Developmental Screening (6),11,21,both
+Well Child Visits-D,Behavioral Health Screenings,Developmental Surveillance (11),11,21,both
+Well Child Visits-D,Behavioral Health Screenings,Psychosocial/Behavioral Surveillance (11),11,21,both
+Well Child Visits-D,Behavioral Health Screenings,Tobacco/Alcohol/Drug Use (11),11,21,both
+Well Child Visits-D,Behavioral Health Screenings,Depression (10 ,11,21,both
+Well Child Visits-D,Measurements,length/height & weight (11),11,21,both
+Well Child Visits-D,Measurements,BMI (11),11,21,both
+Well Child Visits-D,Measurements,BP (11),11,21,both
+Well Child Visits-D,Physical Exam,Physical Exam (11),11,21,both
+Well Child Visits-D,Sensory Screening,Vision (11),11,21,both
+Well Child Visits-D,Sensory Screening,Hearing (3),11,21,both
+Well Child Visits-D,Physical Screening,Obesity Screening,11,21,both
+Well Child Visits-D,Physical Screening,HIV Screening,11,21,both
+Well Child Visits-D,Physical Screening,Gonorrhea Screening,11,21,female_only
+Well Child Visits-D,Physical Screening,Chlamydia Screening,11,21,female_only
+Well Child Visits-D,Immunization,Flu (11),11,21,both
+Well Child Visits-D,Immunization,Meningococcal (2),11,21,both
+Well Child Visits-D,Immunization,Tdap (1),11,21,both
+Well Child Visits-D,Immunization,HPV (3),11,21,both
+Well Child Visits-D,Lab,Anemia (11),11,21,both
+Well Child Visits-D,Lab,Dyslipidemia (6),11,21,both
+Well Child Visits-D,Lab,TB*,11,21,both
+Well Child Visits-D,Lab,STI (11),11,21,both
+Well Child Visits-D,Lab,HIV (8),11,21,both
+Well Child Visits-D,Oral Health,Fluoride Supplementation (6),11,21,both
+Well Child Visits-D,Anticipatory Guidance ,Anticipatory Guidance (11),11,21,both
+Adult Wellness Visits-A,Patient History,Patient History,22,64,both
+Adult Wellness Visits-A,Behavioral Health Screenings,Behavioral Health Screenings,50,64,both
+Adult Wellness Visits-A,Behavioral Health Screenings,Behavioral Health Screenings,22,49,both
+Adult Wellness Visits-A,Behavioral Health Screenings,Alcohol Misuse Screening,22,64,both
+Adult Wellness Visits-A,Behavioral Health Screenings,Depression Screening,22,64,both
+Adult Wellness Visits-A,Behavioral Health Screenings,Intimate partner violence screening,22,49,female_only
+Adult Wellness Visits-A,Measurements,length/height & weight ,22,64,both
+Adult Wellness Visits-A,Measurements,BMI,22,64,both
+Adult Wellness Visits-A,Measurements,BP ,22,64,both
+Adult Wellness Visits-A,Physical Exam,Physical Exam ,22,64,both
+Adult Wellness Visits-A,Sensory Screening,Vision ,22,64,both
+Adult Wellness Visits-A,Sensory Screening,Hearing,22,64,both
+Adult Wellness Visits-A,Physical Screening,Physical Screening,25,50,both
+Adult Wellness Visits-A,Physical Screening,Physical Screening,22,24,both
+Adult Wellness Visits-A,Physical Screening,Physical Screening,50,64,both
+Adult Wellness Visits-A,Physical Screening,Physical Screening,64,64,both
+Adult Wellness Visits-A,Physical Screening,Obesity Screening,22,64,both
+Adult Wellness Visits-A,Physical Screening,Cervical Cancer Screening,22,64,female_only
+Adult Wellness Visits-A,Physical Screening,Chlamydia Screening,22,24,female_only
+Adult Wellness Visits-A,Physical Screening,Gonorrhea Screening,22,24,female_only
+Adult Wellness Visits-A,Physical Screening,Colorectal Cancer Screening,50,64,both
+Adult Wellness Visits-A,Physical Screening,Breast Cancer Screening,50,64,female_only
+Adult Wellness Visits-A,Physical Screening,Osteoporosis,64,64,female_only
+Adult Wellness Visits-A,Immunization,Immunization,22,60,both
+Adult Wellness Visits-A,Immunization,Immunization,61,64,both
+Adult Wellness Visits-A,Immunization,Influenza,22,64,both
+Adult Wellness Visits-A,Immunization,VAR,22,64,both
+Adult Wellness Visits-A,Immunization,Td/Tdap,22,64,both
+Adult Wellness Visits-A,Immunization,MMR,22,60,both
+Adult Wellness Visits-A,Immunization,HZV,61,65,both
+Adult Wellness Visits-A,Lab,Lab,22,52,both
+Adult Wellness Visits-A,Lab,Lab,53,64,both
+Adult Wellness Visits-A,Lab,HIV Screening,22,64,both
+Adult Wellness Visits-A,Lab,Hepititis C Screening,53,64,both
+Adult Wellness Visits-A,Oral Health,Identify Dental Home ,22,64,both
+Adult Wellness Visits-A,Counseling,Counseling,25,64,both
+Adult Wellness Visits-A,Counseling,Counseling,22,24,both
+Adult Wellness Visits-A,Counseling,Alcohol Misuse Counseling,22,64,both
+Adult Wellness Visits-A,Counseling,Tobacco Use Prevention and Counseling ,22,64,both
+Adult Wellness Visits-A,Counseling,Sexually Transmitted Infections Counseling,22,64,both
+Adult Wellness Visits-A,Counseling,Skin Cancer Behavioral Counseling,22,24,both
+Adult Wellness Visits-A,Visit wrap-up/care planning,Visit wrap-up/care planning,22,64,both
+Adult Wellness Visits-B,Patient History,Patient History,65,999,both
+Adult Wellness Visits-A,Counseling,Alcohol Misuse Counseling,65,999,both
+Adult Wellness Visits-B,Behavioral Health Screenings,Alcohol Misuse Screening,65,999,both
+Adult Wellness Visits-A,Counseling,Counseling,65,999,both
+Adult Wellness Visits-B,Behavioral Health Screenings,Depression Screening,65,999,both
+Adult Wellness Visits-B,Measurements,length/height & weight ,65,999,both
+Adult Wellness Visits-B,Measurements,BMI,65,999,both
+Adult Wellness Visits-B,Measurements,BP ,65,999,both
+Adult Wellness Visits-B,Physical Exam,Physical Exam ,65,999,both
+Adult Wellness Visits-B,Sensory Screening,Vision ,65,999,both
+Adult Wellness Visits-B,Sensory Screening,Hearing,65,999,both
+Adult Wellness Visits-B,Physical Screening,Physical Screening,65,74,both
+Adult Wellness Visits-B,Physical Screening,Physical Screening,75,84,both
+Adult Wellness Visits-B,Physical Screening,Physical Screening,85,999,both
+Adult Wellness Visits-B,Physical Screening,Obesity Screening,65,999,both
+Adult Wellness Visits-B,Physical Screening,Colorectal Cancer Screening,65,74,both
+Adult Wellness Visits-B,Physical Screening,Breast Cancer Screening,65,74,female_only
+Adult Wellness Visits-B,Physical Screening,Osteoporosis,65,84,female_only
+Adult Wellness Visits-B,Immunization,Influenza,65,999,both
+Adult Wellness Visits-B,Immunization,Td/Tdap,65,999,both
+Adult Wellness Visits-B,Immunization,VAR,65,999,both
+Adult Wellness Visits-B,Immunization,HZV,65,999,both
+Adult Wellness Visits-B,Lab,Lab,74,999,both
+Adult Wellness Visits-B,Lab,Lab,65,73,both
+Adult Wellness Visits-B,Lab,Hepititis C Screening,65,73,both
+Adult Wellness Visits-B,Oral Health,Identify Dental Home ,65,999,both
+Adult Wellness Visits-B,Counseling,Advanced Care Planning,65,999,both
+Adult Wellness Visits-B,Visit wrap-up/care planning,Visit wrap-up/care planning,65,999,both
+Tobacco Use ,Tobacco Use ,Abdominal aortic aneurysm screening,65,75,male_only
+Tobacco Use ,Tobacco Use ,Lung Cancer Screening,55,80,both
+Tobacco Use ,Tobacco Use ,Tobacco Use Counseling,21,80,both
+Obesity,Obesity,Obesity,18,999,both
+Diabetes Screening,Diabetes Screening,Diabetes Screening,40,70,both
+Healthy Diet and Physical Activity Counseling ,Healthy Diet and Physical Activity Counseling ,Healthy Diet and Physical Activity Counseling ,18,999,both
+Women's specific,Women's specific,BRCA risk assessment and genetic counseling,NA,NA,female_only
+Women's specific,Women's specific,Breast Cancer Preventive Medications,NA,NA,female_only
+Women's specific,Women's specific,Breast Cancer Screening,50,74,female_only
+Women's specific,Women's specific,Cervical Cancer Screening,21,65,female_only
+Women's specific,Women's specific,Chlamydia Screening,16,24,female_only
+Women's specific,Women's specific,Folic Acid Supplementation,,,female_only
+Women's specific,Women's specific,Gonorrhea Screening,16,24,female_only
+Women's specific,Women's specific,Intimate partner violence screening,12,49,female_only
+Women's specific,Women's specific,Osteoporosis,65,85,female_only
+Pregnancy,Pregnancy,Bacteriuria Screening,, ,female_only
+Pregnancy,Pregnancy,Breast Feeding Interventions,, ,female_only
+Pregnancy,Pregnancy,Post Partum Depression Screening,, ,female_only
+Pregnancy,Pregnancy,Gestational Diabetes Screening,, ,female_only
+Pregnancy,Pregnancy,Hepatitis B Screening,, ,female_only
+Pregnancy,Pregnancy,HIV Screening,, ,female_only
+Pregnancy,Pregnancy,Preeclampsia Prevention,, ,female_only
+Pregnancy,Pregnancy,Preeclampsia Screening,, ,female_only
+Pregnancy,Pregnancy,Rh Incompatibility Screening: First Visit,, ,female_only
+Pregnancy,Pregnancy,Rh Incompatibility Screening: 24-28 weeks,, ,female_only
+Pregnancy,Pregnancy,Syphillis Screening,, ,female_only
