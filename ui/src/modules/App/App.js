@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from '../Home';
 import Admin from '../Admin';
+
+//Components
+import AppHeader from '../../components/AppHeader';
+import ViewHeader from '../../components/ViewHeader';
+import AppContent from '../../components/AppContent';
+import ViewContainer from '../../components/ViewContainer';
+import ViewFooter from '../../components/ViewFooter';
+import Panel from '../../components/Panel';
+
+import {
+  INITIAL_MODEL_INFO_REQUEST
+} from '../../actions';
+
 import './App.scss';
 
 class App extends Component {
@@ -11,30 +25,30 @@ class App extends Component {
       response: '',
     }
   }
-  
+
   componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res[0].name }))
-      .catch(err => console.log(err));
+    this.props.onRequestAnalyticsIds();
   }
-
-  callApi = async () => {
-    const response = await fetch('/api/source');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-    console.log("Received body: " + body);
-    return body;
-  };
   
   render() {
     return (
       <Router>
-        <div className="App">
-          <MainNavigation />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/admin" component={Admin} />
-          <p className="App-intro">{this.state.response}</p>
+        <div className="container">
+          <AppHeader>
+            <div className="branding">
+
+            </div>
+            <MainNavigation />
+          </AppHeader>
+          <AppContent>
+            <ViewContainer>
+              <ViewHeader />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/admin" component={Admin} />
+              <ViewFooter />
+            </ViewContainer>
+            <Panel />
+          </AppContent>
         </div>
       </Router>
     );
@@ -56,4 +70,10 @@ let MainNavigation = () => {
   )
 };
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequestAnalyticsIds: () => dispatch({ type: INITIAL_MODEL_INFO_REQUEST })
+  }
+};
+
+export default connect(null, mapDispatchToProps)(App);

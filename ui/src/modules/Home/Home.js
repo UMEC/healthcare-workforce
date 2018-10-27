@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+// import { bindActionCreators } from 'redux';
+
 import { connect } from 'react-redux';
-import UserInfo from '../../components/UserInfo';
 
 class Home extends Component {
+  componentDidMount() {
+    // this.props.onRequestAnalyticsIds();
+  }
+
   render() {
+    let { modelId } = this.props.model;
     return (
       <>
         <p>Home</p>
-        <UserInfo>{this.props.user.name}</UserInfo>
+        <p>{modelId}</p>
       </>
     );
   }
@@ -15,7 +21,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    model: state.model,
   }
 }
 
