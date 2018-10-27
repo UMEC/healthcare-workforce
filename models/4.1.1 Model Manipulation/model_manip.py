@@ -1,4 +1,3 @@
-
 # coding: utf-8
 
 # # 4.1.1. Model Manipulation
@@ -32,8 +31,7 @@ import json
 import sys
 import os
 
-#directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../test/data_input_component_CSV/")
-directory = "../test/data_input_component_CSV/"
+directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../test/data_input_component_csv/")
 
 command="null"
 provider_type="null"
@@ -81,7 +79,7 @@ def strip_brackets(JSON_string):
 # In[4]:
 
 
-class ProviderClass:        
+class ProviderClass:
     def get_provider_list(self, provider_list):
         # retrieve list of providers
         provider_list = provider_list.loc[provider_list['provider_abbr'].notnull()]
@@ -183,7 +181,7 @@ if command == "provider_profile":
 elif command == "provider_list":
     result = provider.get_provider_list(provider_list)
 elif command == "provider_details":
-    result = provider.get_all_providers(provider_list,provider_supply,acute_service_prov_priority)   
+    result = provider.get_all_providers(provider_list,provider_supply,acute_service_prov_priority)
 else:
     respond(None,command,provider_type, "ERROR: Unknown function call.")
 respond(result,command,value)
@@ -202,4 +200,4 @@ respond(result,command,value)
 #         # update geo data
 #     def __change_wage(county,provider)
 #         # private function to change wage in pandas
-#         
+#

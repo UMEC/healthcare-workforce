@@ -7,7 +7,7 @@ describe('Test analytics model requests', () => {
   test('Check valid response model request', (done) => {
     analyticsModel.invokeModelRequest({ request_type: 'provider_profile', value: 'Psych' }, (err, responseJson) => {
       if (err) throw new Error(err);
-      if (responseJson.response[0].error_msg) throw new Error(responseJson.response[0].error_msg);
+      if (responseJson.response.error_msg) throw new Error(responseJson.response.error_msg);
 
       expect(responseJson.response.provider.provider_name).toBe('Psychiatrist');
       done();
