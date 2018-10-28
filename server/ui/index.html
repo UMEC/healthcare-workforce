@@ -69,15 +69,18 @@
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="/about">About</a>
+        <a href="#upload">Upload</a>
       </li>
       <li>
-        <a href="/sitemap">Sitemap</a>
+        <a href="#download">Download</a>
+      </li>
+      <li>
+        <a href="#request">Request</a>
       </li>
     </ul>
   </div>
 </nav>
-    <div class="jumbotron"  style="padding:20px;">
+    <div class="jumbotron"  style="padding:20px;" id="upload">
       <h2>Upload Data Source</h2>
       <p>
         <form action='./source' method='post' enctype='multipart/form-data'>
@@ -86,13 +89,13 @@
         </form>
       </p>
     </div>
-    <div class="jumbotron"  style="padding:20px;">
+    <div class="jumbotron"  style="padding:20px;" id="download">
       <h2>Download Data Source</h2>
       <p>
         (Populate here)
       </p>
     </div>
-    <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;">
+    <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;" id="request">
       <h2>Model Request</h2>
       <div class="ib-child" style="width:50%;">
         <textarea id="inputTextArea" style="width:100%;height:200px;" cols=50 rows=10>{"params": {"request_type": "provider_profile", "value": "Psych"}}</textarea>
