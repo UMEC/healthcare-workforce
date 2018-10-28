@@ -1,110 +1,105 @@
 import {
   INITIAL_MODEL_INFO_REQUEST,
+  MODEL_REQUEST,
+  MODEL_SUCCESS,
+  MODEL_FAILURE,
   MODEL_INFO_REQUEST,
   MODEL_INFO_SUCCESS,
   MODEL_INFO_FAILURE,
 } from '../actions';
 
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { all, call, put, fork, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-
-// function* postAnalytics() {
-//   const response = fetch('/api/analytics', {
-//     method: 'POST',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ "params": { "type": "cost_quality_adjustment", "value": 0.5 } })
-//   });
-
-//   // if (response.status !== 200) throw Error(body.message);
-//   // console.log("Post respnse: " + JSON.stringify(body));
-//   return response.json();
-// };
-
-// function* callAnalyticsGetApi(modelId) {
-//   const response = fetch('/api/analytics/' + modelId, {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//     }
-//   });
-
-//   // if (response.status !== 200) throw Error(body.message);
-//   // console.log("Get response: " + JSON.stringify(body));
-//   return response.json();
-// };
+import { loadStateFromSessionStorage } from '../loadState';
 
 const headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
 };
 
-const defaultModelParams = {
-  params: {
-    type: "cost_quality_adjustment", 
-    value: 0.5,
+const defaultModelParams = { 
+  params: { 
+    request_type: "provider_profile",
+    value: "Psych",
   }
 };
 
 const getModelInfo = (modelParams) =>  {
   return axios.post('/api/analytics', modelParams, headers)
-    .then( response => ({ response }))
-    .catch( error => ({ error }))
+  .then( response => ({ response }))
+  .catch( error => ({ error }))
 }
 
 const getModelData = (modelId) => {
   let route = `/api/analytics/${modelId}`;
+  
   return axios.get(route, headers)
-    .then(response => ({ response }))
-    .catch(error => ({ error }));
+  .then( response => ({ response }))
+  
+  // .then(response =>{ 
+  //   debugger;
+  //   return response })
+  .catch(error => ({ error }));
+
 }
-
-// const callAnalyticsGetApi = async (modelId) => {
-//   const response = await fetch('/api/analytics/' + modelId, {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//     }
-//   });
-
-//   const body = await response.json();
-
-//   if (response.status !== 200) throw Error(body.message);
-//   console.log("Get response: " + JSON.stringify(body));
-//   return body;
-// };
-
 function* requestModelInfo(modelParams) {
   let { response, error } = yield call(getModelInfo, modelParams);
-  // const body = yield response;
-  
+
   if (response) {
-
-    let modelData = yield getModelData(response.data.modelId);
-
-    yield put({ type: MODEL_INFO_SUCCESS, payload: {...response.data, ...modelData.data} })
+    let { modelId } = response.data;
+    
+    yield put({ type: MODEL_INFO_SUCCESS, payload: response.data })
+    // debugger;
+    // Get the model with the requestModel function
+    yield call( requestModel, modelId );
+    
   } else {
     yield put({ type: MODEL_INFO_FAILURE, error })
   } 
+}
+
+function* requestModel(modelId) {
+  // TODO: Only call the model success if a status of completed is returned from 
+  // `aoi/analytics/{modelId}`
+  // a better way to do this would be to chech the status of the response with 
+  // a set timeout function that periodically checks to see if this has completed 
+  // on the model's end (in python) and when the status is complete, then when a 
+  // satus of complete is returned -- use put() to add the data to state.
+  yield call(delay, 1000)
+  
+  let { response, error } = yield call(getModelData, modelId);
+  debugger;
+  if (response) {
+    yield put({ type: MODEL_SUCCESS, payload: response.data.data.response })
+  } else {
+    yield put({ type: MODEL_FAILURE, payload: error.response })
+  }
 }
 
 function* requestModelInfoWatcher(modelParams) {
   yield takeLatest(MODEL_INFO_REQUEST, requestModelInfo, modelParams);
 }
 
+function* requestModelWatcher(modelId) {
+  yield takeLatest(MODEL_REQUEST, requestModel, modelId);
+}
+
 function* requestInitialModelInfoWatcher(modelParams = defaultModelParams) {
-  if (localStorage.getItem('state')) return;
+  // let sessionState = yield loadStateFromSessionStorage();
+  // if (sessionState.model.modelId) {
+  //   console.log(`a modelId of ${sessionState.model.modelId} already exists in the session storage`);
+  //   return
+  // }
   yield takeLatest(INITIAL_MODEL_INFO_REQUEST, requestModelInfo, modelParams);
+
 }
 
 function* rootSaga() {
   yield all([
     requestModelInfoWatcher(),
     requestInitialModelInfoWatcher(),
+    requestModelWatcher(),
   ])
 }
 

@@ -22,6 +22,30 @@ export const saveStateToLocalStorage = (state) => {
     console.log('saveStateToLocalStorage', error)
   }
 }
+export const loadStateFromSessionStorage = () => {
+  // Wrapping in a try catch to prevent any issues when an error is returned 
+  try {
+    const serializedState = sessionStorage.getItem('state');
+
+    // If there is no state in the localStorage, return `undefined` and continue
+    // running as ususal
+    if ( serializedState === null ) return undefined;
+
+    // If there is a state key in Localstorage, parse it and return it to be applied to the 
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return undefined
+  }
+}
+
+export const saveStateToSessionStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    sessionStorage.setItem('state', serializedState);
+  } catch (error) {
+    console.log('saveStateToSessionStorage', error)
+  }
+}
 
 /***
  * Based on a great video by Dan Abermov.

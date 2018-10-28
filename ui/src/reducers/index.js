@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import model from './reducer-model';
+import defaultModelReducer from './reducer-default-model';
+import modelReducer from './reducer-model';
 
 const rootReducer = combineReducers({
-  model
+  defaultModel: defaultModelReducer,
+  activeModel: modelReducer,
 });
 
 export default rootReducer;
