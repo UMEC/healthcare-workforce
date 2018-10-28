@@ -38,7 +38,6 @@ const getModelData = (modelId) => {
   .then( response => ({ response }))
   
   // .then(response =>{ 
-  //   debugger;
   //   return response })
   .catch(error => ({ error }));
 
@@ -50,7 +49,6 @@ function* requestModelInfo(modelParams) {
     let { modelId } = response.data;
     
     yield put({ type: MODEL_INFO_SUCCESS, payload: response.data })
-    // debugger;
     // Get the model with the requestModel function
     yield call( requestModel, modelId );
     
@@ -69,7 +67,6 @@ function* requestModel(modelId) {
   yield call(delay, 1000)
   
   let { response, error } = yield call(getModelData, modelId);
-  debugger;
   if (response) {
     yield put({ type: MODEL_SUCCESS, payload: response.data.data.response })
   } else {
