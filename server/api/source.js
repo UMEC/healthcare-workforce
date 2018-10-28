@@ -36,7 +36,7 @@ function processXslx(res, path) {
   res.end();
 }
 
-/* A temporary helper service for testing file upload. */
+/* A helper service for testing file upload. */
 router.get('/upload', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write("<form action='./' method='post' enctype='multipart/form-data'>");
