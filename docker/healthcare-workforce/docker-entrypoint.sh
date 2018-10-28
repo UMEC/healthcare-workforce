@@ -5,10 +5,19 @@ echo Downloading latest application zip: $zip_url
 sudo curl -qLO $zip_url .
 set -e
 echo Unzipping..
-#Overwrite everything except the data folder
-sudo unzip -qo master.zip -x "healthcare-workforce-master/models/test/data_input_component_csv/*.*"
+
+if ls healthcare-workforce-master/models/test/data_input_component_csv/* 1> /dev/null 2>&1; then
+   echo "Found existing user data, leaving as-is."
+   #Overwrite everything except the data folder
+   sudo unzip -qo master.zip -x "healthcare-workforce-master/models/test/data_input_component_csv/*.*"
+else
+   echo "No user data found, extracting sample data."
+   sudo unzip -qo master.zip
+   
+fi
+
 cd healthcare-workforce-master
 echo Installing NPM..
 sudo npm install
-echo Starting application..
+echo Finished, starting application..
 sudo npm start
