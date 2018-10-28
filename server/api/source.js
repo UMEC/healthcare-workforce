@@ -58,7 +58,11 @@ router.get('/', (req, res) => {
       result.name = item;
       result.modified = stats.mtime;
       result.size = stats.size;
-      result.uri = `${req.originalUrl}/${result.name}`;
+      if (req.originalUrl.endsWith('/')) {
+        result.uri = `${req.originalUrl}${result.name}`;
+      } else {
+        result.uri = `${req.originalUrl}/${result.name}`;
+      }
       return result;
     });
     res.write(JSON.stringify(statResults));
