@@ -39,6 +39,7 @@ if (cluster.isMaster && process.env.NODE_ENV !== 'unittest') {
   app.use('/api/source', require("./server/api/source"))
   app.use('/api/analytics', require("./server/api/analytics"))
   app.use('/api/user', require("./server/api/user"))
+  app.use('/api/request', require("./server/ui/request"))
 
   if (process.env.NODE_ENV !== 'unittest') {
     app.listen(process.env.PORT || 5000)
