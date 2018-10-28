@@ -5,7 +5,7 @@ A source code repository for UMEC healthcare workforce needs, such as modelling,
 ## Getting Started - Installing the Application
 To install the lastest version:
 1. Download [Docker](https://www.docker.com/get-started).
-2. Download [this Docker yml file][docker/docker-compose.yml].
+2. Download [this Docker yml file](docker/docker-compose.yml).
 3. Open a Docker terminal
 4. Use Docker Compose to start the application via `docker-compose up umec-hw -f <location-of-yml>`
 5. The application will be available on http://localhost:3000/
