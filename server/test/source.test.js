@@ -54,7 +54,7 @@ describe('Test the source API', () => {
     server.post('/api/source').attach('filetoupload', './models/data/Workforce Optimization Tool - Input Data.xlsx').then((response) => {
       expect(response.statusCode).toBe(200);
       expect(response.body).toHaveLength(1);
-      expect(response.body[0].msg).toBe('File upload accepted for processing.');
+      expect(response.body[0].msg).toBe('XLSX file upload accepted for processing.');
       done();
     });
   }, 30000);
@@ -63,7 +63,7 @@ describe('Test the source API', () => {
     server.post('/api/source').attach('filetoupload', './README.md').then((response) => {
       expect(response.statusCode).toBe(200);
       expect(response.body).toHaveLength(1);
-      expect(response.body[0].error_msg).toBe('Unsupported file type - must be xslx');
+      expect(response.body[0].error_msg).toBe('Unsupported file type - must be xslx or csv');
       done();
     });
   });
