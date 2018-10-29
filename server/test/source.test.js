@@ -51,7 +51,7 @@ describe('Test the source API', () => {
   });
 
   test('/api/source response for valid POST method', (done) => {
-    server.post('/api/source').attach('filetoupload', './models/test/Workforce Optimization Tool - Input Data.xlsx').then((response) => {
+    server.post('/api/source').attach('filetoupload', './models/data/Workforce Optimization Tool - Input Data.xlsx').then((response) => {
       expect(response.statusCode).toBe(200);
       expect(response.body).toHaveLength(1);
       expect(response.body[0].msg).toBe('File upload accepted for processing.');

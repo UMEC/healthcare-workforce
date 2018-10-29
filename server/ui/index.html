@@ -37,9 +37,13 @@
     function getDataSources() {
       $.get('./source').done(function(getData) {
         $("#datasources > tbody").empty();
-        getData.forEach(function(result) {
-          $('#datasources tr:last').after('<tr><td>' + result.name + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/' + result.name + '">Download</a></td></tr>');
-        });
+        if (getData.length <= 0) {
+          $('#datasources tr:last').after('<tr><td>No data sources uploaded.</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+        } else {
+          getData.forEach(function(result) {
+            $('#datasources tr:last').after('<tr><td>' + result.name + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/' + result.name + '">Download</a></td></tr>');
+          });
+        }
       });
     }
 

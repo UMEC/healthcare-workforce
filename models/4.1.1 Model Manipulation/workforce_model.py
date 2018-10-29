@@ -93,7 +93,7 @@ except Exception as e:
 if "request_type" in parsed_command:
     command = str(parsed_command["request_type"])
 else:
-    respond(None,command,provider_type, "ERROR: Invalid argument - no request_type defined: "+str(e))
+    respond(None,command,provider_type, "ERROR: Invalid argument - no request_type defined")
 if "value" in parsed_command:
     value = str(parsed_command["value"])
 if "directory" in parsed_command:
