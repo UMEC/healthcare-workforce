@@ -11,6 +11,8 @@ import numpy as np
 from numpy import dot
 from cvxopt import matrix, solvers
 
+solvers.options['show_progress']=False
+
 
 def main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, collapse_group, FTE_time, 
          sdoh_score, pop_chronic_trend, pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, 
