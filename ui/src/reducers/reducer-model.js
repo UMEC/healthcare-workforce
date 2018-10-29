@@ -8,21 +8,22 @@ import {
 // import { actionChannel } from 'redux-saga/effects';
 
 // reshaping default state to next the 
-const provider = activeModelDefaultState.response.provider;
-const supply = _.mapValues(_.groupBy(activeModelDefaultState.response.supply, 'provider_county'));
-const services = _.mapValues(_.groupBy(activeModelDefaultState.response.services, 'acute_encounter'));
+const modelOutput = {
+  servicesByProvider: activeModelDefaultState
+};
+// const supply = _.mapValues(_.groupBy(activeModelDefaultState.response.supply, 'provider_county'));
+// const services = _.mapValues(_.groupBy(activeModelDefaultState.response.services, 'acute_encounter'));
 
-debugger;
+// debugger;
 
-export default (state = {}, action) => {
+export default (state = modelOutput, action) => {
   switch (action.type) {
     case MODEL_REQUEST:
       return { loading: true, error: null };
-    case MODEL_SUCCESS:
-      // return action.payload;
-      return { defaultResponse: activeModelDefaultState, provider, supply, services };
-    case MODEL_FAILURE:
-      return action.payload;
+    // case MODEL_SUCCESS:
+    //   return action.payload;
+    // case MODEL_FAILURE:
+    //   return action.payload;
     default:
       return state;
   }

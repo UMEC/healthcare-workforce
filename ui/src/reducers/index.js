@@ -4,7 +4,7 @@ import modelReducer from './reducer-model';
 
 const rootReducer = combineReducers({
   defaultModel: defaultModelReducer,
-  activeModel: modelReducer,
+  currentModelOutput: modelReducer,
 });
 
 export default rootReducer;

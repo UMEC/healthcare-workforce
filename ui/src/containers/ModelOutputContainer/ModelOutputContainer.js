@@ -7,6 +7,7 @@ import ViewSection from '../../components/ViewSection';
 import ViewContainer from '../../components/ViewContainer';
 import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
+import ProviderRoles from '../../modules/ProviderRoles';
 
 class ModelOutputContainer extends Component {
   constructor(props) {
@@ -18,11 +19,13 @@ class ModelOutputContainer extends Component {
     }
   }
 
-  updateModelAttributes = () => {
-    console.log('attrinute updated!')
+  updateModelAttributes = (i) => {
+    console.log(`attrinute for ${i} updated!`)
   }
   
   render() {
+    console.log(this.props.currentModelOutput.servicesByProvider)
+    let { servicesByProvider } = this.props.currentModelOutput;
     let filtersCount = Object.keys(this.props.selectedFilters).length;
     let filtersApplied = Object.keys(this.props.selectedFilters).length > 0;
 
@@ -31,8 +34,11 @@ class ModelOutputContainer extends Component {
         <ViewContainer>
           <ViewHeader />
           <ViewSection updateModelAttributes={this.updateModelAttributes} title="">
-            <p>NEW MODULES GO IN VIEW SECTIONS :)</p>
+            <ProviderRoles 
+              servicesByProvider={servicesByProvider}
+              updateModelAttributes={this.updateModelAttributes} />
           </ViewSection>
+
           { filtersApplied ?
             <ViewFooter>
               <p>{`${filtersCount} filters applied to the model output` }</p>
@@ -61,7 +67,7 @@ ModelOutputContainer.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    defaultModel: state.defaultModel,
+    currentModelOutput: state.currentModelOutput,
   }
 };
 
