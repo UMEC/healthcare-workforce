@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import ModelOutputContainer from '../../containers/ModelOutputContainer/ModelOutputContainer';
 import Home from '../Home';
 import Admin from '../Admin';
 
 //Components
-import AppHeader from '../../components/AppHeader';
-import ViewHeader from '../../components/ViewHeader';
 import AppContent from '../../components/AppContent';
-import ViewContainer from '../../components/ViewContainer';
-import ViewFooter from '../../components/ViewFooter';
-import Panel from '../../components/Panel';
+import AppHeader from '../../components/AppHeader';
+
 
 import {
   INITIAL_MODEL_INFO_REQUEST
@@ -41,13 +39,8 @@ class App extends Component {
             <MainNavigation />
           </AppHeader>
           <AppContent>
-            <ViewContainer>
-              <ViewHeader />
-              <Route exact path="/" component={Home} />
-              <Route exact path="/admin" component={Admin} />
-              <ViewFooter />
-            </ViewContainer>
-            <Panel />
+            <Route exact path="/" component={ModelOutputContainer} />
+            <Route exact path="/admin" component={Admin} />
           </AppContent>
         </div>
       </Router>
