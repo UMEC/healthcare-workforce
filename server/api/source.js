@@ -1,8 +1,8 @@
 /*
  * An API that facilitates uploading and downloading external data sources.
  */
-const DIR_PROCESSED_FILES = './models/test/data_input_component_csv/';
-const DIR_UPLOADED_FILES = './models/test/data_input_component_csv/';
+const DIR_PROCESSED_FILES = './models/data/data_input_component_csv/';
+const DIR_UPLOADED_FILES = './models/data/data_input_component_csv/';
 const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
