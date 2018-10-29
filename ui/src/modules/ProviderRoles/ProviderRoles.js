@@ -12,6 +12,42 @@ class ProviderRoles extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    // this.renderService = renderService;
+  }
+  renderServices = (services) => {
+    return services.map(service => {
+      return (
+        <>
+          <p>Service Name: {service.service_name}</p>
+          <p>Score: {service.service_info.score}</p>
+          <p>min face to face time: {service.service_info.min_f2f_time}</p>
+          <p>max face to face time: {service.service_info.max_f2f_time}</p>
+        </>
+    )})
+  }
+
+  renderCategories = (categories) => {
+      return categories.map(providerServices => {
+        return (
+          <>
+            <p>CATEGORY: {providerServices[0].service_category}</p>
+            {this.renderServices(providerServices[0].services)}
+          </>
+        )
+      })
+  }
+
+  renderProviders = (providers) => {
+    return providers.map(provider => {
+      return (
+        <>
+          <p>{provider.provider_type}</p>
+          {this.renderCategories(provider.provider_services)}
+        </>
+      );
+
+    })
   }
 
   render() {
@@ -68,32 +104,7 @@ class ProviderRoles extends Component {
     return (
       <>
         <p>ProviderRoles</p>
-        {newProviderServicesObject.map( provider => {
-          return (
-          <>
-            <p>{provider.provider_type}</p>
-            {provider.provider_services.map( providerServices => {
-              return (
-              <>
-                <p>CATEGORY: {providerServices[0].service_category}</p>
-                {providerServices[0].services.map( service => {
-                  return (
-                    <>
-                    <p>Service Name: {service.service_name}</p>
-                    <p>Score: {service.service_info.score}</p>
-                    <p>min face to face time: {service.service_info.min_f2f_time}</p>
-                    <p>max face to face time: {service.service_info.max_f2f_time}</p>
-                    </>
-                  )
-                })}
-                
-              </>
-              )
-            })}
-          </>
-          );
-
-        })}
+        {this.renderProviders(newProviderServicesObject)}
       </>
     );
   }
