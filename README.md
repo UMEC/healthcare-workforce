@@ -2,12 +2,23 @@
 
 A source code repository for UMEC healthcare workforce needs, such as modelling, data transformation and visualization.
 
-## Documentation
+## Getting Started - Installing the Application
+To install the lastest version:
+1. Download [Docker](https://www.docker.com/get-started).
+2. Download [this Docker yml file](docker/docker-compose.yml).
+3. Open a Docker terminal
+4. Use Docker Compose to start the application via `docker-compose up umec-hw -f <location-of-yml>`
+5. The application will be available on http://localhost:3000/
+
+## Development Documentation
 A readme for the UI is available [here](ui/README.md).
+
 A readme for the server is available [here](server/README.md).
+
 A readme for the model is available [here](models/README.md).
 
-## Getting Started - Running the Application
+
+## Getting Started - Installing the Application Manually
 This application is built on React (UI), NodeJS (server) and Python (model).
 It can be started via the following steps:
 1. Download npm

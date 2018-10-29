@@ -8,16 +8,17 @@ describe('Test analytics model requests', () => {
     analyticsModel.invokeModelRequest({ request_type: 'provider_profile', value: 'Psych' }, (err, responseJson) => {
       if (err) throw new Error(err);
       if (responseJson.response.error_msg) throw new Error(responseJson.response.error_msg);
-
-      expect(responseJson.response.provider.provider_name).toBe('Psychiatrist');
+      expect(responseJson.response.Phys.provider_type).toBe('Physician');
       done();
     });
-  });
+  }, 20000);
 
   test('Check valid response model request for invalid arguments', (done) => {
     analyticsModel.invokeModelRequest({ myparam1: 'myvalue1' }, (err, responseJson) => {
-      expect(responseJson.response.error_msg).toBe('ERROR: Could not parse argument: \'value\'');
+      if (err) throw new Error(err);
+
+      expect(responseJson.response.error_msg).toBe('ERROR: Invalid argument - no request_type defined');
       done();
     });
-  });
+  }, 20000);
 });

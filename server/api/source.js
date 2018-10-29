@@ -1,8 +1,8 @@
 /*
  * An API that facilitates uploading and downloading external data sources.
  */
-const DIR_PROCESSED_FILES = './models/test/data_input_component_csv/';
-const DIR_UPLOADED_FILES = './models/test/data_input_component_csv/';
+const DIR_PROCESSED_FILES = './models/data/data_input_component_csv/';
+const DIR_ARCHIVED_FILES = './models/data/archived/';
 const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
@@ -13,10 +13,87 @@ function log(requestType, msg) {
   console.log(`/api/source:${requestType}: ${msg}`);
 }
 
+function getDataSourceFile(req, res, sourceFolder) {
+  const { filename } = req.params;
+  const ext = filename.split('.').pop();
+
+  // validations to make sure nothing naughty is attempted
+  if(!filename || !filename.match(/^[\w\-. ]+$/g)) { // eslint-disable-line
+    res.status(400).json({ error_msg: 'Unsupported filename' });
+    res.end();
+    return;
+  }
+
+  const filePath = sourceFolder + filename;
+  try {
+    const stat = fs.statSync(filePath);
+    res.writeHead(200, {
+      'Content-Type': `application/${ext}`,
+      'Content-Disposition': `attachment;filename=${filename}`,
+      'Content-Length': stat.size,
+    });
+
+    fs.createReadStream(filePath).pipe(res);
+  } catch (err) {
+    res.status(404).json({ error_msg: 'Unknown file' });
+    res.end();
+  }
+}
+
+/* Delete a data source file. */
+function deleteDataSourceFile(req, res, sourceFolder) {
+  const { filename } = req.params;
+
+  // validations to make sure nothing naughty is attempted
+  if(!filename || !filename.match(/^[\w\-. ]+$/g)) { // eslint-disable-line
+    res.status(400).json({ error_msg: 'Unsupported filename' });
+    res.end();
+    return;
+  }
+
+  const filePath = sourceFolder + filename;
+  try {
+    fs.unlinkSync(filePath);
+    res.status(200);
+    res.end();
+  } catch (err) {
+    console.log(`Error deleting file: ${err}`);
+    res.status(404).json({ error_msg: 'Unknown file', err_detail: err.toString() });
+    res.end();
+  }
+}
+
+/* Archive a specific file. */
+function archiveFile(oldpath, filename) {
+  const options = {
+    hour12: false, day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
+  };
+  const thisDate = new Date('en-US', options).toLocaleString()
+    .split(' ')
+    .join('')
+    .split(':')
+    .join('')
+    .split('/')
+    .join('');
+  const newpath = `${DIR_ARCHIVED_FILES}${thisDate}_${filename}`;
+  fs.renameSync(oldpath, newpath);
+}
+
+/* Archive previously uploaded files. */
+function archiveFiles(filenameToArchive) {
+  const items = fs.readdirSync(DIR_PROCESSED_FILES);
+  items.forEach((filename) => {
+    if (filenameToArchive == null || filenameToArchive === filename) {
+      const oldpath = DIR_PROCESSED_FILES + filename;
+      archiveFile(oldpath, filename);
+    }
+  });
+}
+
 /* Process an xslx at the given path. */
 function processXslx(res, path) {
   const result = [];
-  result.push({ msg: 'File upload accepted for processing.' });
+  result.push({ msg: 'XLSX file upload accepted for processing.' });
   const workbook = XLSX.readFile(path);
   const sheetNameList = workbook.SheetNames;
   sheetNameList.forEach((sheetName) => {
@@ -36,7 +113,7 @@ function processXslx(res, path) {
   res.end();
 }
 
-/* A temporary helper service for testing file upload. */
+/* A helper service for testing file upload. */
 router.get('/upload', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write("<form action='./' method='post' enctype='multipart/form-data'>");
@@ -58,7 +135,40 @@ router.get('/', (req, res) => {
       result.name = item;
       result.modified = stats.mtime;
       result.size = stats.size;
-      result.uri = `${req.originalUrl}/${result.name}`;
+      if (req.originalUrl.endsWith('/')) {
+        result.uri = `${req.originalUrl}${result.name}`;
+      } else {
+        result.uri = `${req.originalUrl}/${result.name}`;
+      }
+      return result;
+    });
+    res.write(JSON.stringify(statResults));
+    return res.end();
+  });
+});
+
+/* Retrieve the list of known external data source files. */
+router.get('/archived', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  fs.readdir(DIR_ARCHIVED_FILES, (err, items) => {
+    if (err) throw err;
+    const statResults = items.filter((item) => {
+      if (item === '.gitignore') {
+        return false;
+      }
+      return true;
+    }).map((item) => {
+      const myfile = DIR_ARCHIVED_FILES + item;
+      const stats = fs.statSync(myfile);
+      const result = {};
+      result.name = item;
+      result.modified = stats.mtime;
+      result.size = stats.size;
+      if (req.originalUrl.endsWith('/')) {
+        result.uri = `${req.originalUrl}${result.name}`;
+      } else {
+        result.uri = `${req.originalUrl}/${result.name}`;
+      }
       return result;
     });
     res.write(JSON.stringify(statResults));
@@ -68,30 +178,17 @@ router.get('/', (req, res) => {
 
 /* Retrieve a specific external data source file. */
 router.get('/:filename', (req, res) => {
-  const { filename } = req.params;
-  const ext = filename.split('.').pop();
+  getDataSourceFile(req, res, DIR_PROCESSED_FILES);
+});
 
-  // validations to make sure nothing naughty is attempted
-  if(!filename || !filename.match(/^[\w\-. ]+$/g)) { // eslint-disable-line
-    res.status(400).json({ error_msg: 'Unsupported filename' });
-    res.end();
-    return;
-  }
+/* Retrieve a specific archived external data source file. */
+router.get('/archived/:filename', (req, res) => {
+  getDataSourceFile(req, res, DIR_ARCHIVED_FILES);
+});
 
-  const filePath = DIR_PROCESSED_FILES + filename;
-  try {
-    const stat = fs.statSync(filePath);
-    res.writeHead(200, {
-      'Content-Type': `application/${ext}`,
-      'Content-Disposition': `attachment;filename=${filename}`,
-      'Content-Length': stat.size,
-    });
-
-    fs.createReadStream(filePath).pipe(res);
-  } catch (err) {
-    res.status(404).json({ error_msg: 'Unknown file' });
-    res.end();
-  }
+/* Retrieve a specific archived external data source file. */
+router.delete('/archived/:filename', (req, res) => {
+  deleteDataSourceFile(req, res, DIR_ARCHIVED_FILES);
 });
 
 /* Upload a new external data source XSLX, and process it. */
@@ -106,12 +203,19 @@ router.post('/', (req, res) => {
     }
 
     const oldpath = files.filetoupload.path;
-    const newpath = DIR_UPLOADED_FILES + files.filetoupload.name;
+    const newpath = DIR_PROCESSED_FILES + files.filetoupload.name;
     // restrict supported file types
-    if(!newpath || !newpath.match(/\.(xlsx)$/i)) { // eslint-disable-line
-      res.status(200).json([{ error_msg: 'Unsupported file type - must be xslx' }]);
+    if(!newpath || !newpath.match(/\.(xlsx|csv)$/i)) { // eslint-disable-line
+      res.status(200).json([{ error_msg: 'Unsupported file type - must be xslx or csv' }]);
       res.end();
       return;
+    }
+
+    // archive original files
+    if (newpath.endsWith('.xlsx')) {
+      archiveFiles();
+    } else {
+      archiveFiles(files.filetoupload.name);
     }
 
     // move the upload to readable directory and process it
@@ -122,8 +226,13 @@ router.post('/', (req, res) => {
         res.end();
         return;
       }
-
-      processXslx(res, newpath);
+      if (newpath.endsWith('.xlsx')) {
+        processXslx(res, newpath);
+      } else {
+        // nothing else to do
+        res.status(200).json({ msg: 'CSV upload completed.' });
+        res.end();
+      }
     });
   });
 });

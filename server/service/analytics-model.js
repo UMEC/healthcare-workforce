@@ -11,7 +11,7 @@ function log(requestType, msg) {
 this.invokeModelRequest = (params, callback) => {
   log('POST|PUT', `Invoking model request with params: ${JSON.stringify(params)}`);
 
-  const pyshell = new ps.PythonShell('models/4.1.1 Model Manipulation/model_manip.py');
+  const pyshell = new ps.PythonShell('models/4.1.1 Model Manipulation/workforce_model.py');
 
   // sends a message to the Python script via stdin
   pyshell.send(JSON.stringify(params));
