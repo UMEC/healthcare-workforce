@@ -92,10 +92,18 @@ code {
   &__section-category {
     font-size: 18px;
     font-weight: 500;
-    grid-column: span 4;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-top: 48px;
+    margin-bottom: 8px;
+
   }
   &__service-attributes {
     
+  }
+  &__service-label {
+    font-weight: 600;
+    font-size: 14px;
   }
 }
 
@@ -117,5 +125,6 @@ code {
     grid-auto-rows: repeat(4, 1fr);
     grid-gap: 0.5em;
     justify-content: center;
+    padding-bottom: 40px;
   }
 }
