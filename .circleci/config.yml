@@ -27,10 +27,6 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
-      - run: sudo pip3 install numpy
-      - run: sudo pip3 install cvxopt
-      - run: sudo pip3 install pulp
-      - run: sudo pip3 install glpk
 
       - save_cache:
           paths:
