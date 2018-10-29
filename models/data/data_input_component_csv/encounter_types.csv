@@ -1,0 +1,34 @@
+encounter_category,encounter_type,encounter_abbr
+Acute,Acute Level 1 visit,acute_level_1
+Acute,Acute Level 2 visit,acute_level_2
+Acute,Acute Level 3 visit,acute_level_3
+Acute,Acute Level 4 visit,acute_level_4
+Chronic,Chronic Maintenance Visit: Other,chr_maint_oth
+Chronic,Chronic Maintenance Visit: Anxiety,chr_maint_anxiety
+Chronic,Chronic Maintenance Visit: Arthritis,chr_maint_arthritis
+Chronic,Chronic Maintenance Visit: Asthma,chr_maint_asthma
+Chronic,Chronic Maintenance Visit: CAD,chr_maint_cad
+Chronic,Chronic Maintenance Visit: COPD,chr_maint_copd
+Chronic,Chronic Maintenance Visit: Diabetes,chr_maint_diabetes
+Chronic,Chronic Maintenance Visit: Hyperlipidemia,chr_maint_hyperlipidemia
+Chronic,Chronic Maintenance Visit: Hypertension,chr_maint_hypertension
+Chronic,Chronic Maintenance Visit: Depression,chr_maint_depression
+Chronic,Chronic Maintenance Visit: Osteoporosis,chr_maint_osteoporosis
+Preventive,Adult Wellness Visits-Over 65,adult_well_ge_65
+Preventive,Adult Wellness Visits-Under 65,adult_well_lt_65
+Preventive,Well-Child Visits-Infant,well_ch_infant
+Preventive,Well Child Visits-Early Childhood,well_child_early
+Preventive,Well Child Visits-Mid Childhood,well_child_mid
+Preventive,Well-Child Visits-Adolescence,well_child_adolesc
+Preventive,Addl Screening: Breast Cancer,Add_scr_Breast_Cancer
+Preventive,Addl Screening: Cerv Cancer,Add_scr_Cerv_Cancer
+Preventive,Addl Screening: Int Part Violence,Add_scr_Int_Part Violence
+Preventive,Addl Screening: Osteoporosis,Add_scr_Osteoporosis
+Preventive,Additional Screening: STI,Add_scr_STI
+Preventive,Addl Counsel: Breast Cancer Prev Rx,Add_Couns_Breast_Cancer_Rx
+Preventive,Addl Counsel: Folic Acid Supp,Add_Couns_Folic_Acid
+Preventive,Addl Screen and Counsel: BRCA,Add_couns_BRCA
+Preventive,Addl Screen and Counsel: Obesity,Add_scr_Obesity
+Preventive,Addl Screen and Counsel: Smoker,Add_scr_Smoker
+Preventive,Addl Screening: Colon Cancer,Add_scr_colon_cancer
+<<end>>,,
