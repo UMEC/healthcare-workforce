@@ -16,6 +16,8 @@ class ModelOutputContainer extends Component {
       selectedFilters: {},
       modifiedModelAttributes: {},
       filteredModelOutput: {},
+      filtersApplied: false,
+      modelParamsEdited: false,
     }
   }
 
@@ -27,24 +29,26 @@ class ModelOutputContainer extends Component {
   render() {
     console.log(this.props.currentModelOutput.servicesByProvider)
     let { servicesByProvider } = this.props.currentModelOutput;
-    let filtersCount = Object.keys(this.props.selectedFilters).length;
-    let filtersApplied = Object.keys(this.props.selectedFilters).length > 0;
+    // let filtersCount = Object.keys(this.props.selectedFilters).length;
+    let { modelParamsEdited} = this.state.filtersApplied;
 
     return (
       <>
         <ViewContainer>
           <ViewHeader />
           <div className="view-body">
-            <ViewSection updateModelAttributes={this.updateModelAttributes} title="">
-              <ProviderRoles 
+            <ViewSection 
+              updateModelAttributes={this.updateModelAttributes} title="">
+              <ProviderRoles
+                availableProviderTypes={['Physician']} 
                 servicesByProvider={servicesByProvider}
                 updateModelAttributes={this.updateModelAttributes} />
             </ViewSection>
           </div>
 
-          { filtersApplied ?
+          {modelParamsEdited ?
             <ViewFooter>
-              <p>{`${filtersCount} filters applied to the model output` }</p>
+              <p>{`You've changed some model params!` }</p>
             </ViewFooter> 
             : null }
         </ViewContainer>

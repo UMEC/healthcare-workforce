@@ -11,53 +11,27 @@ import keys from 'lodash/keys';
 class ProviderRoles extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-
-    // this.renderService = renderService;
-  }
-  renderServices = (services) => {
-    return services.map(service => {
-      return (
-        <>
-          <p>Service Name: {service.service_name}</p>
-          <p>Score: {service.service_info.score}</p>
-          <p>min face to face time: {service.service_info.min_f2f_time}</p>
-          <p>max face to face time: {service.service_info.max_f2f_time}</p>
-        </>
-    )})
+    this.state = {
+      availableProviderTypes: this.props.availableProviderTypes,
+      addedProviderTypes: ['Physicial Assistant'],
+      defaultServicesByProvider: this.reshapeNewServicesByProvider(),
+      customServicesByProvider: this.reshapeNewServicesByProvider(),
+    };
   }
 
-  renderCategories = (categories) => {
-      return categories.map(providerServices => {
-        return (
-          <>
-            <p>CATEGORY: {providerServices[0].service_category}</p>
-            {this.renderServices(providerServices[0].services)}
-          </>
-        )
-      })
-  }
-
-  renderProviders = (providers) => {
-    return providers.map(provider => {
-      return (
-        <>
-          <p>{provider.provider_type}</p>
-          {this.renderCategories(provider.provider_services)}
-        </>
-      );
-
-    })
-  }
-
-  render() {
+  reshapeNewServicesByProvider = () => {
     let { servicesByProvider } = this.props;
 
-    let newProviderServicesObject = map(servicesByProvider, provider => {
+    // TODO: This is temporary
+    // It's a temporary fix to get the data in a easily consumable format 
+    // so it can be easily iterated over. Whether or not it's going to work 
+    // on with the pythin API model output... TBD.
+    // - Dom W
+    let transformedServicesByProvider = map(servicesByProvider, provider => {
       // let providerAbbr = Object.getOwnPropertyName(provider);
       let providerType = provider.provider_type;
 
-      let services = _.reduce( provider['services:'], (previous, item) => {
+      let services = _.reduce(provider['services:'], (previous, item) => {
 
         let services = _.reduce(item, (previous, service) => {
           let service_category = Object.values(service)
@@ -89,29 +63,127 @@ class ProviderRoles extends Component {
         return [...previous, services]
       }, [])
 
-      
-      let newProviderServices = { 
+
+      let newProviderServices = {
         // provider_abbr: providerAbbr,
         provider_type: providerType,
         provider_services: services,
       };
-      console.log('newProviderServices', newProviderServices)
       return newProviderServices;
-    })
+    });
+    return transformedServicesByProvider;
+  }
 
-    console.log('newProviderServicesObject', newProviderServicesObject);
+  filteredServicesByProvider = () => {
+    let { availableProviderTypes, addedProviderTypes } = this.state;
+    let providersList = [...availableProviderTypes, ...addedProviderTypes]
+    console.log(providersList)
+
+    if (!availableProviderTypes) return this.state.customServicesByProvider
+
+    let foo = providersList.reduce( (previous, provider) => {
+      let current = this.state.customServicesByProvider.filter(item => {
+        console.log(`${provider} === ${item.provider_type}: ${provider === item.provider_type}`)
+
+        return provider === item.provider_type;
+      });
+      let next = [...previous, current[0]]
+      console.log(next)
+      return next;
+      }, [])
+      // get only the providers available in a specific area 
+      // 
+      return foo;
+  }
+
+  createPath = (obj, path, value = null) => {
+    path = typeof path === 'string' ? path.split('.') : path;
+    let current = obj;
+    while (path.length > 1) {
+      const [head, ...tail] = path;
+      path = tail;
+      if (current[head] === undefined) {
+        current[head] = {};
+      }
+      current = current[head];
+    }
+    current[path[0]] = value;
+    return obj;
+  };
+
+  renderServices = (services) => {
+    return services.map(service => {
+      return (
+        <div className="provider-roles__service-attributes">
+          <p
+            onClick={() => this.props.updateModelAttributes(service.service_name, service[service.service_name] = service.service_name)} >
+            Service Name: {service.service_name}</p>
+          <p>Score: {service.service_info.score}</p>
+          <input type="range" min="0" max="1" value={service.service_info.score} step="0.01" class="slider" id="myRange"></input>
+          <p>min face to face time: {service.service_info.min_f2f_time}</p>
+          <p>max face to face time: {service.service_info.max_f2f_time}</p>
+        </div>
+    )})
+  }
+
+  renderServiceCategories = (categories, providersObject) => {
+    let categoriesObject = this.createPath(providersObject, 'providerServices[0].service_category', 1 )
+      return categories.map(providerServices => {
+        return (
+          <>
+            <p
+              className="provider-roles__section-category">{providerServices[0].service_category}</p>
+            {this.renderServices(providerServices[0].services)}
+          </>
+        )
+      })
+  }
+
+  renderProviders = (providers) => {
+    let providersObject = this.createPath({}, 'provider_type', 1);
+
+    
+    
+    return providers.map(provider => {
+      providersObject.provider_type = provider;
+
+      return (
+        <>
+          <div className="accordion__header">
+            <p 
+              className="provider-roles__section-title"
+              onClick={() => this.props.updateModelAttributes(provider.provider_type, providersObject)}>{provider.provider_type}
+            </p>
+          </div>
+          <div className="accordion__content">
+            {this.renderServiceCategories(provider.provider_services, providersObject)}
+          </div>
+        </>
+      );
+
+    })
+  }
+
+  render() {
+    const { customServicesByProvider } = this.state;
+    this.filteredServicesByProvider()
+
+    const filteredProviders = this.filteredServicesByProvider()
 
     return (
       <>
         <p>ProviderRoles</p>
-        {this.renderProviders(newProviderServicesObject)}
+        <div className="accordion">
+
+          {this.renderProviders(filteredProviders)}
+        </div>
       </>
     );
   }
 }
 
 ProviderRoles.protoTypes = {
-  rolesByProvider: PropTypes.object
+  servicesByProvider: PropTypes.object
 }
 
 // function mapStateToProps(state) {
