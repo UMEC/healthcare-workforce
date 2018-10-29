@@ -21,9 +21,15 @@ class ModelOutputContainer extends Component {
     }
   }
 
-  updateModelAttributes = (i, o) => {
-    console.log(`attrinute for ${i} updated!`)
-    console.log(o)
+  componentWillUpdate(nextProps, nextState) {
+    console.log('new State', nextState.modifiedModelAttributes)
+  }
+
+  updateModelAttributes = (currentServiceAttrs) => {
+    console.log('currentServiceAttrs', currentServiceAttrs)
+    this.setState({  
+      modifiedModelAttributes: {...this.state.modifiedModelAttributes, currentServiceAttrs}
+    })
   }
   
   render() {

@@ -77,18 +77,15 @@ class ProviderRoles extends Component {
   filteredServicesByProvider = () => {
     let { availableProviderTypes, addedProviderTypes } = this.state;
     let providersList = [...availableProviderTypes, ...addedProviderTypes]
-    console.log(providersList)
 
     if (!availableProviderTypes) return this.state.customServicesByProvider
 
     let foo = providersList.reduce( (previous, provider) => {
       let current = this.state.customServicesByProvider.filter(item => {
-        console.log(`${provider} === ${item.provider_type}: ${provider === item.provider_type}`)
 
         return provider === item.provider_type;
       });
       let next = [...previous, current[0]]
-      console.log(next)
       return next;
       }, [])
       // get only the providers available in a specific area 
@@ -111,29 +108,49 @@ class ProviderRoles extends Component {
     return obj;
   };
 
+  updateScoreValue = (services, index) => {
+    let currentServiceAttrs = services[index];
+    console.log(typeof currentServiceAttrs.service_info.score)
+    currentServiceAttrs.service_info.score = Math.abs(currentServiceAttrs.service_info.score )+ 0.1;
+
+    this.props.updateModelAttributes(currentServiceAttrs)
+    _.debounce(() =>{
+
+    }, 100)
+  }
+
   renderServices = (services) => {
-    return services.map(service => {
+    return services.map((service, index) => {
+
+
+      // 
+
       return (
-        <div className="provider-roles__service-attributes">
-          <p
-            onClick={() => this.props.updateModelAttributes(service.service_name, service[service.service_name] = service.service_name)} >
-            Service Name: {service.service_name}</p>
+        <div
+          className="provider-roles__service-attributes"
+          onClick={() => this.updateScoreValue(services, index)} >
+          <p className="provider-roles__service-label">
+            {service.service_name}</p>
           <p>Score: {service.service_info.score}</p>
           <input type="range" min="0" max="1" value={service.service_info.score} step="0.01" class="slider" id="myRange"></input>
-          <p>min face to face time: {service.service_info.min_f2f_time}</p>
-          <p>max face to face time: {service.service_info.max_f2f_time}</p>
+          <p>Face To Face time</p>
+          <p>min: {service.service_info.min_f2f_time}</p>
+          <p>max: {service.service_info.max_f2f_time}</p>
         </div>
     )})
   }
 
-  renderServiceCategories = (categories, providersObject) => {
-    let categoriesObject = this.createPath(providersObject, 'providerServices[0].service_category', 1 )
+  renderServiceCategories = (categories, providerObject) => {
+    // let categoriesObject = this.createPath(providersObject, 'providerServices[0].service_category', 1 )
+    // console.log(providerObject);
       return categories.map(providerServices => {
         return (
           <>
             <p
-              className="provider-roles__section-category">{providerServices[0].service_category}</p>
-            {this.renderServices(providerServices[0].services)}
+              className="provider-roles__section-category">
+              {providerServices[0].service_category}
+            </p>
+            {this.renderServices(providerServices[0].services, providerServices[0].services)}
           </>
         )
       })
@@ -145,8 +162,8 @@ class ProviderRoles extends Component {
     
     
     return providers.map(provider => {
-      providersObject.provider_type = provider;
-
+      // providersObject.provider_type = provider;
+      // console.log(provider)
       return (
         <>
           <div className="accordion__header">
@@ -156,7 +173,7 @@ class ProviderRoles extends Component {
             </p>
           </div>
           <div className="accordion__content">
-            {this.renderServiceCategories(provider.provider_services, providersObject)}
+            {this.renderServiceCategories(provider.provider_services, provider)}
           </div>
         </>
       );
