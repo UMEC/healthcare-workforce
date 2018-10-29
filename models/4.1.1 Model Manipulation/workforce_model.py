@@ -17,9 +17,9 @@
 # 
 # #### Sample model save/load commands
 # 
-# * {"request_type": "save_model"}
+# * {"request_type": "save_model", "filename":"test_pickle"}
 # 
-# * {"request_type": "load_model", "value": "sample_model_id"}
+# * {"request_type": "load_model", "filename": "test_pickle"}
 # 
 # #### Sample model run commands
 # This program will default to running ideal staffing for the State of Utah in 2018 if no other instruction is given.
@@ -65,15 +65,41 @@ import workforce_pandas as wfpd
 import json
 import sys
 import pickle
-import base64
+import os
 from allo_cal import main
 command="null"
 provider_type="null"
 
 
+# In[2]:
+
+
+def type_of_script():
+    ''' Returns jupyter if running in a notebook, otherwise returns server
+    '''
+    try:
+        ipy_str = str(type(get_ipython()))
+        if 'zmqshell' in ipy_str:
+            return 'jupyter'
+    except:
+        return 'server'
+
+
+# Determines and stores the path for the pickle directory used to persist and retrieve models
+
+# In[3]:
+
+
+if type_of_script()=='jupyter':
+    directory = r"../data/pickle/"
+else:
+    directory = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + r"/../data/pickle/")
+directory
+
+
 # Default values for model state, should they not be provided
 
-# In[2]:
+# In[4]:
 
 
 geo = "State of Utah"
@@ -84,7 +110,7 @@ wage_max = "null"
 wage_weight = "null"
 
 
-# In[3]:
+# In[5]:
 
 
 wfpd.sheets
@@ -92,7 +118,7 @@ wfpd.sheets
 
 # The model takes the input of a JSON string from stdin
 
-# In[4]:
+# In[6]:
 
 
 value = "null"
@@ -101,7 +127,7 @@ command_string = input("")
 
 # All responses are formatted and sent using the respond function below:
 
-# In[5]:
+# In[7]:
 
 
 def respond(response_msg,verb,object,error_msg=None):
@@ -127,7 +153,7 @@ def respond(response_msg,verb,object,error_msg=None):
 
 # This input command is parsed into one to three strings, or an exception is raised and then passed back to the caller
 
-# In[6]:
+# In[8]:
 
 
 # parse the command line argument into a JSON object
@@ -139,10 +165,8 @@ if "request_type" in parsed_command:
     command = str(parsed_command["request_type"])
 else:
     respond(None,command,provider_type, "ERROR: Invalid argument - no request_type defined")
-if "value" in parsed_command:
-    value = str(parsed_command["value"])
-if "directory" in parsed_command:
-    directory = str(parsed_command["directory"])
+if "filename" in parsed_command:
+    filename = str(parsed_command["filename"])
 if "geo" in parsed_command:
     geo = str(parsed_command["geo"])
 if "year" in parsed_command:
@@ -159,7 +183,7 @@ if "wage_weight" in parsed_command:
 
 # The next two functions are used to manipulate the automatically generated JSON strings as they often don't conform to the format that we require in our responses
 
-# In[7]:
+# In[9]:
 
 
 def strip_brackets(JSON_string):
@@ -174,7 +198,7 @@ def strip_brackets(JSON_string):
     return result
 
 
-# In[8]:
+# In[10]:
 
 
 def strip_curlies(JSON_string):
@@ -191,7 +215,7 @@ def strip_curlies(JSON_string):
 
 # The next three functions manipulate pandas dataframes in various ways to assist in turning them into JSON strings.  _df_to_json_attri is useful for single simple rows and uses the in-built functions to perform the transform.  The _sub_json_object_ and _frame_sub_json_object_ manipulate the dataframes themselves to categories of related data in dataframes for conversion into JSON strings
 
-# In[9]:
+# In[11]:
 
 
 def sub_json_object(source,index_column,value):
@@ -219,7 +243,7 @@ def sub_json_object(source,index_column,value):
     return dataframe
 
 
-# In[10]:
+# In[12]:
 
 
 def frame_sub_json_object(dataframe,index_column,value):
@@ -247,7 +271,7 @@ def frame_sub_json_object(dataframe,index_column,value):
 
 # The next two functions manipulate dataframes directly into JSON.  The _df_to_json_attribs_ takes a dataframe with a primary key_column and iterates through the values of that column and turns each row into a JSON object.  The _df_to_json_ function simply uses the standard pandas to JSON function to convert a single row into a JSON string.
 
-# In[11]:
+# In[13]:
 
 
 def df_to_json_attribs(dataframe,key_column):
@@ -279,7 +303,7 @@ def df_to_json_attribs(dataframe,key_column):
     return json
 
 
-# In[12]:
+# In[14]:
 
 
 def df_to_json(dataframe):
@@ -299,7 +323,7 @@ def df_to_json(dataframe):
 
 # This function returns the available years in the model; the user can select the individual year they wish to look at and send this back to the model.
 
-# In[13]:
+# In[15]:
 
 
 def available_years():
@@ -323,7 +347,7 @@ def available_years():
 
 # This function returns the data relevant to each geographic area, by geographic area.  This includes the sdoh index and the details of the primary care providers in each of the geographic areas.
 
-# In[14]:
+# In[16]:
 
 
 def geo_profile():
@@ -361,7 +385,7 @@ def geo_profile():
 # 
 # NB: As the following function demonstrates, constructing easily navigable JSON from pandas is a non-trivial operation.  In retrospect, the creation of the JSON string should have been done by programmatically building a Python structure that is capable of being serialised then serialising it.  For more information see [here](https://realpython.com/python-json/).
 
-# In[15]:
+# In[17]:
 
 
 def provider_profile():
@@ -444,29 +468,33 @@ def provider_profile():
 
 # These functions will serialize the pandas dictionary into a file and then retrieve them.
 
-# In[16]:
+# In[18]:
 
 
-def save_model():
+def save_model(filename):
     #out = '"' + str(pickle.dumps(wfpd.dataframes,protocol=pickle.HIGHEST_PROTOCOL)) + '"'
-    
-    out = str(base64.b64encode(bytes(str(pickle.dumps(wfpd.dataframes,protocol=pickle.HIGHEST_PROTOCOL)), 'utf-8')))
-    
-    out = '"' + out + '"'
-    return out
+    #out = str(base64.b64encode(bytes(str(pickle.dumps(wfpd.dataframes,protocol=pickle.HIGHEST_PROTOCOL)), 'utf-8')))
+    #out = '"' + out + '"'
+    os.chdir(directory)
+    with open(filename, 'wb') as handle:
+        pickle.dump(wfpd.dataframes, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    return '"Model saved."'
 
 
-# In[17]:
+# In[19]:
 
 
-def load_model(model_id,directory):
+def load_model(filename):
     # global
     # retrieve file?
     # wfpd.dataframes = pickle.loads(string)
-    return '"loaded"'
+    os.chdir(directory)
+    with open(filename, 'rb') as handle:
+        b = pickle.load(handle)
+    return '"Model loaded."'
 
 
-# In[18]:
+# In[20]:
 
 
 def run_model(geo,year,option,sub_option,wage_max,wage_weight):
@@ -502,7 +530,7 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     return out
 
 
-# In[19]:
+# In[23]:
 
 
 # check to see if command is understood
@@ -513,9 +541,9 @@ elif command == "geo_profile":
 elif command == "provider_profile":
     result = provider_profile()
 elif command == "save_model":
-    result = save_model()
+    result = save_model(filename)
 elif command == "load_model":
-    result = load_model(value,directory)
+    result = load_model(filename)
 elif command == "run_model": 
     result = run_model(geo,year,option,sub_option,wage_max,wage_weight)
 else:
