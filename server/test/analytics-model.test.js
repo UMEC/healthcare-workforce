@@ -11,7 +11,7 @@ describe('Test analytics model requests', () => {
       expect(responseJson.response.Phys.provider_type).toBe('Physician');
       done();
     });
-  }, 10000);
+  }, 20000);
 
   test('Check valid response model request for invalid arguments', (done) => {
     analyticsModel.invokeModelRequest({ myparam1: 'myvalue1' }, (err, responseJson) => {
@@ -20,5 +20,5 @@ describe('Test analytics model requests', () => {
       expect(responseJson.response.error_msg).toBe('ERROR: Invalid argument - no request_type defined');
       done();
     });
-  }, 10000);
+  }, 20000);
 });

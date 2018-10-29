@@ -23,8 +23,9 @@
         prettyPrint('inputTextArea');
       });
 
+      $(document).on('submit', '#uploadform', uploadFile);
+
       getDataSources();
-      prettyPrint('inputTextArea');
     });
 
     function prettyPrint(areaId) {
@@ -47,9 +48,24 @@
       });
     }
 
+    function getArchivedDataSources() {
+      $.get('./source/archived').done(function(getData) {
+        $("#archiveddatasources > tbody").empty();
+        if (getData.length <= 0) {
+          $('#archiveddatasources tr:last').after('<tr><td>No archived data sources.</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+        } else {
+          getData.forEach(function(result) {
+            $('#archiveddatasources tr:last').after('<tr><td>' + result.name + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/archived/' + result.name + '">Download</a> | <a class="deleteAnchor" href="javascript:deleteArchiveDataSource(\'' + result.name + '\', this);void(0);">Delete</a></td></tr>');
+          });
+          $( "a.deleteAnchor" ).click(function(event) {
+            $(this).closest("tr").remove();
+          });
+        }
+      });
+    }
+
     function sendRequest(areaId) {
       var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
-      console.log("Payload: " + payload)
       $.ajax({
         url: "./analytics",
         type: "POST",
@@ -64,7 +80,6 @@
           $(window).delay(3000).queue(function() {
             $.get( "./analytics/" + modelId)
               .done(function( getData ) {
-                console.log("Get response: " + JSON.stringify(getData));
                 var pretty = JSON.stringify(getData, undefined, 4);
                 $('#responseData').html(pretty);
               });
@@ -73,6 +88,48 @@
           });
         });
     }
+
+    function uploadFile(e) {
+          //action='./source' method='post' enctype='multipart/form-data'
+      e.preventDefault();
+
+      var form_data = new FormData($('#uploadform')[0]);
+      $.ajax({
+          type:'POST',
+          url:'./source',
+          processData: false,
+          contentType: false,
+          async: false,
+          cache: false,
+          data : form_data,
+          success: function(response) {
+            $('#uploadalert').html(' ');
+            if (response.msg) {
+              $('#uploadalert').html(response.msg);
+            } else {
+              response.forEach((item) => {
+                if (item.msg) {
+                  $('#uploadalert').html($('#uploadalert').html() + item.msg + " ");
+                } else {
+                  $('#uploadalert').html($('#uploadalert').html() + item.error_msg + " ");
+                }
+              });
+            }
+            $('#uploadalert').show();
+          }
+      });
+    }
+
+    function deleteArchiveDataSource(name, obj) {
+      $.ajax({
+        url: './source/archived/' + name,
+        type: 'DELETE',
+        success: function(result) {
+            // Do something with the result
+        }
+      });
+    }
+
   </script>
   <style>
     html{
@@ -112,13 +169,16 @@
 </nav>
     <div class="jumbotron"  style="padding:20px;" id="upload">
       <h2>Upload Data Source</h2>
+      <div id="uploadalert" class="alert alert-info" style="display:none;">
+
+      </div>
       <div>
         Select an XSLX or CSV for saving and processing into the model. Start with a recent sample from the <a href="#download">download</a> section, or grab <a href="https://github.com/UMEC/healthcare-workforce/tree/master/models/test">the template</a>.
         <br/>
-        Note that an uploaded XLSX will unpack into CSVs and archive all other data sources. <---- to do csv thing
+        Note that an uploaded XLSX will unpack into CSVs and archive all other data sources.
       </div>
       <p>
-        <form action='./source' method='post' enctype='multipart/form-data'>
+        <form id='uploadform'>
           <input type='file' name='filetoupload'><br/>
           <input class="btn btn-primary btn-lg" type='submit'/>
         </form>
@@ -137,6 +197,25 @@
           <tbody>
             <tr>
               <td>No data sources uploaded.</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="jumbotron"  style="padding:20px;" id="download">
+      <h2>Download Archived Data Sources</h2>
+      <table class="table" id="archiveddatasources">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="javascript:getArchivedDataSources();void(0);">Load archived data sources</a></td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>

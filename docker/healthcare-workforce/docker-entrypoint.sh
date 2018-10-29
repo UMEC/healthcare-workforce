@@ -6,10 +6,10 @@ sudo curl -qLO $zip_url .
 set -e
 echo Unzipping..
 
-if ls healthcare-workforce-master/models/test/data_input_component_csv/* 1> /dev/null 2>&1; then
+if ls healthcare-workforce-master/models/data/data_input_component_csv/* 1> /dev/null 2>&1; then
    echo "Found existing user data, leaving as-is."
    #Overwrite everything except the data folder
-   sudo unzip -qo master.zip -x "healthcare-workforce-master/models/test/data_input_component_csv/*.*"
+   sudo unzip -qo master.zip -x "healthcare-workforce-master/models/data/data_input_component_csv/*.*"
 else
    echo "No user data found, extracting sample data."
    sudo unzip -qo master.zip
