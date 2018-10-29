@@ -7,11 +7,42 @@
 # 
 # It can return three types of information as a result of requests from the front end:
 # 
+# #### Sample UI data retrival commands
+# 
 # * {"request_type": "available_years"}
+# 
 # * {"request_type": "geo_profile"}
+# 
 # * {"request_type": "provider_profile"}
+# 
+# #### Sample model save/load commands
+# 
 # * {"request_type": "save_model"}
-# * {"request_type": "load_model", "value": "sample_model_id", "directory" : "/sample/directory"}
+# 
+# * {"request_type": "load_model", "value": "sample_model_id"}
+# 
+# #### Sample model run commands
+# This program will default to running ideal staffing for the State of Utah in 2018 if no other instruction is given.
+# 
+# * {"request_type":"run_model"}
+# 
+# * {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"all_combination"}
+# 
+# * {"request_type":"run_model", "geo":"Garfield County", "year":"2018", "option":"ideal_staffing", "sub_option":"all_combination"}
+# 
+# * {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_max", "wage_max":"20000"}
+# 
+# * {"request_type":"run_model", "geo":"Wayne County", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight":"0.5"}
+# 
+# * {"request_type":"run_model", "geo":"Beaver County", "year":"2019", "option":"ideal_staffing_current", "sub_option":"all_combination"}
+# 
+# * {"request_type":"run_model", "geo":"Washington County", "year":"2018", "option":"ideal_staffing_current", "sub_option":"wage_max", "wage_max":"40000"}
+# 
+# * {"request_type":"run_model", "geo":"Rich County", "year":"2018", "option":"ideal_staffing_current","sub_option":"wage_weight", "wage_weight":"0.75"}
+# 
+# * {"request_type":"run_model", "geo":"Utah County", "year":"2020", "option":"service_allocation"}
+# 
+# * {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"service_allocation"}
 # 
 # It can also process deltas to this information as a result of user input from the front end:
 # 
@@ -35,11 +66,25 @@ import json
 import sys
 import pickle
 import base64
+from allo_cal import main
 command="null"
 provider_type="null"
 
 
+# Default values for model state, should they not be provided
+
 # In[2]:
+
+
+geo = "State of Utah"
+year ="2018"
+option = "ideal_staffing"
+sub_option = "all_combination"
+wage_max = "null"
+wage_weight = "null"
+
+
+# In[3]:
 
 
 wfpd.sheets
@@ -47,7 +92,7 @@ wfpd.sheets
 
 # The model takes the input of a JSON string from stdin
 
-# In[3]:
+# In[4]:
 
 
 value = "null"
@@ -56,7 +101,7 @@ command_string = input("")
 
 # All responses are formatted and sent using the respond function below:
 
-# In[4]:
+# In[5]:
 
 
 def respond(response_msg,verb,object,error_msg=None):
@@ -82,7 +127,7 @@ def respond(response_msg,verb,object,error_msg=None):
 
 # This input command is parsed into one to three strings, or an exception is raised and then passed back to the caller
 
-# In[5]:
+# In[6]:
 
 
 # parse the command line argument into a JSON object
@@ -98,11 +143,23 @@ if "value" in parsed_command:
     value = str(parsed_command["value"])
 if "directory" in parsed_command:
     directory = str(parsed_command["directory"])
+if "geo" in parsed_command:
+    geo = str(parsed_command["geo"])
+if "year" in parsed_command:
+    year = str(parsed_command["year"])
+if "option" in parsed_command:
+    option = str(parsed_command["option"])    
+if "sub_option" in parsed_command:
+    sub_option = str(parsed_command["sub_option"])
+if "wage_max" in parsed_command:
+    wage_max = str(parsed_command["wage_max"])
+if "wage_weight" in parsed_command:
+    wage_weight = str(parsed_command["wage_weight"])
 
 
 # The next two functions are used to manipulate the automatically generated JSON strings as they often don't conform to the format that we require in our responses
 
-# In[6]:
+# In[7]:
 
 
 def strip_brackets(JSON_string):
@@ -117,7 +174,7 @@ def strip_brackets(JSON_string):
     return result
 
 
-# In[7]:
+# In[8]:
 
 
 def strip_curlies(JSON_string):
@@ -134,7 +191,7 @@ def strip_curlies(JSON_string):
 
 # The next three functions manipulate pandas dataframes in various ways to assist in turning them into JSON strings.  _df_to_json_attri is useful for single simple rows and uses the in-built functions to perform the transform.  The _sub_json_object_ and _frame_sub_json_object_ manipulate the dataframes themselves to categories of related data in dataframes for conversion into JSON strings
 
-# In[8]:
+# In[9]:
 
 
 def sub_json_object(source,index_column,value):
@@ -162,7 +219,7 @@ def sub_json_object(source,index_column,value):
     return dataframe
 
 
-# In[9]:
+# In[10]:
 
 
 def frame_sub_json_object(dataframe,index_column,value):
@@ -190,7 +247,7 @@ def frame_sub_json_object(dataframe,index_column,value):
 
 # The next two functions manipulate dataframes directly into JSON.  The _df_to_json_attribs_ takes a dataframe with a primary key_column and iterates through the values of that column and turns each row into a JSON object.  The _df_to_json_ function simply uses the standard pandas to JSON function to convert a single row into a JSON string.
 
-# In[10]:
+# In[11]:
 
 
 def df_to_json_attribs(dataframe,key_column):
@@ -222,7 +279,7 @@ def df_to_json_attribs(dataframe,key_column):
     return json
 
 
-# In[11]:
+# In[12]:
 
 
 def df_to_json(dataframe):
@@ -242,7 +299,7 @@ def df_to_json(dataframe):
 
 # This function returns the available years in the model; the user can select the individual year they wish to look at and send this back to the model.
 
-# In[12]:
+# In[13]:
 
 
 def available_years():
@@ -266,7 +323,7 @@ def available_years():
 
 # This function returns the data relevant to each geographic area, by geographic area.  This includes the sdoh index and the details of the primary care providers in each of the geographic areas.
 
-# In[13]:
+# In[14]:
 
 
 def geo_profile():
@@ -304,7 +361,7 @@ def geo_profile():
 # 
 # NB: As the following function demonstrates, constructing easily navigable JSON from pandas is a non-trivial operation.  In retrospect, the creation of the JSON string should have been done by programmatically building a Python structure that is capable of being serialised then serialising it.  For more information see [here](https://realpython.com/python-json/).
 
-# In[14]:
+# In[15]:
 
 
 def provider_profile():
@@ -385,7 +442,9 @@ def provider_profile():
     return out
 
 
-# In[15]:
+# These functions will serialize the pandas dictionary into a file and then retrieve them.
+
+# In[16]:
 
 
 def save_model():
@@ -397,7 +456,7 @@ def save_model():
     return out
 
 
-# In[16]:
+# In[17]:
 
 
 def load_model(model_id,directory):
@@ -407,7 +466,43 @@ def load_model(model_id,directory):
     return '"loaded"'
 
 
-# In[17]:
+# In[18]:
+
+
+def run_model(geo,year,option,sub_option,wage_max,wage_weight):
+    sub_option_value = None
+    pos_option = ('ideal_staffing', 'ideal_staffing_current', 'service_allocation')
+    pos_sub_option = ("all_combination", "wage_max", "wage_weight")
+    if ( (option not in pos_option) | (sub_option not in pos_sub_option) ):
+        respond(None,command,"null", "ERROR: unknown model calculation options")
+    if sub_option == "wage_max":
+        sub_option_value = wage_max
+    elif sub_option == "wage_weight":
+        sub_option_value = wage_weight
+    pop_chronic_trend = wfpd.dataframes['pop_chronic_trend']
+    pop_chronic_prev = wfpd.dataframes['pop_chronic_prev']
+    chron_care_freq = wfpd.dataframes['chron_care_freq']
+    geo_area = wfpd.dataframes['geo_area_list']
+    service_characteristics = wfpd.dataframes['service_characteristics']
+    pop_acute_need = wfpd.dataframes['pop_acute_need']
+    population = wfpd.dataframes['population']
+    provider_supply = wfpd.dataframes['provider_supply']
+    pop_prev_need = wfpd.dataframes['pop_prev_need']
+    provider_list = wfpd.dataframes['provider_list']
+    encounter_detail = wfpd.dataframes['encounter_detail']
+    overhead_work = wfpd.dataframes['overhead_work']
+
+    sdoh_score = geo_area.loc[geo_area['geo_area'] == geo,'sdoh_index']
+    
+    # from here we can set them as default
+    sut_target = 0.8 # sutability target 0.8 is ideal status
+    sdoh_target = 3 # Social Determinance of Health - currently impact to F2F: if a county's SDoH < target, then using minimum F2F
+    FTE_time = 60*2080 # perhaps default 124,800
+    out = main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, FTE_time, sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , provider_list , encounter_detail, overhead_work)
+    return out
+
+
+# In[19]:
 
 
 # check to see if command is understood
@@ -421,6 +516,8 @@ elif command == "save_model":
     result = save_model()
 elif command == "load_model":
     result = load_model(value,directory)
+elif command == "run_model": 
+    result = run_model(geo,year,option,sub_option,wage_max,wage_weight)
 else:
     respond(None,command,provider_type, "ERROR: Unknown function call.")
 respond(str(result),str(command),str(value))
