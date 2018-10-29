@@ -108,6 +108,7 @@ option = "ideal_staffing"
 sub_option = "all_combination"
 wage_max = "null"
 wage_weight = "null"
+collapse_group = False
 
 
 # In[5]:
@@ -504,9 +505,10 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     if ( (option not in pos_option) | (sub_option not in pos_sub_option) ):
         respond(None,command,"null", "ERROR: unknown model calculation options")
     if sub_option == "wage_max":
-        sub_option_value = wage_max
+        sub_option_value = int(wage_max)
     elif sub_option == "wage_weight":
-        sub_option_value = wage_weight
+        sub_option_value = float(wage_weight)
+    
     pop_chronic_trend = wfpd.dataframes['pop_chronic_trend']
     pop_chronic_prev = wfpd.dataframes['pop_chronic_prev']
     chron_care_freq = wfpd.dataframes['chron_care_freq']
@@ -519,14 +521,16 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     provider_list = wfpd.dataframes['provider_list']
     encounter_detail = wfpd.dataframes['encounter_detail']
     overhead_work = wfpd.dataframes['overhead_work']
-
     sdoh_score = geo_area.loc[geo_area['geo_area'] == geo,'sdoh_index']
     
     # from here we can set them as default
     sut_target = 0.8 # sutability target 0.8 is ideal status
     sdoh_target = 3 # Social Determinance of Health - currently impact to F2F: if a county's SDoH < target, then using minimum F2F
     FTE_time = 60*2080 # perhaps default 124,800
-    out = main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, FTE_time, sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , provider_list , encounter_detail, overhead_work)
+    out = main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, collapse_group, FTE_time, 
+     sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, 
+             geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , 
+             provider_list , encounter_detail, overhead_work)
     return out
 
 

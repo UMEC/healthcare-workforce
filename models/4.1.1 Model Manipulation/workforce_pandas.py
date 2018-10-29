@@ -3,7 +3,7 @@
 
 # # Analytical Model Pandas Class
 
-# In[20]:
+# In[9]:
 
 
 # coding: utf-8
@@ -20,7 +20,7 @@
 # ### jupyter nbconvert --to script workforce_pandas.ipynb
 # 
 
-# In[21]:
+# In[10]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ import re
 
 # This function determines if the script is running server side or in a Jupyter notebook (where the __file__ variable is not accessible)
 
-# In[22]:
+# In[11]:
 
 
 def type_of_script():
@@ -48,7 +48,7 @@ def type_of_script():
 
 # The choice of directory path is determined by the run-time environment
 
-# In[23]:
+# In[12]:
 
 
 if type_of_script()=='jupyter':
@@ -71,14 +71,13 @@ else:
 # 
 # Trimming the length first (according to an easy to use human clip point) then makes trimming the columns much more reliable...
 
-# In[24]:
+# In[13]:
 
 
 dataframes = {}
 sheets = []
 for f in os.listdir(directory):
-    if f.endswith(".csv"):l
-        
+    if f.endswith(".csv"):
         sheet = os.path.splitext(f)[0]
         sheets.append(sheet)
         dataframes[sheet] = pd.read_csv(directory + "/" + f)
@@ -89,7 +88,7 @@ for f in os.listdir(directory):
         dataframes[sheet]=dataframes[sheet].dropna(axis=1,how='all')
 
 
-# In[25]:
+# In[14]:
 
 
 def get_dataframe_list():
@@ -117,10 +116,4 @@ def get_dataframe(name):
         return dataframes[name]
     except:
         return "No dataframe of that name"
-
-
-# In[29]:
-
-
-sheets
 
