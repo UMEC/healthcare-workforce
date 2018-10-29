@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from './reducers';
 import rootSaga from './sagas';
-import { loadStateFromLocalStorage, saveStateToLocalStorage } from './loadState';
+import { loadStateFromSessionStorage, saveStateToSessionStorage } from './loadState';
 import throttle from 'lodash/throttle';
 
 import App from './modules/App';
@@ -30,7 +30,7 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-const persistedState = loadStateFromLocalStorage();
+const persistedState = loadStateFromSessionStorage();
 
 const store = createStore(
   rootReducer,
@@ -42,8 +42,8 @@ sagaMiddleware.run(rootSaga);
 
 // Subscribe to changes to the state store and save them to local storage
 store.subscribe(throttle(() => {
-  saveStateToLocalStorage({
-    model: store.getState().model,
+  saveStateToSessionStorage({
+    // model: store.getState().model,
   });
 }, 1000));
 

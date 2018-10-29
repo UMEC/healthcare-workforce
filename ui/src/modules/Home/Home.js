@@ -9,7 +9,7 @@ class Home extends Component {
   }
 
   render() {
-    let { modelId } = this.props.model;
+    let { modelId } = this.props.defaultModel;
     return (
       <>
         <p>Home</p>
@@ -21,7 +21,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    model: state.model,
+    defaultModel: state.defaultModel,
   }
 }
 

@@ -1,0 +1,164 @@
+<html>
+<head>
+  <title>UMEC Healthcare Workforce API Administration</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('#profile').on('change', function() {
+        var newJson;
+        if (this.value === 'provider') {
+          newJson = {"params": {"request_type": "provider_profile","value": "Psych"}};
+        } else if (this.value === 'service') {
+          newJson = {"params": {"request_type": "supplier_profile","value": "Psych"}};
+        } else if (this.value === 'geo') {
+          newJson = {"params": {"request_type": "geo_profile","value": "Psych"}};
+        } else {
+          // you added another profile type? you better update this code then..
+          throw new Error('Unimplemented selected profile type')
+        }
+        $('#inputTextArea').val(JSON.stringify(newJson));
+        prettyPrint('inputTextArea');
+      });
+
+      getDataSources();
+      prettyPrint('inputTextArea');
+    });
+
+    function prettyPrint(areaId) {
+      var ugly = document.getElementById(areaId).value;
+      var obj = JSON.parse(ugly);
+      var pretty = JSON.stringify(obj, undefined, 4);
+      document.getElementById(areaId).value = pretty;
+    }
+
+    function getDataSources() {
+      $.get('./source').done(function(getData) {
+        $("#datasources > tbody").empty();
+        if (getData.length <= 0) {
+          $('#datasources tr:last').after('<tr><td>No data sources uploaded.</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+        } else {
+          getData.forEach(function(result) {
+            $('#datasources tr:last').after('<tr><td>' + result.name + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/' + result.name + '">Download</a></td></tr>');
+          });
+        }
+      });
+    }
+
+    function sendRequest(areaId) {
+      var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
+      console.log("Payload: " + payload)
+      $.ajax({
+        url: "./analytics",
+        type: "POST",
+        dataType: "json",
+        data: payload,
+        contentType: "application/json"
+      }).done(function( postData ) {
+          var modelId = postData.modelId;
+          console.log("ModelId: " + modelId)
+          console.log("Post response: " + JSON.stringify(postData));
+
+          $(window).delay(3000).queue(function() {
+            $.get( "./analytics/" + modelId)
+              .done(function( getData ) {
+                console.log("Get response: " + JSON.stringify(getData));
+                var pretty = JSON.stringify(getData, undefined, 4);
+                $('#responseData').html(pretty);
+              });
+
+            $(this).dequeue();
+          });
+        });
+    }
+  </script>
+  <style>
+    html{
+      font-size: 1em;
+    }
+
+    .ib-parent{
+      font-size: 0;
+    }
+
+    .ib-child{
+      display: inline-block;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div style="margin:10px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">UMEC Healthcare Workforce API Administration</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="#upload">Upload</a>
+      </li>
+      <li>
+        <a href="#download">Download</a>
+      </li>
+      <li>
+        <a href="#request">Request</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:20px;" id="upload">
+      <h2>Upload Data Source</h2>
+      <div>
+        Select an XSLX or CSV for saving and processing into the model. Start with a recent sample from the <a href="#download">download</a> section, or grab <a href="https://github.com/UMEC/healthcare-workforce/tree/master/models/test">the template</a>.
+        <br/>
+        Note that an uploaded XLSX will unpack into CSVs and archive all other data sources. <---- to do csv thing
+      </div>
+      <p>
+        <form action='./source' method='post' enctype='multipart/form-data'>
+          <input type='file' name='filetoupload'><br/>
+          <input class="btn btn-primary btn-lg" type='submit'/>
+        </form>
+      </p>
+    </div>
+    <div class="jumbotron"  style="padding:20px;" id="download">
+      <h2>Download Data Sources</h2>
+      <table class="table" id="datasources">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Last Modified</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No data sources uploaded.</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;" id="request">
+      <h2>Model Request</h2>
+      <select id="profile" class="form-control" style="width:200px;margin-bottom:5px;">
+        <option value="">-- Select a template --</option>
+        <option value="provider">Provider Profile</option>
+        <option value="service">Service Profile</option>
+        <option value="geo">Geographic Profile</option>
+      </select>
+      <div class="ib-child" style="width:50%;">
+        <textarea id="inputTextArea" style="width:100%;height:200px;" cols=50 rows=10></textarea>
+        <button style="margin-top:5px;" onclick="sendRequest('inputTextArea')">Request</button>
+      </div>
+      <div class="ib-child" style="width:50%;vertical-align:top;">
+        <pre id="responseData" style="width:100%;height:200px;">Response will appear here</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

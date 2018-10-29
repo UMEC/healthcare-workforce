@@ -1,8 +1,8 @@
 /*
  * An API that facilitates uploading and downloading external data sources.
  */
-const DIR_PROCESSED_FILES = './models/test/data_input_component_csv/';
-const DIR_UPLOADED_FILES = './models/test/data_input_component_csv/';
+const DIR_PROCESSED_FILES = './models/data/data_input_component_csv/';
+const DIR_UPLOADED_FILES = './models/data/data_input_component_csv/';
 const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
@@ -36,7 +36,7 @@ function processXslx(res, path) {
   res.end();
 }
 
-/* A temporary helper service for testing file upload. */
+/* A helper service for testing file upload. */
 router.get('/upload', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write("<form action='./' method='post' enctype='multipart/form-data'>");
@@ -58,7 +58,11 @@ router.get('/', (req, res) => {
       result.name = item;
       result.modified = stats.mtime;
       result.size = stats.size;
-      result.uri = `${req.originalUrl}/${result.name}`;
+      if (req.originalUrl.endsWith('/')) {
+        result.uri = `${req.originalUrl}${result.name}`;
+      } else {
+        result.uri = `${req.originalUrl}/${result.name}`;
+      }
       return result;
     });
     res.write(JSON.stringify(statResults));
