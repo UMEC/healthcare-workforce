@@ -19,8 +19,9 @@ class ModelOutputContainer extends Component {
     }
   }
 
-  updateModelAttributes = (i) => {
+  updateModelAttributes = (i, o) => {
     console.log(`attrinute for ${i} updated!`)
+    console.log(o)
   }
   
   render() {
@@ -33,11 +34,13 @@ class ModelOutputContainer extends Component {
       <>
         <ViewContainer>
           <ViewHeader />
-          <ViewSection updateModelAttributes={this.updateModelAttributes} title="">
-            <ProviderRoles 
-              servicesByProvider={servicesByProvider}
-              updateModelAttributes={this.updateModelAttributes} />
-          </ViewSection>
+          <div className="view-body">
+            <ViewSection updateModelAttributes={this.updateModelAttributes} title="">
+              <ProviderRoles 
+                servicesByProvider={servicesByProvider}
+                updateModelAttributes={this.updateModelAttributes} />
+            </ViewSection>
+          </div>
 
           { filtersApplied ?
             <ViewFooter>

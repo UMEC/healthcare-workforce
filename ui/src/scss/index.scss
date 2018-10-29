@@ -52,9 +52,21 @@ code {
   background-color: rgb(206, 206, 206);
 }
 
+.view-body {
+  flex: 1 ;
+  overflow: scroll;
+}
+
 .view-container {
+  display: flex;
+  flex-flow: column nowrap;
   position: relative;
   flex: 1;
+  height: calc(100vh - 100px);
+  padding-bottom: 50px;
+}
+.view-section {
+
 }
 
 .view-footer {
