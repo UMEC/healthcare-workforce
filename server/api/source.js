@@ -43,7 +43,6 @@ function getDataSourceFile(req, res, sourceFolder) {
 /* Delete a data source file. */
 function deleteDataSourceFile(req, res, sourceFolder) {
   const { filename } = req.params;
-  const ext = filename.split('.').pop();
 
   // validations to make sure nothing naughty is attempted
   if(!filename || !filename.match(/^[\w\-. ]+$/g)) { // eslint-disable-line
@@ -58,28 +57,32 @@ function deleteDataSourceFile(req, res, sourceFolder) {
     res.status(200);
     res.end();
   } catch (err) {
-    console.log('Error deleting file: '+ err);
+    console.log(`Error deleting file: ${err}`);
     res.status(404).json({ error_msg: 'Unknown file', err_detail: err.toString() });
     res.end();
   }
 }
 
+/* Archive a specific file. */
+function archiveFile(oldpath, filename) {
+  const thisDate = new Date().toLocaleString()
+    .split(' ')
+    .join('')
+    .split(':')
+    .join('');
+  const newpath = `${DIR_ARCHIVED_FILES}${thisDate}_${filename}`;
+  fs.renameSync(oldpath, newpath);
+}
+
 /* Archive previously uploaded files. */
 function archiveFiles(filenameToArchive) {
   const items = fs.readdirSync(DIR_PROCESSED_FILES);
-  const statResults = items.map((filename) => {
-    if (filenameToArchive == null || filenameToArchive == filename) {
+  items.forEach((filename) => {
+    if (filenameToArchive == null || filenameToArchive === filename) {
       const oldpath = DIR_PROCESSED_FILES + filename;
       archiveFile(oldpath, filename);
     }
   });
-}
-
-/* Archive a specific file. */
-function archiveFile(oldpath, filename) {
-  const thisDate = new Date().toLocaleString().split(' ').join('').split(':').join('');
-  const newpath = DIR_ARCHIVED_FILES + thisDate + '_' + filename;
-  fs.renameSync(oldpath, newpath);
 }
 
 /* Process an xslx at the given path. */
@@ -145,7 +148,7 @@ router.get('/archived', (req, res) => {
   fs.readdir(DIR_ARCHIVED_FILES, (err, items) => {
     if (err) throw err;
     const statResults = items.filter((item) => {
-      if (item == '.gitignore') {
+      if (item === '.gitignore') {
         return false;
       }
       return true;
