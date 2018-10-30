@@ -39,7 +39,7 @@ class ModelOutputContainer extends Component {
   }
 
   handleFilterUpdate(filters) {
-    this.setState(filters)
+    this.setState({ filtersApplied: true })
 
     this.props.setModelGeoFilter(filters)
   }
