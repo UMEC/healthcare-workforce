@@ -9,14 +9,14 @@ import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
 import ProviderRoles from '../../modules/ProviderRoles';
 
+import { SET_MODEL_GEO_FILTER } from '../../actions';
+
+
+
 class ModelOutputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modelFilters: {
-        geo: { area: 'all', availableProviders: [] },
-        providerType: {},
-      },
       modifiedModelAttributes: {},
       filteredModelOutput: {},
       filtersApplied: false,
@@ -40,6 +40,8 @@ class ModelOutputContainer extends Component {
 
   handleFilterUpdate(filters) {
     this.setState(filters)
+
+    this.props.setModelGeoFilter(filters)
   }
   
   render() {
@@ -56,7 +58,7 @@ class ModelOutputContainer extends Component {
             <ViewSection 
               updateModelAttributes={this.updateModelAttributes} title="">
               <ProviderRoles
-                availableProviderTypes={this.state.modelFilters.geo.availableProviders} 
+                activeFilters={this.props.modelFilters.activeFilters}
                 servicesByProvider={servicesByProvider}
                 updateModelAttributes={this.updateModelAttributes} />
             </ViewSection>
@@ -68,7 +70,7 @@ class ModelOutputContainer extends Component {
             </ViewFooter> 
             : null }
         </ViewContainer>
-        <Panel handleFilterUpdate={this.handleFilterUpdate}/>
+        <Panel modelFilters={this.props.modelFilters} handleFilterUpdate={this.handleFilterUpdate}/>
       </>
     );
   }
@@ -91,6 +93,7 @@ ModelOutputContainer.propTypes = {
 const mapStateToProps = (state) => {
   return {
     currentModelOutput: state.currentModelOutput,
+    modelFilters: state.modelFilters,
   }
 };
 
@@ -106,8 +109,10 @@ const mapStateToProps = (state) => {
  * 
  * Sagas live in `/ui/src/sagas`
  */
-const mapDispatchToProps = () => {
-  return {}
+const mapDispatchToProps = dispatch => {
+  return {
+    setModelGeoFilter: (newFilter) => dispatch({ type: SET_MODEL_GEO_FILTER, payload: newFilter })
+  }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModelOutputContainer);

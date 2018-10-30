@@ -1,5 +1,5 @@
 import activeModelDefaultState from './mock-default-state';
-import _ from 'lodash';
+// import _ from 'lodash';
 import {
   MODEL_REQUEST,
   MODEL_SUCCESS,

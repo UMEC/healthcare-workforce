@@ -78,12 +78,13 @@ class ProviderRoles extends Component {
   }
 
   filteredServicesByProvider = () => {
-    let { availableProviderTypes } = this.props;
+    let { availableProviders } = this.props.activeFilters.geo;
     let { addedProviderTypes } = this.state;
-    console.log(availableProviderTypes)
-    let providersList = [...availableProviderTypes, ...addedProviderTypes]
 
-    if (availableProviderTypes.length === 0 ) return this.state.customServicesByProvider;
+    if (availableProviders.length === 0 ) return this.state.customServicesByProvider;
+
+    let providersList = [...availableProviders, ...addedProviderTypes]
+
 
     let foo = providersList.reduce( (previous, provider) => {
       let current = this.state.customServicesByProvider.filter(item => {
@@ -129,7 +130,8 @@ class ProviderRoles extends Component {
         <div
           className="provider-roles__service-attributes" >
           <p className="provider-roles__service-label">
-            {service.service_name}</p>
+            {service.service_name}
+          </p>
           <p>BOL/TOL: <span style={{color: sliderColor}}>{usagePercentage}%</span></p>
           <input 
             type="range" 
@@ -188,13 +190,17 @@ class ProviderRoles extends Component {
 
   render() {
     const { customServicesByProvider } = this.state;
+    const { area } = this.props.activeFilters.geo;
     this.filteredServicesByProvider()
 
     const filteredProviders = this.filteredServicesByProvider()
 
+    let titleString = area !== 'all' 
+      ? `ProviderRoles for ${area}`
+      : `All Providers`;
     return (
       <>
-        <p>ProviderRoles</p>
+        <p>{titleString}</p>
         <div className="accordion">
 
           {this.renderProviders(filteredProviders)}
