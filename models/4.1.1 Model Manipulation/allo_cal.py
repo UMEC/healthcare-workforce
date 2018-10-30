@@ -11,8 +11,6 @@ import numpy as np
 from numpy import dot
 from cvxopt import matrix, solvers
 
-solvers.options['show_progress']=False
-
 
 def main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, collapse_group, FTE_time, 
          sdoh_score, pop_chronic_trend, pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, 
@@ -176,7 +174,7 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
             s =  call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i, col_j, provider_list, overhead_work, FTE_time )
         
     if( option == 'service_allocation' ):
-        s = call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i, col_j, provider_list, overhead_work, FTE_time )  
+        s = call_assign_service(demand, ser_max , supply, overhead_work, provider_list, FTE_time)
     return s 
 
    
@@ -184,7 +182,7 @@ def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, s
     '''
     core LP to optimize the allocation by wage or priority --- find something that using grid search
     '''
-    total_wage = []; v = np.arange(0, 1.01, 0.1); w_weight = None
+    total_wage = []; v = np.arange(0, 1.01, 0.1); w_weight = None; s= None
     for i in v:
         wi_weight = i; si_weight = 1- i; 
         if( option == 'ideal_staffing'):
@@ -268,13 +266,12 @@ def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, s
     return s
     
 
-def call_assign_service(demand_mem, ser_max_mem , supply, overhead_work):
+def call_assign_service(demand_mem, ser_max_mem, supply, overhead_work, provider_list, FTE_time):
     '''
     description
     '''
     # overhead time first
     n_mem = len(demand_mem); n_provider = len(supply); tF2F = sum(demand_mem['demand'])
-
     doctime = overhead_work.loc[0, provider_list['provider_abbr']  ]
     overheadtime = overhead_work.loc[0, 'prop_f2f_tot']*tF2F*doctime
     cortime = overhead_work.loc[1, provider_list['provider_abbr']  ]
@@ -324,8 +321,6 @@ def call_assign_service(demand_mem, ser_max_mem , supply, overhead_work):
     q = matrix( (-2.0*dot(M.T, sup)).astype(float) ); 
     
     # G and h minimum values (every value should be positive)
-    
-    s1 = supply['provider_num']*FTE_time - overheadtime
     g1 = -1.0 * np.identity(n_provider*n_mem); 
     g2 = 1.0 * np.identity(n_provider*n_mem); 
     #G = np.concatenate((g1,g2, M), axis=0)
@@ -337,17 +332,19 @@ def call_assign_service(demand_mem, ser_max_mem , supply, overhead_work):
     h = np.concatenate((h1,h2[0]), axis=0).astype(float)
     h = matrix(h)
     
-
+    solvers.options['show_progress'] =  False
     sol = solvers.qp(P, q, G, h, A, b)
     d = np.array(sol['x']).reshape((n_mem,n_provider))
     dataset = round( pd.DataFrame(d) )
     dataset[ dataset < 1 ] = 0
     dataset.columns = supply['provider_abbr']
+    
     #out = dataset.apply(sum, axis = 1)
-    #p = (dataset.apply(sum, axis = 0))/FTE_time - supply['provider_num']
-    p = (dataset.apply(sum, axis = 0) + overheadtime)/FTE_time - supply['provider_num']
-    sum(p*p)
-    return datast
+    ideal_allocation = (dataset.apply(sum, axis = 0))/FTE_time 
+    current_allocation = supply['provider_num']
+    
+    out = {'detail_result': dataset, 'ideal_allocation': ideal_allocation, 'current_allocation': current_allocation}
+    return out
 
 
 def call_opt_ideal(w_weight, s_weight, wage, ser_prov, demand, ser_max, row_i, col_j, FTE_time):
@@ -368,7 +365,8 @@ def call_opt_ideal(w_weight, s_weight, wage, ser_prov, demand, ser_max, row_i, c
             prob += service[(i,j)] <= ser_max.iloc[i,j], ""
             
     # need zero
-    GLPK().solve(prob)
+    GLPK(msg=0).solve(prob)
+
     # Solution summarize
     dataset = pd.DataFrame(np.nan, row_i, col_j); 
     tt = 0 
@@ -405,7 +403,7 @@ def call_opt_current(w_weight, s_weight, wage, ser_prov, demand, supply, ser_max
                 prob += service[(i,j)] >= 0
                 prob += service[(i,j)] <= ser_max.iloc[i,j], ""
                      
-        GLPK().solve(prob)
+        GLPK(msg = 0).solve(prob)
         # Solution summarize
         dataset = pd.DataFrame(np.nan, row_i, col_j); 
         o = []; tt = 0 
@@ -425,8 +423,6 @@ def call_opt_current(w_weight, s_weight, wage, ser_prov, demand, supply, ser_max
         tt = 0
         dataset = np.nan
     return dataset, tt
-
-
 
 
 def get_pattern(service_name, ser_prov, demand): 
@@ -473,7 +469,7 @@ def assign_pattern( n_ser, provider, ser_prov_mem, total_demand, dataset):
 
     
 def input_create(geo, year, sut_target, sdoh_target, sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, 
-             geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , 
+             geo_area, service_characteristics, pop_acute_need, population, provider_supply, pop_prev_need , 
              provider_list , encounter_detail, overhead_work):
             
     # every provider should follow the order of provider_list['provider_abbr']
