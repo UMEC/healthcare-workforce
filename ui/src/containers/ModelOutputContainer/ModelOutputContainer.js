@@ -13,23 +13,33 @@ class ModelOutputContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFilters: {},
+      modelFilters: {
+        geo: { area: 'all', availableProviders: [] },
+        providerType: {},
+      },
       modifiedModelAttributes: {},
       filteredModelOutput: {},
       filtersApplied: false,
       modelParamsEdited: false,
     }
+
+    this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('new State', nextState.modifiedModelAttributes)
+    console.log('new State', nextState)
   }
 
   updateModelAttributes = (currentServiceAttrs) => {
     console.log('currentServiceAttrs', currentServiceAttrs)
     this.setState({  
-      modifiedModelAttributes: {...this.state.modifiedModelAttributes, currentServiceAttrs}
+      modifiedModelAttributes: {...this.state.modifiedModelAttributes, currentServiceAttrs},
+      modelParamsEdited: true,
     })
+  }
+
+  handleFilterUpdate(filters) {
+    this.setState(filters)
   }
   
   render() {
@@ -46,7 +56,7 @@ class ModelOutputContainer extends Component {
             <ViewSection 
               updateModelAttributes={this.updateModelAttributes} title="">
               <ProviderRoles
-                availableProviderTypes={['Physician']} 
+                availableProviderTypes={this.state.modelFilters.geo.availableProviders} 
                 servicesByProvider={servicesByProvider}
                 updateModelAttributes={this.updateModelAttributes} />
             </ViewSection>
@@ -58,7 +68,7 @@ class ModelOutputContainer extends Component {
             </ViewFooter> 
             : null }
         </ViewContainer>
-        <Panel />
+        <Panel handleFilterUpdate={this.handleFilterUpdate}/>
       </>
     );
   }

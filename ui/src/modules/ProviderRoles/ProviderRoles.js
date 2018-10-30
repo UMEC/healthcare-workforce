@@ -12,12 +12,15 @@ class ProviderRoles extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      availableProviderTypes: this.props.availableProviderTypes,
       addedProviderTypes: ['Physicial Assistant'],
       defaultServicesByProvider: this.reshapeNewServicesByProvider(),
       customServicesByProvider: this.reshapeNewServicesByProvider(),
     };
   }
+
+  // componentWillReceiveProps() {
+  //   this.filteredServicesByProvider();
+  // }
 
   reshapeNewServicesByProvider = () => {
     let { servicesByProvider } = this.props;
@@ -75,10 +78,12 @@ class ProviderRoles extends Component {
   }
 
   filteredServicesByProvider = () => {
-    let { availableProviderTypes, addedProviderTypes } = this.state;
+    let { availableProviderTypes } = this.props;
+    let { addedProviderTypes } = this.state;
+    console.log(availableProviderTypes)
     let providersList = [...availableProviderTypes, ...addedProviderTypes]
 
-    if (!availableProviderTypes) return this.state.customServicesByProvider
+    if (availableProviderTypes.length === 0 ) return this.state.customServicesByProvider;
 
     let foo = providersList.reduce( (previous, provider) => {
       let current = this.state.customServicesByProvider.filter(item => {
@@ -93,46 +98,47 @@ class ProviderRoles extends Component {
       return foo;
   }
 
-  createPath = (obj, path, value = null) => {
-    path = typeof path === 'string' ? path.split('.') : path;
-    let current = obj;
-    while (path.length > 1) {
-      const [head, ...tail] = path;
-      path = tail;
-      if (current[head] === undefined) {
-        current[head] = {};
-      }
-      current = current[head];
-    }
-    current[path[0]] = value;
-    return obj;
-  };
-
-  updateScoreValue = (services, index) => {
+  updateScoreValue = (services, index, e) => {
     let currentServiceAttrs = services[index];
-    console.log(typeof currentServiceAttrs.service_info.score)
-    currentServiceAttrs.service_info.score = Math.abs(currentServiceAttrs.service_info.score )+ 0.1;
+
+    currentServiceAttrs.service_info.score = Number.parseFloat(e.target.value).toFixed(2);
 
     this.props.updateModelAttributes(currentServiceAttrs)
-    _.debounce(() =>{
-
-    }, 100)
   }
 
-  renderServices = (services) => {
+  sliderColor = (usagePercentage) => {
+    if (usagePercentage >= 80) {
+      return '#b30000';
+    } else if (usagePercentage > 75){
+      return '#e68200';
+    } else if (usagePercentage <= 10){
+      return '#0c3f68';
+    } else {
+      return '#308715';
+    }
+  }
+  
+  renderServices = (services, providerObject) => {
     return services.map((service, index) => {
-
-
-      // 
+      let serviceScore = providerObject.provider_services;
+      
+      let usagePercentage = Number.parseFloat(service.service_info.score * 100).toFixed(0);
+      let sliderColor = this.sliderColor(usagePercentage);
 
       return (
         <div
-          className="provider-roles__service-attributes"
-          onClick={() => this.updateScoreValue(services, index)} >
+          className="provider-roles__service-attributes" >
           <p className="provider-roles__service-label">
             {service.service_name}</p>
-          <p>Score: {service.service_info.score}</p>
-          <input type="range" min="0" max="1" value={service.service_info.score} step="0.01" class="slider" id="myRange"></input>
+          <p>BOL/TOL: <span style={{color: sliderColor}}>{usagePercentage}%</span></p>
+          <input 
+            type="range" 
+            min="0" 
+            max="1" 
+            value={service.service_info.score}
+            step="0.01" 
+            class="slider"
+            onChange={(e) => this.updateScoreValue(services, index, e)}></input>
           <p>Face To Face time</p>
           <p>min: {service.service_info.min_f2f_time}</p>
           <p>max: {service.service_info.max_f2f_time}</p>
@@ -145,19 +151,18 @@ class ProviderRoles extends Component {
     // console.log(providerObject);
       return categories.map(providerServices => {
         return (
-          <>
+          <div className="provider-roles__category">
             <p
               className="provider-roles__section-category">
               {providerServices[0].service_category}
             </p>
-            {this.renderServices(providerServices[0].services, providerServices[0].services)}
-          </>
+            {this.renderServices(providerServices[0].services, providerObject)}
+          </div>
         )
       })
   }
 
   renderProviders = (providers) => {
-    let providersObject = this.createPath({}, 'provider_type', 1);
 
     
     
@@ -169,7 +174,7 @@ class ProviderRoles extends Component {
           <div className="accordion__header">
             <p 
               className="provider-roles__section-title"
-              onClick={() => this.props.updateModelAttributes(provider.provider_type, providersObject)}>{provider.provider_type}
+              onClick={() => this.props.updateModelAttributes(provider.provider_type, provider)}>{provider.provider_type}
             </p>
           </div>
           <div className="accordion__content">
@@ -200,7 +205,13 @@ class ProviderRoles extends Component {
 }
 
 ProviderRoles.protoTypes = {
-  servicesByProvider: PropTypes.object
+  servicesByProvider: PropTypes.object,
+  /**
+   * addedProviderTypes: Array of pro
+   */
+  addedProviderTypes:  PropTypes.arrayOf(
+    
+  )
 }
 
 // function mapStateToProps(state) {

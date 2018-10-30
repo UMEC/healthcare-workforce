@@ -94,12 +94,23 @@ code {
     font-weight: 500;
     grid-column-start: 1;
     grid-column-end: -1;
-    margin-top: 48px;
     margin-bottom: 8px;
-
+    
   }
   &__service-attributes {
-    
+    margin-bottom: 16px;
+  }
+  &__category {
+    display: grid;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 0.5em;
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    border: 1px solid #646464;
+    margin-top: 24px;
+    padding: 16px;
   }
   &__service-label {
     font-weight: 600;
@@ -120,11 +131,12 @@ code {
   &__content {
     display: grid;
     grid-auto-flow: row;
-    width: 100%;
+    // width: 100%;
     grid-template-columns: repeat(3, 1fr);
     // grid-auto-rows: repeat(4, 1fr);
     grid-gap: 0.5em;
     justify-content: center;
     padding-bottom: 40px;
+    padding: 0 50px;
   }
 }
