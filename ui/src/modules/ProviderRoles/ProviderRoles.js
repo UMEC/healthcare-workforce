@@ -157,8 +157,6 @@ class ProviderRoles extends Component {
   }
 
   renderServiceCategories = (categories, providerObject) => {
-    // let categoriesObject = this.createPath(providersObject, 'providerServices[0].service_category', 1 )
-    // console.log(providerObject);
       return categories.map(providerServices => {
         return (
           <div 
@@ -181,8 +179,6 @@ class ProviderRoles extends Component {
     
     
     return providers.map(provider => {
-      // providersObject.provider_type = provider;
-      // console.log(provider)
       return (
         <>
           <div key={this.scrambleString(provider.provider_type)} className="accordion__header">
@@ -201,9 +197,7 @@ class ProviderRoles extends Component {
   }
 
   render() {
-    const { customServicesByProvider } = this.state;
     const { area } = this.props.activeFilters.geo;
-    this.filteredServicesByProvider()
 
     const filteredProviders = this.filteredServicesByProvider()
 
