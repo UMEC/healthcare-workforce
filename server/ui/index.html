@@ -77,7 +77,7 @@
           console.log("ModelId: " + modelId)
           console.log("Post response: " + JSON.stringify(postData));
 
-          $(window).delay(3000).queue(function() {
+          $(window).delay(5000).queue(function() {
             $.get( "./analytics/" + modelId)
               .done(function( getData ) {
                 var pretty = JSON.stringify(getData, undefined, 4);
