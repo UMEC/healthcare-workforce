@@ -1,16 +1,5 @@
-import activeModelDefaultState from './mock-default-state';
-import _ from 'lodash';
-import { SET_MODEL_FILTERS, SET_MODEL_GEO_FILTER } from '../actions';
-// import { actionChannel } from 'redux-saga/effects';
+import { SET_MODEL_GEO_FILTER } from '../actions';
 
-// reshaping default state to next the 
-const modelOutput = {
-  servicesByProvider: activeModelDefaultState
-};
-// const supply = _.mapValues(_.groupBy(activeModelDefaultState.response.supply, 'provider_county'));
-// const services = _.mapValues(_.groupBy(activeModelDefaultState.response.services, 'acute_encounter'));
-
-// debugger;
 let defaultFilterState = {
 
   activeFilters: {
