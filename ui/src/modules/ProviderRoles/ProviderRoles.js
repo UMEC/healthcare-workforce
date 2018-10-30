@@ -149,9 +149,6 @@ class ProviderRoles extends Component {
             step="0.01" 
             className="slider"
             onChange={(e) => this.updateScoreValue(services, index, e)}></input>
-          <p>Face To Face time</p>
-          <p>min: {service.service_info.min_f2f_time}</p>
-          <p>max: {service.service_info.max_f2f_time}</p>
         </div>
     )})
   }
