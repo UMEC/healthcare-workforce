@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import map from 'lodash/map';
-import values from 'lodash/values';
-import keys from 'lodash/keys';
 // import { bindActionCreators } from 'redux';
 
 // import { connect } from 'react-redux';
@@ -18,10 +16,6 @@ class ProviderRoles extends Component {
     };
   }
 
-  // componentWillReceiveProps() {
-  //   this.filteredServicesByProvider();
-  // }
-
   reshapeNewServicesByProvider = () => {
     let { servicesByProvider } = this.props;
 
@@ -33,15 +27,19 @@ class ProviderRoles extends Component {
     let transformedServicesByProvider = map(servicesByProvider, provider => {
       // let providerAbbr = Object.getOwnPropertyName(provider);
       let providerType = provider.provider_type;
+      // create a list of service categories using keys of the provider services 
+      // array (which corespond to the service category) to be used when creating 
+      // the service category object.
+      let service_categories = provider['services:'].reduce((prev, item) => { return [...prev, Object.keys(item)[0]] }, [])
 
-      let services = _.reduce(provider['services:'], (previous, item) => {
-
+      // Create a `service_categories` array containing category objects that 
+      // describe the category and all services within it.
+      let services = _.reduce(provider['services:'], (previous, item, index) => {
+        // Use the index of the current service to get it's `service_category`
+        // from the array of `service_categories.
+        let service_category = service_categories[index];
+      
         let services = _.reduce(item, (previous, service) => {
-          let service_category = Object.values(service)
-            .reduce((previous, item) => {
-              let service_category = Object.getOwnPropertyNames(item)[0];
-              return service_category
-            }, '');
 
           let services = Object.values(service)
             .map(item => item)
@@ -118,6 +116,15 @@ class ProviderRoles extends Component {
       return '#308715';
     }
   }
+
+  // helpful for scrabmling strings for unique keys when mapping
+  scrambleString = (string) => {
+    let newString = _.camelCase(string);
+    let stringArray = newString.split('');
+    let scrambledArray = _.shuffle(stringArray);
+    let scrambledString = scrambledArray.join('');
+    return scrambledString;
+  }
   
   renderServices = (services, providerObject) => {
     return services.map((service, index) => {
@@ -128,6 +135,7 @@ class ProviderRoles extends Component {
 
       return (
         <div
+          key={this.scrambleString(`${service.service_name}${usagePercentage}${index}`)}
           className="provider-roles__service-attributes" >
           <p className="provider-roles__service-label">
             {service.service_name}
@@ -139,7 +147,7 @@ class ProviderRoles extends Component {
             max="1" 
             value={service.service_info.score}
             step="0.01" 
-            class="slider"
+            className="slider"
             onChange={(e) => this.updateScoreValue(services, index, e)}></input>
           <p>Face To Face time</p>
           <p>min: {service.service_info.min_f2f_time}</p>
@@ -153,7 +161,9 @@ class ProviderRoles extends Component {
     // console.log(providerObject);
       return categories.map(providerServices => {
         return (
-          <div className="provider-roles__category">
+          <div 
+            key={this.scrambleString(providerServices[0].service_category)}
+            className="provider-roles__category">
             <p
               className="provider-roles__section-category">
               {providerServices[0].service_category}
@@ -173,13 +183,13 @@ class ProviderRoles extends Component {
       // console.log(provider)
       return (
         <>
-          <div className="accordion__header">
+          <div key={this.scrambleString(provider.provider_type)} className="accordion__header">
             <p 
               className="provider-roles__section-title"
               onClick={() => this.props.updateModelAttributes(provider.provider_type, provider)}>{provider.provider_type}
             </p>
           </div>
-          <div className="accordion__content">
+          <div key={this.scrambleString(provider.provider_type)} className="accordion__content">
             {this.renderServiceCategories(provider.provider_services, provider)}
           </div>
         </>
