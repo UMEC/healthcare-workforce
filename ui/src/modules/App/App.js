@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ModelOutputContainer from '../../containers/ModelOutputContainer/ModelOutputContainer';
-import Home from '../Home';
-import Admin from '../Admin';
 
 //Components
 import AppContent from '../../components/AppContent';
@@ -36,11 +34,9 @@ class App extends Component {
             <div className="branding">
 
             </div>
-            <MainNavigation />
           </AppHeader>
           <AppContent>
             <Route exact path="/" component={ModelOutputContainer} />
-            <Route exact path="/admin" component={Admin} />
           </AppContent>
         </div>
       </Router>
@@ -55,9 +51,6 @@ let MainNavigation = () => {
     <nav>
       <Link to="/" >
         <button>Home</button>
-      </Link>
-      <Link to="/admin" >
-        <button>Admin</button>
       </Link>
     </nav>
   )

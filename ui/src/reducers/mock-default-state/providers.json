@@ -1,0 +1,5857 @@
+{
+  "Phys": {
+    "provider_type": "Physician",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": "0.50"
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Post Partum Depression Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Diet/Physical Activity Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Anticipatory Guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "BRCA risk assessment and genetic counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Breast Cancer Preventive Medications": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Breast Feeding Interventions": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Condition Consultation": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 15,
+              "score": "0.50"
+            }
+          },
+          {
+            "Folic Acid Supplementation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Psychotherapy": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": " "
+            }
+          },
+          {
+            "Tobacco Use Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Visit wrap-up/care planning": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Education": [
+          {
+            "Asthma action plan": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Control: Weight; Hypertension; Hyperlipidemia; Smoking": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Diabetes Self Management Education/Support": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": "0.50"
+            }
+          },
+          {
+            "Dietary/Physical Activity Guidance": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 10,
+              "score": "0.50"
+            }
+          },
+          {
+            "Exercise & COPD Management": {
+              "min_f2f_time": 15,
+              "max_f2f_time": 15,
+              "score": "0.50"
+            }
+          },
+          {
+            "Inhaler use guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Medical Nutrition Therapy (MNT)": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Immunization": [
+          {
+            "DTaP": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "flu": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Hep Aa0": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Hep B": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Hib": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "HPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "HZV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Influenza": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "IPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Meningococcal": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "MMR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "PCV12": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "PCV13": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Polio": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Rotavirus": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Td/Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "VAR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Lab": [
+          {
+            "Anemia Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Bacteriuria Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Cervical Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Chlamydia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Dyslipidemia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Gonorrhea Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Hepatitis B Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Hepititis C Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "HIV Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Lab": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Lead Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Newborn Bilirubin": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": "0.50"
+            }
+          },
+          {
+            "Newborn Blood": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": "0.50"
+            }
+          },
+          {
+            "Orders": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Results Consultation": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Results Consultation: CHD Risk Assessment; A1c; Microalbuminuria": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "STI Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": "0.50"
+            }
+          },
+          {
+            "Syphillis Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "TB* Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Measurements": [
+          {
+            "BMI": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": "0.50"
+            }
+          },
+          {
+            "BP": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "head circumference": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "length/height & weight": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Temp": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Weight": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Oral Health": [
+          {
+            "Fluoride Supplementation": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Fluoride Varnish": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Identify Dental Home": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Patient History": [
+          {
+            "Data Collection": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 3,
+              "score": "0.50"
+            }
+          },
+          {
+            "Interval history/Consultation": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": "0.50"
+            }
+          },
+          {
+            "Patient History": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Orders/scripts": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Physical Exam": [
+          {
+            "Foot Exam": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": "0.50"
+            }
+          },
+          {
+            "Physical Exam": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Problem Oriented Physical": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 10,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Physical Screening": [
+          {
+            "Abdominal aortic aneurysm screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Breast Cancer Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": "0.50"
+            }
+          },
+          {
+            "Colorectal Cancer Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Diabetes Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Lung Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Obesity Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": "0.50"
+            }
+          },
+          {
+            "Osteoporosis Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          }
+        ]
+      },
+      {
+        "Sensory Screening": [
+          {
+            "Hearing Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          },
+          {
+            "Vision Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": "0.50"
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 46,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 165,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 80,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 18,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 41,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 27,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 20,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 96,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 32,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 258,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 457,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 177958,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "PA": {
+    "provider_type": "Physicial Assistant",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Post Partum Depression Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Anticipatory Guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Preventive Medications": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Feeding Interventions": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Condition Consultation": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Folic Acid Supplementation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Visit wrap-up/care planning": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Education": [
+          {
+            "Asthma action plan": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Control: Weight; Hypertension; Hyperlipidemia; Smoking": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Self Management Education/Support": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          },
+          {
+            "Dietary/Physical Activity Guidance": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          },
+          {
+            "Exercise & COPD Management": {
+              "min_f2f_time": 15,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Inhaler use guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Medical Nutrition Therapy (MNT)": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Immunization": [
+          {
+            "DTaP": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "flu": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep Aa0": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep B": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hib": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HZV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Influenza": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "IPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Meningococcal": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "MMR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV12": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV13": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Polio": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Rotavirus": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Td/Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "VAR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Lab": [
+          {
+            "Anemia Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Bacteriuria Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Cervical Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Chlamydia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Dyslipidemia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Gonorrhea Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Hepatitis B Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Hepititis C Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "HIV Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Lab": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lead Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Bilirubin": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Blood": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation: CHD Risk Assessment; A1c; Microalbuminuria": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "STI Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Syphillis Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "TB* Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Measurements": [
+          {
+            "BMI": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "BP": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "head circumference": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "length/height & weight": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Temp": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Weight": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Oral Health": [
+          {
+            "Fluoride Supplementation": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Fluoride Varnish": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Identify Dental Home": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Patient History": [
+          {
+            "Data Collection": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Interval history/Consultation": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Patient History": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders/scripts": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Exam": [
+          {
+            "Foot Exam": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Physical Exam": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Problem Oriented Physical": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Screening": [
+          {
+            "Abdominal aortic aneurysm screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Colorectal Cancer Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lung Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Osteoporosis Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Sensory Screening": [
+          {
+            "Hearing Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Vision Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 72,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 32,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 38,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 17,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 115,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 204,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 105690,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "NP": {
+    "provider_type": "Nurse Practitioner",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Anticipatory Guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Preventive Medications": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Condition Consultation": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Folic Acid Supplementation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Visit wrap-up/care planning": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Education": [
+          {
+            "Asthma action plan": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Control: Weight; Hypertension; Hyperlipidemia; Smoking": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Self Management Education/Support": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          },
+          {
+            "Dietary/Physical Activity Guidance": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          },
+          {
+            "Exercise & COPD Management": {
+              "min_f2f_time": 15,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Inhaler use guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Medical Nutrition Therapy (MNT)": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Immunization": [
+          {
+            "DTaP": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "flu": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep Aa0": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep B": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hib": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HZV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Influenza": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "IPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Meningococcal": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "MMR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV12": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV13": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Polio": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Rotavirus": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Td/Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "VAR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Lab": [
+          {
+            "Anemia Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Cervical Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Chlamydia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Dyslipidemia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Gonorrhea Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Hepititis C Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "HIV Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Lab": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lead Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Bilirubin": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Blood": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation: CHD Risk Assessment; A1c; Microalbuminuria": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "STI Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "TB* Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Measurements": [
+          {
+            "BMI": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "BP": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "head circumference": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "length/height & weight": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Temp": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Weight": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Oral Health": [
+          {
+            "Fluoride Supplementation": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Fluoride Varnish": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Identify Dental Home": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Patient History": [
+          {
+            "Data Collection": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Interval history/Consultation": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Patient History": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders/scripts": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Exam": [
+          {
+            "Foot Exam": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Physical Exam": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Problem Oriented Physical": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Screening": [
+          {
+            "Abdominal aortic aneurysm screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Colorectal Cancer Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lung Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Osteoporosis Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Sensory Screening": [
+          {
+            "Hearing Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Vision Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 305,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 68,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 27,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 47,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 25,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 76,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 36,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 374,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 523,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 95994,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "RN": {
+    "provider_type": "Registered Nurse",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Anticipatory Guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Preventive Medications": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Condition Consultation": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Folic Acid Supplementation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Visit wrap-up/care planning": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Education": [
+          {
+            "Asthma action plan": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Control: Weight; Hypertension; Hyperlipidemia; Smoking": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Self Management Education/Support": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          },
+          {
+            "Dietary/Physical Activity Guidance": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          },
+          {
+            "Exercise & COPD Management": {
+              "min_f2f_time": 15,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Inhaler use guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Medical Nutrition Therapy (MNT)": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Immunization": [
+          {
+            "DTaP": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "flu": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep Aa0": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hep B": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Hib": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "HZV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Influenza": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "IPV": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Meningococcal": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "MMR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV12": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "PCV13": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Polio": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Rotavirus": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Td/Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Tdap": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "VAR": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Lab": [
+          {
+            "Anemia Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Cervical Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Chlamydia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Dyslipidemia Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Gonorrhea Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Hepititis C Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "HIV Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Lab": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lead Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Bilirubin": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Newborn Blood": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Results Consultation: CHD Risk Assessment; A1c; Microalbuminuria": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "TB* Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Measurements": [
+          {
+            "BMI": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "BP": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "head circumference": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "length/height & weight": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Temp": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Weight": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Oral Health": [
+          {
+            "Fluoride Supplementation": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Fluoride Varnish": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Identify Dental Home": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Patient History": [
+          {
+            "Data Collection": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Interval history/Consultation": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Patient History": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Exam": [
+          {
+            "Foot Exam": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Physical Exam": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Problem Oriented Physical": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Physical Screening": [
+          {
+            "Abdominal aortic aneurysm screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Breast Cancer Screening": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Colorectal Cancer Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Lung Cancer Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Osteoporosis Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Sensory Screening": [
+          {
+            "Hearing Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Vision Screening": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 87,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 23,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 155,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 30,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 977,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 25,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 352,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 103,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 230,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 106,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 37,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 389,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 47,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 139,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 25,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 1382,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 2125,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 57595,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "PharmD": {
+    "provider_type": "Doctor of Pharmacy",
+    "services:": [
+      {
+        "Education": [
+          {
+            "Inhaler use guidance": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Orders/scripts": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 13,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 39,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 89,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 538,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 13,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 13,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 13,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 120,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 58,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 83,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 55,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 28,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 143,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 18,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 78,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 17,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 725,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 1064,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 125000,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "MA": {
+    "provider_type": "Medical Assistant",
+    "services:": [
+      {
+        "Measurements": [
+          {
+            "BP": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "head circumference": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Temp": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Weight": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Oral Health": [
+          {
+            "Fluoride Supplementation": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Fluoride Varnish": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Identify Dental Home": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Patient History": [
+          {
+            "Data Collection": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          },
+          {
+            "Interval history/Consultation": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Patient History": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 24,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 28,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 92,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 330,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 20,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 160,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 36,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 82,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 54,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 40,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 192,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 32,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 64,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 516,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 914,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 32500,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "Educ": {
+    "provider_type": "Educator",
+    "services:": [
+      {
+        "Counseling": [
+          {
+            "Diet/Physical Activity Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Education": [
+          {
+            "Asthma action plan": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Control: Weight; Hypertension; Hyperlipidemia; Smoking": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Diabetes Self Management Education/Support": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          },
+          {
+            "Dietary/Physical Activity Guidance": {
+              "min_f2f_time": 10,
+              "max_f2f_time": 10,
+              "score": 0.5
+            }
+          },
+          {
+            "Exercise & COPD Management": {
+              "min_f2f_time": 15,
+              "max_f2f_time": 15,
+              "score": 0.5
+            }
+          },
+          {
+            "Medical Nutrition Therapy (MNT)": {
+              "min_f2f_time": 30,
+              "max_f2f_time": 30,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Pharmacological Treatment/Mgmt": [
+          {
+            "Medication Consultation": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 73,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 18,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 561,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 158,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 52,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 79,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 28,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 20,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 172,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 17,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 78,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 724,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 1054,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55652,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "Psych": {
+    "provider_type": "Psychiatrist",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Post Partum Depression Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Alcohol Misuse Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "CBT": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Counseling": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychotherapy": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Sexually Transmitted Infections Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Skin Cancer Behavioral Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Prevention and Counseling ": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 22,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 175,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 76,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 11,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 18,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 24,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 82,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 178,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 12,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 47,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 347,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 204194,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "LCSW": {
+    "provider_type": "Licensed Clinical Social Worker",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Diet/Physical Activity Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Alcohol Misuse Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "BRCA risk assessment and genetic counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "CBT": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Counseling": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychotherapy": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Sexually Transmitted Infections Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Skin Cancer Behavioral Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Prevention and Counseling ": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 73,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 18,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 561,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 158,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 52,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 79,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 28,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 20,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 172,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 17,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 78,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 724,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 1054,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 62000,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "CMHC": {
+    "provider_type": "Certified Mental Health Counselor",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Diet/Physical Activity Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Alcohol Misuse Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "BRCA risk assessment and genetic counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "CBT": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Counseling": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychotherapy": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Sexually Transmitted Infections Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Skin Cancer Behavioral Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Prevention and Counseling ": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 23,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 11,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 151,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 7,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 9,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 46,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 22,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 6,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 10,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 60,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 34,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 196,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 312,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 52500,
+        "provider_wage_trend": 0.02
+      }
+    }
+  },
+  "MFT": {
+    "provider_type": "Marriage and Family Therapists",
+    "services:": [
+      {
+        "Behavioral Health Screenings": [
+          {
+            "Alcohol Misuse Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Autism Spectrum Disorder Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Depression Screening": {
+              "min_f2f_time": 4,
+              "max_f2f_time": 4,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Screening": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Developmental Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Intimate partner violence screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Maternal Depression Screening": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychosocial/Behavioral Surveillance": {
+              "min_f2f_time": 2,
+              "max_f2f_time": 2,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco/Alcohol/Drug Use": {
+              "min_f2f_time": 3,
+              "max_f2f_time": 3,
+              "score": 0.5
+            }
+          }
+        ]
+      },
+      {
+        "Counseling": [
+          {
+            "Diet/Physical Activity Counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Advanced Care Planning": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "Alcohol Misuse Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "BRCA risk assessment and genetic counseling": {
+              "min_f2f_time": 5,
+              "max_f2f_time": 5,
+              "score": 0.5
+            }
+          },
+          {
+            "CBT": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Obesity Counseling": {
+              "min_f2f_time": 0,
+              "max_f2f_time": 0,
+              "score": 0.5
+            }
+          },
+          {
+            "Psychotherapy": {
+              "min_f2f_time": 50,
+              "max_f2f_time": 50,
+              "score": 0.5
+            }
+          },
+          {
+            "Sexually Transmitted Infections Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Skin Cancer Behavioral Counseling": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          },
+          {
+            "Tobacco Use Prevention and Counseling ": {
+              "min_f2f_time": 1,
+              "max_f2f_time": 1,
+              "score": 0.5
+            }
+          }
+        ]
+      }
+    ],
+    "supply": {
+      "Beaver County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Box Elder County": {
+        "provider_num": 5,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Cache County": {
+        "provider_num": 14,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Carbon County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Daggett County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Davis County": {
+        "provider_num": 11,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Duchesne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Emery County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Garfield County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Grand County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Iron County": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Juab County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Kane County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Millard County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Morgan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Piute County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Rich County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Salt Lake County": {
+        "provider_num": 51,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "San Juan County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Sanpete County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Sevier County": {
+        "provider_num": 0,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Summit County": {
+        "provider_num": 8,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Tooele County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Utah County": {
+        "provider_num": 45,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch County": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Washington County": {
+        "provider_num": 16,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Wayne County": {
+        "provider_num": 1,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Weber County": {
+        "provider_num": 15,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Bear River MCD": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Central MCD": {
+        "provider_num": 2,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Mountainland MCD": {
+        "provider_num": 56,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Southeast MCD": {
+        "provider_num": 3,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Southwest MCD": {
+        "provider_num": 19,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Uintah Basin MCD": {
+        "provider_num": 4,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "Wasatch MCD": {
+        "provider_num": 78,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      },
+      "State of Utah": {
+        "provider_num": 181,
+        "provider_growth_trend": 0.01,
+        "provider_mean_wage": 55590,
+        "provider_wage_trend": 0.02
+      }
+    }
+  }
+}
