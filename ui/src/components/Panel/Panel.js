@@ -10,7 +10,7 @@ class Panel extends Component {
 
   handleGeoFilterChange(e) {
     let newGeoFilter = { geo: this.props.modelFilters.allFilters.geos[e.target.value] };
-    this.props.handleFilterUpdate(newGeoFilter);
+    this.props.handleGeoFilterUpdate(newGeoFilter);
   }
 
   render() {

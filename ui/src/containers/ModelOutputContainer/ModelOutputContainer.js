@@ -23,7 +23,7 @@ class ModelOutputContainer extends Component {
       modelParamsEdited: false,
     }
 
-    this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
+    this.handleGeoFilterUpdate = this.handleGeoFilterUpdate.bind(this);
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -38,10 +38,20 @@ class ModelOutputContainer extends Component {
     })
   }
 
-  handleFilterUpdate(filters) {
-    this.setState({ filtersApplied: true })
+  handleGeoFilterUpdate(filter) {
 
-    this.props.setModelGeoFilter(filters)
+    if ( filter.geo.area === 'all') {
+      
+      // the 'all' filter is the state for no filters applied
+      // so set the filters applied to false
+      this.setState({ filtersApplied: false })
+    } else {
+      // When applying filters to the model output, this piece of state 
+      // can be used to programatically toggle components on and off.
+      this.setState({ filtersApplied: true })
+    }
+
+    this.props.setGeoFilter(filter)
   }
   
   render() {
@@ -70,7 +80,7 @@ class ModelOutputContainer extends Component {
             </ViewFooter> 
             : null }
         </ViewContainer>
-        <Panel modelFilters={this.props.modelFilters} handleFilterUpdate={this.handleFilterUpdate}/>
+        <Panel modelFilters={this.props.modelFilters} handleGeoFilterUpdate={this.handleGeoFilterUpdate}/>
       </>
     );
   }
@@ -111,7 +121,7 @@ const mapStateToProps = (state) => {
  */
 const mapDispatchToProps = dispatch => {
   return {
-    setModelGeoFilter: (newFilter) => dispatch({ type: SET_MODEL_GEO_FILTER, payload: newFilter })
+    setGeoFilter: (newFilter) => dispatch({ type: SET_MODEL_GEO_FILTER, payload: newFilter })
   }
 };
 
