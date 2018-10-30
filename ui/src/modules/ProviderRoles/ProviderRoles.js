@@ -165,10 +165,12 @@ class ProviderRoles extends Component {
             key={this.scrambleString(providerServices[0].service_category)}
             className="provider-roles__category">
             <p
-              className="provider-roles__section-category">
+              className="provider-roles__category-header">
               {providerServices[0].service_category}
             </p>
-            {this.renderServices(providerServices[0].services, providerObject)}
+            <div className="provider-roles__category-body">
+              {this.renderServices(providerServices[0].services, providerObject)}
+            </div>
           </div>
         )
       })
