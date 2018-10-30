@@ -8,6 +8,14 @@ class Panel extends Component {
     this.handleGeoFilterChange = this.handleGeoFilterChange.bind(this);
   }
 
+  scrambleString = (string) => {
+    let newString = _.camelCase(string);
+    let stringArray = newString.split('');
+    let scrambledArray = _.shuffle(stringArray);
+    let scrambledString = scrambledArray.join('');
+    return scrambledString;
+  }
+
   handleGeoFilterChange(e) {
     let newGeoFilter = { geo: this.props.modelFilters.allFilters.geos[e.target.value] };
     this.props.handleGeoFilterUpdate(newGeoFilter);
@@ -22,6 +30,7 @@ class Panel extends Component {
           {_.map(this.props.modelFilters.allFilters.geos, geo => {
             return (
               <option
+                key={this.scrambleString(geo.area)}
               value={geo.area}>
               {geo.area}
               </option>
