@@ -27,11 +27,10 @@ class ModelOutputContainer extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log('new State', nextState)
+    // console.log('new State', nextState)
   }
 
   updateModelAttributes = (currentServiceAttrs) => {
-    console.log('currentServiceAttrs', currentServiceAttrs)
     this.setState({  
       modifiedModelAttributes: {...this.state.modifiedModelAttributes, currentServiceAttrs},
       modelParamsEdited: true,
@@ -55,7 +54,6 @@ class ModelOutputContainer extends Component {
   }
   
   render() {
-    console.log(this.props.currentModelOutput.servicesByProvider)
     let { servicesByProvider } = this.props.currentModelOutput;
     // let filtersCount = Object.keys(this.props.selectedFilters).length;
     let { modelParamsEdited} = this.state.filtersApplied;
