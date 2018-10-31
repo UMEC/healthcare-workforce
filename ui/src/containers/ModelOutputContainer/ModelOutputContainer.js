@@ -60,7 +60,8 @@ class ModelOutputContainer extends Component {
     return (
       <>
         <ViewContainer>
-          <ViewHeader />
+          <ViewHeader 
+            currentGeoName={this.props.modelFilters.activeFilters.geo.area}  />
           <div className="view-body">
             <ViewSection 
               updateModelAttributes={this.updateModelAttributes} title="">
