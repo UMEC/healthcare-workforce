@@ -79,7 +79,7 @@
 
     function sendRequest(areaId) {
       var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
-      $('#responseData').html('A moment or two, please..');
+      $('#responseData').html('A moment or three, please..');
       $.ajax({
         url: "./analytics",
         type: "POST",
@@ -97,7 +97,7 @@
           .done(function( getData ) {
             if (getData.status === "new") {
               // model hasn't finished
-              if (attempts >= 5) {
+              if (attempts >= 20) {
                 // had enough
                 $('#responseData').html('Request timed out, please try again.');
               } else {
