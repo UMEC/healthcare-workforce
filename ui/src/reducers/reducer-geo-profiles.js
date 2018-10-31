@@ -6,7 +6,7 @@ let raw_providers = [
     "provider_abbr": "Phys"
   },
   {
-    "provider_name": "Physicial Assistant",
+    "provider_name": "Physician Assistant",
     "provider_abbr": "PA"
   },
   {

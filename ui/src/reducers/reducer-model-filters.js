@@ -8,7 +8,7 @@ let defaultFilterState = {
       sdoh_index: 3,
       availableProviders: [
         'Physician',
-      'Physicial Assistant',
+      'Physician Assistant',
       'Nurse Practitioner',
       'Registered Nurse',
       'Doctor of Pharmacy',
@@ -25,7 +25,7 @@ let defaultFilterState = {
           provider_abbr: 'Phys'
       },
       PA: {
-        provider_name: 'Physicial Assistant',
+        provider_name: 'Physician Assistant',
           provider_abbr: 'PA'
       },
       NP: {
