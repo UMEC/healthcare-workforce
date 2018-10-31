@@ -1,39 +1,39 @@
-geo_area,sdoh_index
-Beaver County,3
-Box Elder County,3
-Cache County,3
-Carbon County,3
-Daggett County,3
-Davis County,3
-Duchesne County,3
-Emery County,3
-Garfield County,3
-Grand County,3
-Iron County,3
-Juab County,3
-Kane County,3
-Millard County,3
-Morgan County,3
-Piute County,3
-Rich County,3
-Salt Lake County,3
-San Juan County,3
-Sanpete County,3
-Sevier County,3
-Summit County,3
-Tooele County,3
-Uintah County,3
-Utah County,3
-Wasatch County,3
-Washington County,3
-Wayne County,3
-Weber County,3
-Bear River MCD,3
-Central MCD,3
-Mountainland MCD,3
-Southeast MCD,3
-Southwest MCD,3
-Uintah Basin MCD,3
-Wasatch MCD,3
-State of Utah,3
-<<end>>,
+geo_area,sdoh_index,,,
+Beaver County, 3.23 ,,,
+Box Elder County, 2.79 ,,,
+Cache County, 3.05 ,,,
+Carbon County, 3.72 ,,,
+Daggett County, 3.00 ,,,
+Davis County, 2.32 ,,,
+Duchesne County, 3.41 ,,,
+Emery County, 2.85 ,,,
+Garfield County, 2.93 ,,,
+Grand County, 3.20 ,,,
+Iron County, 3.80 ,,,
+Juab County, 3.10 ,,,
+Kane County, 2.21 ,,,
+Millard County, 3.34 ,,,
+Morgan County, 1.99 ,,,
+Piute County, 3.29 ,,,
+Rich County, 2.56 ,,,
+Salt Lake County, 3.13 ,,,
+San Juan County, 3.98 ,,,
+Sanpete County, 3.14 ,,,
+Sevier County, 3.04 ,,,
+Summit County, 2.41 ,,,
+Tooele County, 2.62 ,,,
+Uintah County, 3.49 ,,,
+Utah County, 2.87 ,,,
+Wasatch County, 2.97 ,,,
+Washington County, 3.21 ,,,
+Wayne County, 3.03 ,,,
+Weber County, 3.20 ,,,
+Bear River MCD, 2.97 ,,,
+Central MCD, 3.14 ,,,
+Mountainland MCD, 2.85 ,,,
+Southeast MCD, 3.55 ,,,
+Southwest MCD, 3.30 ,,,
+Uintah Basin MCD, 3.45 ,,,
+Wasatch MCD, 2.96 ,,,
+State of Utah, 2.99 ,,,
+<<end>>,,,,

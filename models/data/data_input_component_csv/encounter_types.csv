@@ -14,6 +14,8 @@ Chronic,Chronic Maintenance Visit: Hyperlipidemia,chr_maint_hyperlipidemia
 Chronic,Chronic Maintenance Visit: Hypertension,chr_maint_hypertension
 Chronic,Chronic Maintenance Visit: Depression,chr_maint_depression
 Chronic,Chronic Maintenance Visit: Osteoporosis,chr_maint_osteoporosis
+Chronic,Chronic Care Needs: Obesity,chr_scr_Obesity
+Chronic,Chronic Care Needs: Smoker,chr_scr_Smoker
 Preventive,Adult Wellness Visits-Over 65,adult_well_ge_65
 Preventive,Adult Wellness Visits-Under 65,adult_well_lt_65
 Preventive,Well-Child Visits-Infant,well_ch_infant
@@ -28,7 +30,5 @@ Preventive,Additional Screening: STI,Add_scr_STI
 Preventive,Addl Counsel: Breast Cancer Prev Rx,Add_Couns_Breast_Cancer_Rx
 Preventive,Addl Counsel: Folic Acid Supp,Add_Couns_Folic_Acid
 Preventive,Addl Screen and Counsel: BRCA,Add_couns_BRCA
-Preventive,Addl Screen and Counsel: Obesity,Add_scr_Obesity
-Preventive,Addl Screen and Counsel: Smoker,Add_scr_Smoker
 Preventive,Addl Screening: Colon Cancer,Add_scr_colon_cancer
 <<end>>,,
