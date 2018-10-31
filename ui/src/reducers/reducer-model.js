@@ -1,4 +1,4 @@
-import activeModelDefaultState from './mock-default-state';
+import activeModelDefaultState from './static-json-responses';
 // import _ from 'lodash';
 import {
   MODEL_REQUEST,

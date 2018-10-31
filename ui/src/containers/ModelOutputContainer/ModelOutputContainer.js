@@ -39,17 +39,16 @@ class ModelOutputContainer extends Component {
 
   handleGeoFilterUpdate(filter) {
 
-    if ( filter.geo.area === 'all') {
+    // if (filter.geo.area == 'State of Utah') {
       
-      // the 'all' filter is the state for no filters applied
-      // so set the filters applied to false
-      this.setState({ filtersApplied: false })
-    } else {
-      // When applying filters to the model output, this piece of state 
-      // can be used to programatically toggle components on and off.
-      this.setState({ filtersApplied: true })
-    }
-
+    //   // the 'all' filter is the state for no filters applied
+    //   // so set the filters applied to false
+    //   this.setState({ filtersApplied: false })
+    // } else {
+    //   // When applying filters to the model output, this piece of state 
+    //   // can be used to programatically toggle components on and off.
+    //   this.setState({ filtersApplied: true })
+    // }
     this.props.setGeoFilter(filter)
   }
   

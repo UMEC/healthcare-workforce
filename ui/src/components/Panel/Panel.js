@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 
 class Panel extends Component {
@@ -6,6 +7,10 @@ class Panel extends Component {
     super(props);
 
     this.handleGeoFilterChange = this.handleGeoFilterChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.handleGeoFilterUpdate('State of Utah');
   }
 
   scrambleString = (string) => {
@@ -17,7 +22,8 @@ class Panel extends Component {
   }
 
   handleGeoFilterChange(e) {
-    let newGeoFilter = { geo: this.props.modelFilters.allFilters.geos[e.target.value] };
+    let newGeoFilter = { geo: this.props.geoProfile[e.target.value] };
+    
     this.props.handleGeoFilterUpdate(newGeoFilter);
   }
 
@@ -27,7 +33,7 @@ class Panel extends Component {
         <select 
           value={this.props.modelFilters.activeFilters.geo.area}
           onChange={this.handleGeoFilterChange}>
-          {_.map(this.props.modelFilters.allFilters.geos, geo => {
+          {_.map(this.props.geoProfile, geo => {
             return (
               <option
                 key={this.scrambleString(geo.area)}
@@ -43,4 +49,11 @@ class Panel extends Component {
 
 };
 
-export default Panel;
+const mapStateToProps = (state) => {
+  return {
+    geoProfile: state.geoProfile,
+    modelFilters: state.modelFilters,
+  }
+}
+
+export default connect(mapStateToProps)(Panel);
