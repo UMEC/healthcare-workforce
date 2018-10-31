@@ -12,11 +12,11 @@ Preventive,Well-Child Visits-Infant,Sensory Screening,Vision Screening,1.00
 Preventive,Well-Child Visits-Infant,Sensory Screening,Hearing Screening,0.50
 Preventive,Well-Child Visits-Infant,Immunization,Hep B,0.50
 Preventive,Well-Child Visits-Infant,Immunization,Rotavirus,0.50
-Preventive,Well-Child Visits-Infant,Immunization,DTaP,0.50
+Preventive,Well-Child Visits-Infant,Immunization,DTap,0.50
 Preventive,Well-Child Visits-Infant,Immunization,Hib,0.50
 Preventive,Well-Child Visits-Infant,Immunization,PCV12,0.50
 Preventive,Well-Child Visits-Infant,Immunization,IPV,0.50
-Preventive,Well-Child Visits-Infant,Immunization,flu,1.00
+Preventive,Well-Child Visits-Infant,Immunization,Influenza,1.00
 Preventive,Well-Child Visits-Infant,Lab,Newborn Blood,0.33
 Preventive,Well-Child Visits-Infant,Lab,Newborn Bilirubin,0.17
 Preventive,Well-Child Visits-Infant,Lab,Anemia Screening,0.17
@@ -36,7 +36,7 @@ Preventive,Well Child Visits-Early Childhood,Physical Exam,Physical Exam,1.00
 Preventive,Well Child Visits-Early Childhood,Sensory Screening,Vision Screening,1.00
 Preventive,Well Child Visits-Early Childhood,Sensory Screening,Hearing Screening,1.00
 Preventive,Well Child Visits-Early Childhood,Immunization,Hep B,0.00
-Preventive,Well Child Visits-Early Childhood,Immunization,Dtap,0.14
+Preventive,Well Child Visits-Early Childhood,Immunization,DTap,0.14
 Preventive,Well Child Visits-Early Childhood,Immunization,Hib,0.14
 Preventive,Well Child Visits-Early Childhood,Immunization,PCV13,0.14
 Preventive,Well Child Visits-Early Childhood,Immunization,IPV,0.00
@@ -66,7 +66,7 @@ Preventive,Well Child Visits-Mid Childhood,Immunization,Polio,0.17
 Preventive,Well Child Visits-Mid Childhood,Immunization,Hib,0.00
 Preventive,Well Child Visits-Mid Childhood,Immunization,MMR,0.17
 Preventive,Well Child Visits-Mid Childhood,Immunization,VAR,0.14
-Preventive,Well Child Visits-Mid Childhood,Immunization,Flu,1.00
+Preventive,Well Child Visits-Mid Childhood,Immunization,Influenza,1.00
 Preventive,Well Child Visits-Mid Childhood,Lab,Anemia Screening,1.00
 Preventive,Well Child Visits-Mid Childhood,Lab,Lead Screening,0.33
 Preventive,Well Child Visits-Mid Childhood,Lab,Dyslipidemia Screening,0.50
@@ -90,7 +90,7 @@ Preventive,Well-Child Visits-Adolescence,Physical Screening,Obesity Screening,1.
 Preventive,Well-Child Visits-Adolescence,Lab,HIV Screening,1.00
 Preventive,Additional Screening: STI,Lab,Gonorrhea Screening,1.00
 Preventive,Additional Screening: STI,Lab,Chlamydia Screening,1.00
-Preventive,Well-Child Visits-Adolescence,Immunization,Flu,1.00
+Preventive,Well-Child Visits-Adolescence,Immunization,Influenza,1.00
 Preventive,Well-Child Visits-Adolescence,Immunization,Meningococcal,0.00
 Preventive,Well-Child Visits-Adolescence,Immunization,Tdap,0.00
 Preventive,Well-Child Visits-Adolescence,Immunization,HPV,0.00
@@ -196,7 +196,7 @@ Chronic,Chronic Maintenance Visit: Other,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Other,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Other,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Other,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Other,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Other,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Other,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Other,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Counseling,Visit wrap-up/care planning,1.00
@@ -207,7 +207,7 @@ Chronic,Chronic Maintenance Visit: Anxiety,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Anxiety,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Anxiety,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Anxiety,Counseling,CBT,1.00
@@ -219,7 +219,7 @@ Chronic,Chronic Maintenance Visit: Arthritis,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Arthritis,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Arthritis,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Arthritis,Education,Dietary/Physical Activity Guidance,1.00
@@ -230,11 +230,11 @@ Chronic,Chronic Maintenance Visit: Asthma,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Asthma,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Asthma,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Asthma,Education,Asthma action plan,1.00
-Chronic,Chronic Maintenance Visit: Asthma,Education,Inhaler use Guidance,1.00
+Chronic,Chronic Maintenance Visit: Asthma,Education,Inhaler use guidance,1.00
 Chronic,Chronic Maintenance Visit: CAD,Lab,Orders,1.00
 Chronic,Chronic Maintenance Visit: CAD,Lab,Results Consultation,1.00
 Chronic,Chronic Maintenance Visit: CAD,Measurements,BP,1.00
@@ -242,7 +242,7 @@ Chronic,Chronic Maintenance Visit: CAD,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: CAD,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: CAD,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: CAD,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: CAD,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: CAD,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: CAD,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: CAD,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: CAD,Education,Dietary/Physical Activity Guidance,1.00
@@ -253,7 +253,7 @@ Chronic,Chronic Maintenance Visit: COPD,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: COPD,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: COPD,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: COPD,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: COPD,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: COPD,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: COPD,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: COPD,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: COPD,Education,Exercise & COPD Management,1.00
@@ -264,7 +264,7 @@ Chronic,Chronic Maintenance Visit: Diabetes,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Diabetes,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Diabetes,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Diabetes,Education,Control: Weight; Hypertension; Hyperlipidemia; Smoking,1.00
@@ -279,7 +279,7 @@ Chronic,Chronic Maintenance Visit: Hyperlipidemia,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Hyperlipidemia,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Hyperlipidemia,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Hyperlipidemia,Education,Dietary/Physical Activity Guidance,1.00
@@ -290,7 +290,7 @@ Chronic,Chronic Maintenance Visit: Hypertension,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Hypertension,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Hypertension,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Hypertension,Education,Dietary/Physical Activity Guidance,1.00
@@ -301,7 +301,7 @@ Chronic,Chronic Maintenance Visit: Depression,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Depression,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Depression,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Depression,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Depression,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Depression,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Depression,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Depression,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Depression,Counseling,Psychotherapy,1.00
@@ -312,7 +312,7 @@ Chronic,Chronic Maintenance Visit: Osteoporosis,Measurements,Temp,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Measurements,Weight,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Patient History,Data Collection,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Patient History,Interval history/Consultation,1.00
-Chronic,Chronic Maintenance Visit: Osteoporosis,Pharmacological Treatment/Mgmt,Condition Consultation,1.00
+Chronic,Chronic Maintenance Visit: Osteoporosis,Pharmacological Treatment/Mgmt,Condition Rx consultation,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Physical Exam,Problem Oriented Physical,1.00
 Chronic,Chronic Maintenance Visit: Osteoporosis,Education,Dietary/Physical Activity Guidance,1.00

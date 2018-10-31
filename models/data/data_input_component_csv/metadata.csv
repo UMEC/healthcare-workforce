@@ -1,5 +1,5 @@
 model_version,model_date,model_updated_by,,
- 0.90 ,2018-10-30,Anne Fischer,,
+ 1.00 ,2018-10-31,Anne Fischer,,
 <<end>>,,,,
 ,This document is the Input Data Component of the Workforce Optimization Tool for further information please see XXXXXXX,,,
 ,,,,
@@ -13,16 +13,16 @@ model_version,model_date,model_updated_by,,
 ,Data Model History,,,
 ,,,,
 ,Version,Author,Date,Summary of changes
-,0.1,Richard Hopkins,2018-10-23,First version based on existing data sources
-,0.2,Richard Hopkins,2018-10-24,"Enhancements based on internal team feedback, splitting of serice/provider maps into three tabs to make model extension easier."
-,0.3,Anne Fischer,2018-10-24,Re-architected tabs and simplified data model
-,0.4,Anne Fischer,2018-10-27,Updated to fix small bugs
-,0.5,Anne Fischer,2018-10-27,Updated to add <<end>> statements where missing
-,0.6,Richard Hopkins,2018-10-28,Updated to fix small bugs and sanitized for publication
-,0.7,Anne Fischer,2018-10-28,Updated to address data issues and order of prov types in Supply
-,0.8,Anne Fischer,2018-10-28,Updated to fix minor errors and adjust prevalence to per 1000 rates
-,0.9,Anne Fischer,2018-10-30,"Updated to create chronic conditions for Obesity and Smoking, updated provider counts with more recent estimates, added sdoh_index information by county."
-,,,,
+, 0.10 ,Richard Hopkins,2018-10-23,First version based on existing data sources
+, 0.20 ,Richard Hopkins,2018-10-24,"Enhancements based on internal team feedback, splitting of serice/provider maps into three tabs to make model extension easier."
+, 0.30 ,Anne Fischer,2018-10-24,Re-architected tabs and simplified data model
+, 0.40 ,Anne Fischer,2018-10-27,Updated to fix small bugs
+, 0.50 ,Anne Fischer,2018-10-27,Updated to add <<end>> statements where missing
+, 0.60 ,Richard Hopkins,2018-10-28,Updated to fix small bugs and sanitized for publication
+, 0.70 ,Anne Fischer,2018-10-28,Updated to address data issues and order of prov types in Supply
+, 0.80 ,Anne Fischer,2018-10-28,Updated to fix minor errors and adjust prevalence to per 1000 rates
+, 0.90 ,Anne Fischer,2018-10-30,"Updated to create chronic conditions for Obesity and Smoking, updated provider counts with more recent estimates, added sdoh_index information by county."
+, 1.00 ,Anne Fischer,2018-10-31,Updated with small data fixes for capitalization consistency
 ,,,,
 ,,,,
 ,,,,
