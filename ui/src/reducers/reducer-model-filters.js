@@ -136,6 +136,7 @@ let defaultFilterState = {
     }
   }
 }
+
 export default (state = defaultFilterState, action) => {
   switch (action.type) {
     case SET_MODEL_GEO_FILTER:

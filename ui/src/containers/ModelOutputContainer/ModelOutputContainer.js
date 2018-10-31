@@ -7,6 +7,7 @@ import ViewSection from '../../components/ViewSection';
 import ViewContainer from '../../components/ViewContainer';
 import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
+import StateMap from '../../components/StateMap';
 import ProviderRoles from '../../modules/ProviderRoles';
 
 import { SET_MODEL_GEO_FILTER } from '../../actions';
@@ -63,6 +64,10 @@ class ModelOutputContainer extends Component {
           <ViewHeader 
             currentGeoName={this.props.modelFilters.activeFilters.geo.area}  />
           <div className="view-body">
+            <ViewSection>
+              <StateMap 
+                handleGeoFilterUpdate={this.handleGeoFilterUpdate} />
+            </ViewSection>
             <ViewSection 
               updateModelAttributes={this.updateModelAttributes} title="">
               <ProviderRoles

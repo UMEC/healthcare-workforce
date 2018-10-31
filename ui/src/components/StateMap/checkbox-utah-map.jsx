@@ -2,6 +2,8 @@ import React from 'react';
 import { SVGMap } from 'react-svg-map';
 import Utah from './utah';
 import { getLocationName, getLocationSelected } from './utils';
+// import { connect } from 'http2';
+import { connect as reduxConnect } from 'react-redux';
 //import '../../../src/svg-map.scss';
 
 class CheckboxUtahMap extends React.Component {
@@ -47,6 +49,9 @@ class CheckboxUtahMap extends React.Component {
 	handleLocationClick(event) {
 		const clickedLocation = getLocationName(event);
 		const isSelected = getLocationSelected(event);
+
+		let newGeoFilter = { geo: this.props.geoProfile[clickedLocation] };
+		this.props.handleGeoFilterUpdate(newGeoFilter);
 
 		this.setState(prevState => {
 			let selectedLocations = new Set(prevState.selectedLocations);
@@ -116,4 +121,10 @@ class CheckboxUtahMap extends React.Component {
 	}
 }
 
-export default CheckboxUtahMap;
+const mapStateToProps = (state) => {
+	return {
+		geoProfile: state.geoProfile,
+	}
+}
+
+export default reduxConnect(mapStateToProps)(CheckboxUtahMap);
