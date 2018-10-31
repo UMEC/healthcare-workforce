@@ -65,10 +65,7 @@ function deleteDataSourceFile(req, res, sourceFolder) {
 
 /* Archive a specific file. */
 function archiveFile(oldpath, filename) {
-  const options = {
-    hour12: false, day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
-  };
-  const thisDate = new Date('en-US', options).toLocaleString()
+  const thisDate = new Date().toISOString()
     .split(' ')
     .join('')
     .split(':')
