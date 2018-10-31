@@ -65,9 +65,6 @@ function deleteDataSourceFile(req, res, sourceFolder) {
 
 /* Archive a specific file. */
 function archiveFile(oldpath, filename) {
-  const options = {
-    hour12: false, day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
-  };
   const thisDate = new Date().toISOString()
     .split(' ')
     .join('')
@@ -75,7 +72,6 @@ function archiveFile(oldpath, filename) {
     .join('')
     .split('/')
     .join('');
-  console.log("My date: " + thisDate);
   const newpath = `${DIR_ARCHIVED_FILES}${thisDate}_${filename}`;
   fs.renameSync(oldpath, newpath);
 }
