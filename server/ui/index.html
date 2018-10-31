@@ -9,7 +9,19 @@
     $( document ).ready(function() {
       $('#profile').on('change', function() {
         var newJson;
-        if (this.value === 'provider') {
+        if (this.value === 'all') {
+          newJson = {"params": {"request_type": "run_model"}};
+        } else if (this.value === 'staffingall') {
+          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"all_combination"}};
+        } else if (this.value === 'wagemax') {
+          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_max", "wage_max":"20000"}};
+        } else if (this.value === 'wageweight') {
+          newJson = {"params": {"request_type":"run_model", "geo":"Wayne County", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight":"0.5"}};
+        } else if (this.value === 'currentstaffingall') {
+          newJson = {"params": {"request_type":"run_model", "geo":"Beaver County", "year":"2019", "option":"ideal_staffing_current", "sub_option":"all_combination"}};
+        } else if (this.value === 'serviceallocation') {
+          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"service_allocation"}};
+        } else if (this.value === 'provider') {
           newJson = {"params": {"request_type": "provider_profile","value": "Psych"}};
         } else if (this.value === 'service') {
           newJson = {"params": {"request_type": "supplier_profile","value": "Psych"}};
@@ -17,10 +29,11 @@
           newJson = {"params": {"request_type": "geo_profile","value": "Psych"}};
         } else {
           // you added another profile type? you better update this code then..
-          throw new Error('Unimplemented selected profile type')
         }
         $('#inputTextArea').val(JSON.stringify(newJson));
-        prettyPrint('inputTextArea');
+        if (newJson) {
+          prettyPrint('inputTextArea');
+        }
       });
 
       $(document).on('submit', '#uploadform', uploadFile);
@@ -66,6 +79,7 @@
 
     function sendRequest(areaId) {
       var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
+      $('#responseData').html('A moment or two, please..');
       $.ajax({
         url: "./analytics",
         type: "POST",
@@ -73,20 +87,31 @@
         data: payload,
         contentType: "application/json"
       }).done(function( postData ) {
-          var modelId = postData.modelId;
-          console.log("ModelId: " + modelId)
-          console.log("Post response: " + JSON.stringify(postData));
-
-          $(window).delay(3000).queue(function() {
-            $.get( "./analytics/" + modelId)
-              .done(function( getData ) {
-                var pretty = JSON.stringify(getData, undefined, 4);
-                $('#responseData').html(pretty);
-              });
-
-            $(this).dequeue();
-          });
+          getResponse(postData.modelId, 1);
         });
+    }
+
+    function getResponse(modelId, attempts) {
+      $(window).delay(3000).queue(function() {
+        $.get( "./analytics/" + modelId)
+          .done(function( getData ) {
+            if (getData.status === "new") {
+              // model hasn't finished
+              if (attempts >= 5) {
+                // had enough
+                $('#responseData').html('Request timed out, please try again.');
+              } else {
+                // try again
+                getResponse(modelId, attempts+1);
+              }
+            } else {
+              var pretty = JSON.stringify(getData, undefined, 4);
+              $('#responseData').html(pretty);
+            }
+          });
+
+        $(this).dequeue();
+      });
     }
 
     function uploadFile(e) {
@@ -99,7 +124,7 @@
           url:'./source',
           processData: false,
           contentType: false,
-          async: false,
+          async: true,
           cache: false,
           data : form_data,
           success: function(response) {
@@ -185,7 +210,7 @@
       </p>
     </div>
     <div class="jumbotron"  style="padding:20px;" id="download">
-      <h2>Download Data Sources</h2>
+      <h2>Active Data Sources</h2>
       <table class="table" id="datasources">
           <thead class="thead-dark">
             <tr>
@@ -204,7 +229,7 @@
         </table>
     </div>
     <div class="jumbotron"  style="padding:20px;" id="download">
-      <h2>Download Archived Data Sources</h2>
+      <h2>Archived Data Sources</h2>
       <table class="table" id="archiveddatasources">
           <thead class="thead-dark">
             <tr>
@@ -224,10 +249,15 @@
     </div>
     <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;" id="request">
       <h2>Model Request</h2>
-      <select id="profile" class="form-control" style="width:200px;margin-bottom:5px;">
+      <select id="profile" class="form-control" style="width:400px;margin-bottom:5px;">
         <option value="">-- Select a template --</option>
+        <option value="all">Run All</option>
+        <option value="staffingall">State of Utah - Ideal Staffing - All Combinations</option>
+        <option value="wagemax">State of Utah - Ideal Staffing - Wage Max</option>
+        <option value="wageweight">Wayne County - Ideal Staffing - Wage Weight</option>
+        <option value="currentstaffingall">Beaver County - Ideal Current Staffing - All Combinations</option>
+        <option value="serviceallocation">State of Utah - Service Allocation</option>
         <option value="provider">Provider Profile</option>
-        <option value="service">Service Profile</option>
         <option value="geo">Geographic Profile</option>
       </select>
       <div class="ib-child" style="width:50%;">
