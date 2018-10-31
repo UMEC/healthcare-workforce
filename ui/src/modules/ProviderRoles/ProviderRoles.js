@@ -198,9 +198,8 @@ class ProviderRoles extends Component {
 
     const filteredProviders = this.filteredServicesByProvider()
 
-    let titleString = area !== 'all' 
-      ? `ProviderRoles for ${area}`
-      : `All Providers`;
+    let titleString = `ProviderRoles for ${area}`;
+    
     return (
       <>
         <p>{titleString}</p>

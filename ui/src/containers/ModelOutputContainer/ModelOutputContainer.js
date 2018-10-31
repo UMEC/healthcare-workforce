@@ -7,6 +7,7 @@ import ViewSection from '../../components/ViewSection';
 import ViewContainer from '../../components/ViewContainer';
 import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
+import StateMap from '../../components/StateMap';
 import ProviderRoles from '../../modules/ProviderRoles';
 
 import { SET_MODEL_GEO_FILTER } from '../../actions';
@@ -39,17 +40,16 @@ class ModelOutputContainer extends Component {
 
   handleGeoFilterUpdate(filter) {
 
-    if ( filter.geo.area === 'all') {
+    // if (filter.geo.area == 'State of Utah') {
       
-      // the 'all' filter is the state for no filters applied
-      // so set the filters applied to false
-      this.setState({ filtersApplied: false })
-    } else {
-      // When applying filters to the model output, this piece of state 
-      // can be used to programatically toggle components on and off.
-      this.setState({ filtersApplied: true })
-    }
-
+    //   // the 'all' filter is the state for no filters applied
+    //   // so set the filters applied to false
+    //   this.setState({ filtersApplied: false })
+    // } else {
+    //   // When applying filters to the model output, this piece of state 
+    //   // can be used to programatically toggle components on and off.
+    //   this.setState({ filtersApplied: true })
+    // }
     this.props.setGeoFilter(filter)
   }
   
@@ -61,8 +61,13 @@ class ModelOutputContainer extends Component {
     return (
       <>
         <ViewContainer>
-          <ViewHeader />
+          <ViewHeader 
+            currentGeoName={this.props.modelFilters.activeFilters.geo.area}  />
           <div className="view-body">
+            <ViewSection>
+              <StateMap 
+                handleGeoFilterUpdate={this.handleGeoFilterUpdate} />
+            </ViewSection>
             <ViewSection 
               updateModelAttributes={this.updateModelAttributes} title="">
               <ProviderRoles
