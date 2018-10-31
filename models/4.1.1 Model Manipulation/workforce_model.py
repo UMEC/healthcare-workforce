@@ -3,7 +3,7 @@
 
 # # Workforce Model
 
-# This program creates a pandas from the imported Excel spreadsheet.
+# This program creates a pandas dictionary from the imported Excel spreadsheet.
 # 
 # It can return three types of information as a result of requests from the front end:
 # 
@@ -14,6 +14,8 @@
 # * {"request_type": "geo_profile"}
 # 
 # * {"request_type": "provider_profile"}
+# 
+# It can also persist and 
 # 
 # #### Sample model save/load commands
 # 
@@ -32,17 +34,17 @@
 # 
 # * {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_max", "wage_max":"20000"}
 # 
-# * {"request_type":"run_model", "geo":"Wayne County", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight":"0.5"}
+# * FAIL {"request_type":"run_model", "geo":"Wayne County", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight":"0.5"} FAIL
 # 
 # * {"request_type":"run_model", "geo":"Beaver County", "year":"2019", "option":"ideal_staffing_current", "sub_option":"all_combination"}
 # 
-# * {"request_type":"run_model", "geo":"Washington County", "year":"2018", "option":"ideal_staffing_current", "sub_option":"wage_max", "wage_max":"40000"}
+# * {"request_type":"run_model", "geo":"Washington County", "year":"2018", "option":"ideal_staffing_current", "sub_option":"wage_max", "wage_max":"400000000"}
 # 
-# * {"request_type":"run_model", "geo":"Rich County", "year":"2018", "option":"ideal_staffing_current","sub_option":"wage_weight", "wage_weight":"0.75"}
+# * FAIL {"request_type":"run_model", "geo":"Rich County", "year":"2018", "option":"ideal_staffing_current","sub_option":"wage_weight", "wage_weight":"0.75"} FAIL
 # 
-# * {"request_type":"run_model", "geo":"Utah County", "year":"2020", "option":"service_allocation"}
+# * FAIL {"request_type":"run_model", "geo":"Utah County", "year":"2020", "option":"service_allocation"} FAIL
 # 
-# * {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"service_allocation"}
+# * FAIL {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"service_allocation"} FAIL
 # 
 # It can also process deltas to this information as a result of user input from the front end:
 # 
@@ -66,6 +68,7 @@ import json
 import sys
 import pickle
 import os
+import pandas as pd
 from allo_cal import main
 command="null"
 provider_type="null"
@@ -322,7 +325,7 @@ def df_to_json(dataframe):
     return json
 
 
-# This function returns the available years in the model; the user can select the individual year they wish to look at and send this back to the model.
+# This function returns the available years in the model; the user can select the individual year they wish to look at and send this back to the model.  At the moment, the routine deliberately restricts the return to the years 2018 to 2027.  Future enhancements may want to increase the amount of population data sent to the front end and provide a sliding window based on the current date...
 
 # In[15]:
 
@@ -332,7 +335,7 @@ def available_years():
     """
     out = ""
     my_dataframe = wfpd.dataframes['population']
-    list=my_dataframe.columns.values[3:]
+    list=my_dataframe.columns.values[11:21]
     out = ('{ "available_years":[')
     years = len(list)
     year_count=0
@@ -343,7 +346,8 @@ def available_years():
         else:
             out = out + ("]}")
         year_count = year_count + 1
-    return out
+    print (out)
+    return
 
 
 # This function returns the data relevant to each geographic area, by geographic area.  This includes the sdoh index and the details of the primary care providers in each of the geographic areas.
@@ -390,6 +394,23 @@ def geo_profile():
 
 
 def provider_profile():
+    """ Creates a easily addressable JSON string from the wfpd pandas dataframes that
+        reports back to the front end the following data:
+        
+        By provider, indexed on their abbreviated name:
+            the full name of the provider
+            the serive categories they support
+                the services that they support
+                    the max f2f time
+                    the min f2f time
+                    where the service is on their licence to operate
+            the supply profile of each provider by county
+                number of FTEs
+                growth trend
+                mean wage
+                wage trend
+                
+    """ 
     out = ""
     primary_key_df_name = 'provider_list'
     primary_key_column = 'provider_abbr'
@@ -467,13 +488,21 @@ def provider_profile():
     return out
 
 
-# These functions will serialize the pandas dictionary into a file and then retrieve them.
+# The following two functions will serialize the pandas dictionary into a file and then retrieve them.  
+# 
+# NB The commented out version of the save_model is less efficient, but results in a string that could be transmitted as part of a JSON string, rather than saved directly to disk.
 
 # In[18]:
 
 
 def save_model(filename):
-    #out = '"' + str(pickle.dumps(wfpd.dataframes,protocol=pickle.HIGHEST_PROTOCOL)) + '"'
+    """Turns our dictionary of pandas dataframes into a serialised form and saves it to disk
+
+        Parameters
+        ----------
+        filename : str, mandatory
+            The name of the file to be used
+    """
     #out = str(base64.b64encode(bytes(str(pickle.dumps(wfpd.dataframes,protocol=pickle.HIGHEST_PROTOCOL)), 'utf-8')))
     #out = '"' + out + '"'
     os.chdir(directory)
@@ -486,6 +515,13 @@ def save_model(filename):
 
 
 def load_model(filename):
+    """Turns pickled files back into a dictionary of pandas dataframes
+
+        Parameters
+        ----------
+        filename : str, mandatory
+            The name of the file to be loaded
+    """
     # global
     # retrieve file?
     # wfpd.dataframes = pickle.loads(string)
@@ -495,10 +531,42 @@ def load_model(filename):
     return '"Model loaded."'
 
 
+# The analytical model currently supports three optimisers.  These each have their own options.  The three optimisations are:
+# 
+# *Ideal Staffing* (greenfield model)
+# This model will use Linear Programming to simply calculate the optimum number and type of individuals to meet the clinical needs of the target population (at a county or state level).  The analysis can be influenced by contraints that include the maximum budget and/or a tradeoff between suitability (i.e. a balanced LTO score) and wage cost.
+# 
+# *Ideal Staffing Current* (brownfield model)
+# This model starts with an existing provider profile and uses clinical need and LTO to maximise the efficiency of the staff profile whilst minimizing staff changes.
+# 
+# *Service Allocation* (sharing the load)
+# This model attempts to equally spread the load of services across an existing population of provider types by allocating work in such a way that the burden of care is shared as equally as it can be.  This may be useful in situation where staff numbers are difficult to change quickly.
+# 
+# Further details on the options are in the parameters descriptions below:
+
 # In[20]:
 
 
 def run_model(geo,year,option,sub_option,wage_max,wage_weight):
+    """Runs the model optimizers based on a series of UI deltas overlaid on
+        the dictionary of pandas dataframes (which represent the Excel model input) 
+
+        Parameters
+        ----------
+        geo : str, mandatory
+            The area on which to conduct the analysis
+        year : str, mandatory
+            The year to be analysed (currently not used)
+        option : str, mandatory
+            One of - 'ideal_staffing', 'ideal_staffing_current', 'service_allocation'
+        sub_option : str, mandatory
+            One of - 'all_combination', 'wage_max', 'wage_weight'
+        wage_max : str, optional
+            A string representation of an integer, only needed if sub_option is wage_max
+        wage_weight : str, optional
+            A string representation of a float between 0 and 1, only needed if sub_option is wage_weight
+    """  
+    # validates options and sets UI based parameters
     sub_option_value = None
     pos_option = ('ideal_staffing', 'ideal_staffing_current', 'service_allocation')
     pos_sub_option = ("all_combination", "wage_max", "wage_weight")
@@ -509,6 +577,9 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     elif sub_option == "wage_weight":
         sub_option_value = float(wage_weight)
     
+    # gets the latest version of the dictionary dataframes to pass into the 
+    # optimizer model.  This ensures that any deltas processed from the UI are taken
+    # into account
     pop_chronic_trend = wfpd.dataframes['pop_chronic_trend']
     pop_chronic_prev = wfpd.dataframes['pop_chronic_prev']
     chron_care_freq = wfpd.dataframes['chron_care_freq']
@@ -523,33 +594,79 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     overhead_work = wfpd.dataframes['overhead_work']
     sdoh_score = geo_area.loc[geo_area['geo_area'] == geo,'sdoh_index']
     
-    # from here we can set them as default
+    # additional parameters used to call the model but not currently
+    # in the spreadsheet or the user interface
+    
     sut_target = 0.8 # sutability target 0.8 is ideal status
     sdoh_target = 3 # Social Determinance of Health - currently impact to F2F: if a county's SDoH < target, then using minimum F2F
     FTE_time = 60*2080 # perhaps default 124,800
+    
+    # call the model
     out = main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, collapse_group, FTE_time, 
      sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, 
              geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , 
              provider_list , encounter_detail, overhead_work)
+    # return the results dictionary
     return out
 
 
-# In[23]:
+# The result returned from the model is a complex structure, so this function breaks it down into name/value pairs and then dumps them to a JSON string for return to the end user
+# 
+# ###NOTE
+# Currently the detailed results part of the results dictionary are not returned as they are not human readable.  When the UI can be extended with the detailed results, then it is suggested that they are returned for visualisation.  At the moment, the wage, suitability and FTE profiles by provider are returned.
+
+# In[21]:
 
 
-# check to see if command is understood
+def process_result(result):
+    """Simplifies the results of the optimizer models into a simple JSON string.  Currently only three parts of the
+        optimizer model results are supported.  The detail is too hard for a human to read as a JSON string and
+        not yet supported by the UI...
+
+        Parameters
+        ----------
+        result : dict, mandatory
+            The results dictionary, which has four parts (allocation, total wage, suitability and detailed results)
+    """  
+    if isinstance(result, str):
+        respond(None,command,provider_type, "ERROR: No possible optimization.")
+        
+    allocation = (result['allocation'])
+    allocation.rename(columns={'provider_abbr':'name' ,0: 'FTE'}, inplace=True)
+    
+    allocation['total_wage'] = result['total_wage']
+    allocation['total_sutab'] = result['total_sutab']
+    
+    results_dict ={}
+    results_dict = allocation.to_dict()
+    
+    #total_wage = result['total_wage']
+    #total_sutab = result['total_sutab']
+    #results_dict['total_wage'] = total_wage
+    #results_dict['total_sutab'] = total_sutab
+    
+    out = json.dumps(results_dict)
+    return out
+
+
+# This continues the main processing routine of the program and farms out the different request types out to varying functions.  Each of them returns a result as a JSON string that is then returned to the caller via a respond message
+
+# In[22]:
+
+
 if command == "available_years":
-    result = available_years()
-elif command == "geo_profile":
-    result = geo_profile()
-elif command == "provider_profile":
-    result = provider_profile()
+    result = available_years() # respond to UI request for trending/trend information
+elif command == "geo_profile":  
+    result = geo_profile() # respond to UI request for geographic area information
+elif command == "provider_profile": 
+    result = provider_profile() # respond to UI request for provider information
 elif command == "save_model":
-    result = save_model(filename)
+    result = save_model(filename) # restore/unpic#kle the current dataframe dictionary
 elif command == "load_model":
-    result = load_model(filename)
+    result = load_model(filename) # pickle the current dataframe dictionary
 elif command == "run_model": 
-    result = run_model(geo,year,option,sub_option,wage_max,wage_weight)
+    result = run_model(geo,year,option,sub_option,wage_max,wage_weight) # run the optimizer
+    result = process_result(result) # process complex result into a JSON string
 else:
     respond(None,command,provider_type, "ERROR: Unknown function call.")
 respond(str(result),str(command),str(value))

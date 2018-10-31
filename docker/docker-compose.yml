@@ -3,7 +3,5 @@ services:
   umec-hw:
     image: umec/healthcare-workforce:0.1
     ports:
-     - "80:80"
-     - "3000:3000"
+     - "80:3000"
      - "5000:5000"
-    privileged: true

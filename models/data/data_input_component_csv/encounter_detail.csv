@@ -43,7 +43,7 @@ Preventive,Well Child Visits-Early Childhood,Immunization,IPV,0.00
 Preventive,Well Child Visits-Early Childhood,Immunization,Influenza,0.57
 Preventive,Well Child Visits-Early Childhood,Immunization,MMR,0.14
 Preventive,Well Child Visits-Early Childhood,Immunization,VAR,0.14
-Preventive,Well Child Visits-Early Childhood,Immunization,Hep A ,0.29
+Preventive,Well Child Visits-Early Childhood,Immunization,Hep A,0.29
 Preventive,Well Child Visits-Early Childhood,Lab,Anemia Screening,1.00
 Preventive,Well Child Visits-Early Childhood,Lab,Lead Screening,0.50
 Preventive,Well Child Visits-Early Childhood,Lab,Dyslipidemia Screening,0.29
@@ -142,12 +142,12 @@ Preventive,Adult Wellness Visits-Over 65,Immunization,VAR,0.05
 Preventive,Adult Wellness Visits-Over 65,Oral Health,Identify Dental Home,1.00
 Preventive,Adult Wellness Visits-Over 65,Counseling,Advanced Care Planning,1.00
 Preventive,Adult Wellness Visits-Over 65,Counseling,Visit wrap-up/care planning,1.00
-Preventive,Addl Screen and Counsel: Smoker,Physical Screening,Abdominal aortic aneurysm screening,1.00
-Preventive,Addl Screen and Counsel: Smoker,Physical Screening,Lung Cancer Screening,1.00
-Preventive,Addl Screen and Counsel: Smoker,Counseling,Tobacco Use Counseling,1.00
-Preventive,Addl Screen and Counsel: Obesity,Counseling,Obesity Counseling,1.00
-Preventive,Addl Screen and Counsel: Obesity,Physical Screening,Diabetes Screening,1.00
-Preventive,Addl Screen and Counsel: Obesity,Counseling,Diet/Physical Activity Counseling,1.00
+Chronic,Chronic Care Needs: Obesity,Physical Screening,Abdominal aortic aneurysm screening,1.00
+Chronic,Chronic Care Needs: Smoker,Physical Screening,Lung Cancer Screening,1.00
+Chronic,Chronic Care Needs: Smoker,Counseling,Tobacco Use Counseling,1.00
+Chronic,Chronic Care Needs: Obesity,Counseling,Obesity Counseling,1.00
+Chronic,Chronic Care Needs: Obesity,Physical Screening,Diabetes Screening,1.00
+Chronic,Chronic Care Needs: Obesity,Counseling,Diet/Physical Activity Counseling,1.00
 Preventive,Addl Screen and Counsel: BRCA,Counseling,BRCA risk assessment and genetic counseling,1.00
 Preventive,Addl Counsel: Breast Cancer Prev Rx,Counseling,Breast Cancer Preventive Medications,1.00
 Preventive,Addl Counsel: Folic Acid Supp,Counseling,Folic Acid Supplementation,1.00
@@ -179,6 +179,15 @@ Acute,Acute Level 3 visit,Lab,Orders,1.00
 Acute,Acute Level 3 visit,Lab,Results Consultation,1.00
 Acute,Acute Level 3 visit,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
 Acute,Acute Level 3 visit,Counseling,Visit wrap-up/care planning,1.00
+Acute,Acute Level 4 visit,Measurements,BP,1.00
+Acute,Acute Level 4 visit,Measurements,Weight,1.00
+Acute,Acute Level 4 visit,Measurements,Temp,1.00
+Acute,Acute Level 4 visit,Patient History,Data Collection,1.00
+Acute,Acute Level 4 visit,Physical Exam,Problem Oriented Physical,1.00
+Acute,Acute Level 4 visit,Lab,Orders,1.00
+Acute,Acute Level 4 visit,Lab,Results Consultation,1.00
+Acute,Acute Level 4 visit,Pharmacological Treatment/Mgmt,Orders/scripts,1.00
+Acute,Acute Level 4 visit,Counseling,Visit wrap-up/care planning,1.00
 Chronic,Chronic Maintenance Visit: Other,Counseling,Visit wrap-up/care planning,1.00
 Chronic,Chronic Maintenance Visit: Other,Lab,Orders,1.00
 Chronic,Chronic Maintenance Visit: Other,Lab,Results Consultation,1.00

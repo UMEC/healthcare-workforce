@@ -1,5 +1,5 @@
 model_version,model_date,model_updated_by,,
- 0.80 ,2019-10-28,Anne Fischer,,
+ 0.90 ,2018-10-30,Anne Fischer,,
 <<end>>,,,,
 ,This document is the Input Data Component of the Workforce Optimization Tool for further information please see XXXXXXX,,,
 ,,,,
@@ -20,8 +20,8 @@ model_version,model_date,model_updated_by,,
 ,0.5,Anne Fischer,2018-10-27,Updated to add <<end>> statements where missing
 ,0.6,Richard Hopkins,2018-10-28,Updated to fix small bugs and sanitized for publication
 ,0.7,Anne Fischer,2018-10-28,Updated to address data issues and order of prov types in Supply
-,0.8,Anne Fischer,2019-10-28,Updated to fix minor errors and adjust prevalence to per 1000 rates
-,,,,
+,0.8,Anne Fischer,2018-10-28,Updated to fix minor errors and adjust prevalence to per 1000 rates
+,0.9,Anne Fischer,2018-10-30,"Updated to create chronic conditions for Obesity and Smoking, updated provider counts with more recent estimates, added sdoh_index information by county."
 ,,,,
 ,,,,
 ,,,,
