@@ -25,7 +25,7 @@ It can be started via the following steps:
 2. `npm install` and `npm start` from the root (this) directory
 3. `npm install` and `npm start` from the ui directory
 4. Install the python environment as described below
-5. The application will be available on http://localhost:3000/
+5. The application will be available on http://localhost:5000/api/admin
 
 ### Python Installation
 
