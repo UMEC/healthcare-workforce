@@ -23,14 +23,14 @@ class Panel extends Component {
 
   handleGeoFilterChange(e) {
     let newGeoFilter = { geo: this.props.geoProfile[e.target.value] };
-    
+
     this.props.handleGeoFilterUpdate(newGeoFilter);
   }
 
   render() {
     return (
       <aside className="panel">
-        <select 
+        <select className="btn btn-sm btn-outline-secondary-nohover dropdown-toggle"
           value={this.props.modelFilters.activeFilters.geo.area}
           onChange={this.handleGeoFilterChange}>
           {_.map(this.props.geoProfile, geo => {

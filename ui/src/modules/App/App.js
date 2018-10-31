@@ -25,19 +25,22 @@ class App extends Component {
   componentDidMount() {
     this.props.onRequestAnalyticsIds();
   }
-  
+
   render() {
     return (
       <Router>
-        <div className="container">
-          <AppHeader>
-            <div className="branding">
-
-            </div>
-          </AppHeader>
+        <div>
+          <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">UMEC Gap Analysis Tool</a>
+            <ul class="navbar-nav px-3">
+              <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            </ul>
+          </nav>
           <AppContent>
-            <Route exact path="/" component={ModelOutputContainer} />
-          </AppContent>
+              <Route exact path="/" component={ModelOutputContainer} />
+            </AppContent>
         </div>
       </Router>
     );
