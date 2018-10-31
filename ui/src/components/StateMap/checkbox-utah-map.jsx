@@ -49,8 +49,11 @@ class CheckboxUtahMap extends React.Component {
 	handleLocationClick(event) {
 		const clickedLocation = getLocationName(event);
 		const isSelected = getLocationSelected(event);
+		let activeFilterArea = this.props.modelFilters.activeFilters.geo.area;
 
-		let newGeoFilter = { geo: this.props.geoProfile[clickedLocation] };
+		let newGeoFilter = activeFilterArea !== clickedLocation
+			? { geo: this.props.geoProfile[clickedLocation] }
+			: { geo: this.props.geoProfile['State of Utah'] };
 		this.props.handleGeoFilterUpdate(newGeoFilter);
 
 		this.setState(prevState => {
@@ -124,6 +127,7 @@ class CheckboxUtahMap extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		geoProfile: state.geoProfile,
+		modelFilters: state.modelFilters,
 	}
 }
 
