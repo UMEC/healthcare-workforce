@@ -30,11 +30,10 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 );
 
-const persistedState = loadStateFromSessionStorage();
+// const persistedState = loadStateFromSessionStorage();
 
 const store = createStore(
   rootReducer,
-  persistedState,
   enhancer,
 );
 
