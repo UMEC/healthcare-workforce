@@ -11,6 +11,7 @@ The server can be started via the following steps:
 
 ## Documentation
 The swagger API specification is available here: https://app.swaggerhub.com/apis/UMEC/healthcare-workforce/1.0.0
+
 There's also a copy in this repository [here](ui/index.html).
 
 ## Testing

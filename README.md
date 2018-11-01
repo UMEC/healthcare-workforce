@@ -19,7 +19,7 @@ A readme for the server is available [here](server/README.md).
 A readme for the model is available [here](models/README.md).
 
 
-## Getting Started - Installing the Application Manually (Developer).
+## Getting Started - Installing the Application Manually (Developer)
 You can make changes to this application. It is built on React (UI), NodeJS (server) and Python (model).
 It can be started via the following steps:
 1. Download npm

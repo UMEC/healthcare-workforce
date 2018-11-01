@@ -9,7 +9,7 @@
       	color: #444;
       	margin-right: 24px;
       }
-
+      
       h1	{
       	font-size: 25px;
       }
@@ -26,7 +26,7 @@
       	color: #ddd;
       	background-color: #ddd;
       }
-
+      
       .app-desc {
         clear: both;
         margin-left: 20px;
@@ -37,135 +37,135 @@
       .license-info {
         margin-left: 20px;
       }
-
+      
       .license-url {
         margin-left: 20px;
       }
-
+      
       .model {
         margin: 0 0 0px 20px;
       }
-
+      
       .method {
         margin-left: 20px;
       }
-
+      
       .method-notes	{
       	margin: 10px 0 20px 0;
       	font-size: 90%;
       	color: #555;
       }
-
+      
       pre {
         padding: 10px;
         margin-bottom: 2px;
       }
-
+      
       .http-method {
        text-transform: uppercase;
       }
-
+      
       pre.get {
         background-color: #0f6ab4;
       }
-
+      
       pre.post {
         background-color: #10a54a;
       }
-
+      
       pre.put {
         background-color: #c5862b;
       }
-
+      
       pre.delete {
         background-color: #a41e22;
       }
-
+      
       .huge	{
       	color: #fff;
       }
-
+      
       pre.example {
         background-color: #f3f3f3;
         padding: 10px;
         border: 1px solid #ddd;
       }
-
+      
       code {
         white-space: pre;
       }
-
+      
       .nickname {
         font-weight: bold;
       }
-
+      
       .method-path {
         font-size: 1.5em;
         background-color: #0f6ab4;
       }
-
+      
       .up {
         float:right;
       }
-
+      
       .parameter {
         width: 500px;
       }
-
+      
       .param {
         width: 500px;
         padding: 10px 0 0 20px;
         font-weight: bold;
       }
-
+      
       .param-desc {
         width: 700px;
         padding: 0 0 0 20px;
         color: #777;
       }
-
+      
       .param-type {
         font-style: italic;
       }
-
+      
       .param-enum-header {
       width: 700px;
       padding: 0 0 0 60px;
       color: #777;
       font-weight: bold;
       }
-
+      
       .param-enum {
       width: 700px;
       padding: 0 0 0 80px;
       color: #777;
       font-style: italic;
       }
-
+      
       .field-label {
         padding: 0;
         margin: 0;
         clear: both;
       }
-
+      
       .field-items	{
       	padding: 0 0 15px 0;
       	margin-bottom: 15px;
       }
-
+      
       .return-type {
         clear: both;
         padding-bottom: 10px;
       }
-
+      
       .param-header {
         font-weight: bold;
       }
-
+      
       .method-tags {
         text-align: right;
       }
-
+      
       .method-tag {
         background: none repeat scroll 0% 0% #24A600;
         border-radius: 3px;
@@ -181,7 +181,7 @@
   <h1>UMEC Healthcare Workforce API</h1>
     <div class="app-desc">A series of APIs for the healthcare workforce analytical model.</div>
     <div class="app-desc">Version: 1.0.0</div>
-    <div class="app-desc">BasePath:/UMEC/healthcare-workforce/1.0.0</div>
+    <div class="app-desc">BasePath: http://localhost:5000/api</div>
     <div class="license-info">Refer to Github for License</div>
     <div class="license-url">https://github.com/UMEC/healthcare-workforce</div>
   <h2>Access</h2>
@@ -191,10 +191,14 @@
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
+  <h4><a href="#Admin">Admin</a></h4>
+  <ul>
+  <li><a href="#adminGet"><code><span class="http-method">get</span> /admin</code></a></li>
+  </ul>
   <h4><a href="#Analytics">Analytics</a></h4>
   <ul>
   <li><a href="#createAnalyticModel"><code><span class="http-method">post</span> /analytics</code></a></li>
-  <li><a href="#createAnalyticModel_1"><code><span class="http-method">get</span> /analytics/{modelId}</code></a></li>
+  <li><a href="#getAnalyticModel"><code><span class="http-method">get</span> /analytics/{modelId}</code></a></li>
   <li><a href="#getAnalyticalModels"><code><span class="http-method">get</span> /analytics</code></a></li>
   <li><a href="#persistAnalyticModel"><code><span class="http-method">post</span> /analytics/{modelId}/persist</code></a></li>
   <li><a href="#updateAnalyticModel"><code><span class="http-method">put</span> /analytics/{modelId}</code></a></li>
@@ -202,8 +206,11 @@
   <h4><a href="#Source">Source</a></h4>
   <ul>
   <li><a href="#addSource"><code><span class="http-method">post</span> /source</code></a></li>
+  <li><a href="#deleteArchivedExternalDataSource"><code><span class="http-method">delete</span> /source/archived/{filename}</code></a></li>
+  <li><a href="#getArchivedExternalDataSource"><code><span class="http-method">get</span> /source/archived/{filename}</code></a></li>
   <li><a href="#getExternalDataSource"><code><span class="http-method">get</span> /source/{filename}</code></a></li>
   <li><a href="#list"><code><span class="http-method">get</span> /source</code></a></li>
+  <li><a href="#list_1"><code><span class="http-method">get</span> /source/archived</code></a></li>
   </ul>
   <h4><a href="#User">User</a></h4>
   <ul>
@@ -214,6 +221,31 @@
   <li><a href="#setUserSession"><code><span class="http-method">post</span> /user/session</code></a></li>
   </ul>
 
+  <h1><a name="Admin">Admin</a></h1>
+  <div class="method"><a name="adminGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin</code></pre></div>
+    <div class="method-summary">Access the administration interface. (<span class="nickname">adminGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Analytics">Analytics</a></h1>
   <div class="method"><a name="createAnalyticModel"></a>
     <div class="method-path">
@@ -232,7 +264,7 @@
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
       <div class="param">body <a href="#AnalyticModelPostReq">AnalyticModelPostReq</a> (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
     </div>  <!-- field-items -->
 
@@ -242,7 +274,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#AnalyticModelPostResp">AnalyticModelPostResp</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -264,17 +296,17 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="createAnalyticModel_1"></a>
+  <div class="method"><a name="getAnalyticModel"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /analytics/{modelId}</code></pre></div>
-    <div class="method-summary">Retrieves status and data of this analytical model (<span class="nickname">createAnalyticModel_1</span>)</div>
+    <div class="method-summary">Retrieves status and data of this analytical model (<span class="nickname">getAnalyticModel</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">modelId (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the analytic model format: int64</div>    </div>  <!-- field-items -->
 
 
@@ -285,7 +317,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#AnalyticModelGetResp">AnalyticModelGetResp</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -323,7 +355,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#AnalyticModelGetListResp">AnalyticModelGetListResp</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -352,7 +384,7 @@
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">modelId (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the analytic model format: int64</div>    </div>  <!-- field-items -->
 
 
@@ -387,7 +419,7 @@
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">modelId (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of analytic model that needs to be updated format: int64</div>    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -399,7 +431,7 @@
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
       <div class="param">body <a href="#AnalyticModelPostReq">AnalyticModelPostReq</a> (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
     </div>  <!-- field-items -->
 
@@ -409,7 +441,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#AnalyticModelPutResp">AnalyticModelPutResp</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -452,7 +484,7 @@
     <h3 class="field-label">Form parameters</h3>
     <div class="field-items">
       <div class="param">filetoupload (optional)</div>
-
+      
             <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
 
@@ -466,6 +498,76 @@
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="deleteArchivedExternalDataSource"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /source/archived/{filename}</code></pre></div>
+    <div class="method-summary">Delete a specific archived external data source (<span class="nickname">deleteArchivedExternalDataSource</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">filename (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; filename to delete </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    invalid filename
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    unknown filename
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getArchivedExternalDataSource"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /source/archived/{filename}</code></pre></div>
+    <div class="method-summary">Download a specific archived external data source (<span class="nickname">getArchivedExternalDataSource</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">filename (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; filename to download </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    invalid filename
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    unknown filename
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="getExternalDataSource"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -476,7 +578,7 @@
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">filename (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; filename to download </div>    </div>  <!-- field-items -->
 
 
@@ -505,7 +607,7 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /source</code></pre></div>
-    <div class="method-summary">List available data sources (<span class="nickname">list</span>)</div>
+    <div class="method-summary">List active data sources (<span class="nickname">list</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -517,7 +619,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       array[<a href="#ExternalDataSource">ExternalDataSource</a>]
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -533,7 +635,42 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     successful operation
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="list_1"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /source/archived</code></pre></div>
+    <div class="method-summary">List archived data sources (<span class="nickname">list_1</span>)</div>
+    <div class="method-notes"></div>
 
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#ExternalDataSource">ExternalDataSource</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    successful operation
+        
   </div> <!-- method -->
   <hr/>
   <h1><a name="User">User</a></h1>
@@ -553,7 +690,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#AnalyticModelGetListResp">AnalyticModelGetListResp</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -594,7 +731,7 @@
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
       <a href="#UserSession">UserSession</a>
-
+      
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -654,7 +791,7 @@
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
       <div class="param">body <a href="#UserSessionAuth">UserSessionAuth</a> (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
     </div>  <!-- field-items -->
 
@@ -689,7 +826,7 @@
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
       <div class="param">body <a href="#UserSessionSet">UserSessionSet</a> (required)</div>
-
+      
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
     </div>  <!-- field-items -->
 
@@ -727,13 +864,13 @@
 
   <div class="model">
     <h3><a name="AnalyticModelGetListResp"><code>AnalyticModelGetListResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
           </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="AnalyticModelGetResp"><code>AnalyticModelGetResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -747,14 +884,14 @@
   </div>
   <div class="model">
     <h3><a name="AnalyticModelPostReq"><code>AnalyticModelPostReq</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">params (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="AnalyticModelPostResp"><code>AnalyticModelPostResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -766,7 +903,7 @@
   </div>
   <div class="model">
     <h3><a name="AnalyticModelPutResp"><code>AnalyticModelPutResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -779,7 +916,7 @@
   </div>
   <div class="model">
     <h3><a name="ExternalDataSource"><code>ExternalDataSource</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">effective_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
@@ -789,7 +926,7 @@
   </div>
   <div class="model">
     <h3><a name="UserSession"><code>UserSession</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">user_email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">state (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -797,21 +934,21 @@
   </div>
   <div class="model">
     <h3><a name="UserSessionAuth"><code>UserSessionAuth</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">user_email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="UserSessionSet"><code>UserSessionSet</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">state (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="body"><code>body</code></a> <a class="up" href="#__Models">Up</a></h3>
-
+    
     <div class="field-items">
       <div class="param">filetoupload (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
     </div>  <!-- field-items -->
