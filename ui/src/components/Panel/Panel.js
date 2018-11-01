@@ -29,27 +29,20 @@ class Panel extends Component {
 
   render() {
     return (
-      <aside className="panel filter__list">
-        <p className="panel__section-title">
-          Filters
-        </p>
-        <div
-          className="filter__input-container">
-          <lanel>Areas</lanel>
-          <select 
-            value={this.props.modelFilters.activeFilters.geo.area}
-            onChange={this.handleGeoFilterChange}>
-            {_.map(this.props.geoProfile, geo => {
-              return (
-                <option
-                  key={this.scrambleString(geo.area)}
-                value={geo.area}>
-                {geo.area}
-                </option>
-              );
-            })}
-          </select>
-        </div>
+      <aside className="panel">
+        <select 
+          value={this.props.modelFilters.activeFilters.geo.area}
+          onChange={this.handleGeoFilterChange}>
+          {_.map(this.props.geoProfile, geo => {
+            return (
+              <option
+                key={this.scrambleString(geo.area)}
+              value={geo.area}>
+              {geo.area}
+              </option>
+            );
+          })}
+        </select>
       </aside>
     );
   }

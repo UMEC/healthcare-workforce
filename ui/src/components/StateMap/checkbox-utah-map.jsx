@@ -85,6 +85,25 @@ class CheckboxUtahMap extends React.Component {
 	render() {
 		return (
 			<article className="examples__block">
+				<h2 className="examples__block__title">
+					Utah County Map
+				</h2>
+				<div className="examples__block__info">
+					<div className="examples__block__info__item">
+						Pointed location: {this.state.pointedLocation}
+					</div>
+					<div className="examples__block__info__item">
+						Focused location: {this.state.focusedLocation}
+					</div>
+					<div className="examples__block__info__item">
+						Selected locations:
+						<ul>
+							{
+								[...this.state.selectedLocations].map(location => (<li key={location}>{location}</li>))
+							}
+						</ul>
+					</div>
+				</div>
 				<div className="examples__block__map">
 					<SVGMap
 						map={Utah}
@@ -94,13 +113,11 @@ class CheckboxUtahMap extends React.Component {
 						onLocationClick={this.handleLocationClick}
 						onLocationFocus={this.handleLocationFocus}
 						onLocationBlur={this.handleLocationBlur}
-						onLocationMouseMove={this.handleLocationMouseMove}
+                  onLocationMouseMove={this.handleLocationMouseMove}
 						isLocationSelected={this.isLocationSelected} />
-					<div
-						className="svg-map__tooltip"
-						style={this.state.tooltipStyle}>
-						{this.state.pointedLocation}
-					</div>
+                  <div className="svg-map__tooltip" style={this.state.tooltipStyle}>
+                     {this.state.pointedLocation}
+                  </div>
 				</div>
 			</article>
 		);
@@ -115,29 +132,3 @@ const mapStateToProps = (state) => {
 }
 
 export default reduxConnect(mapStateToProps)(CheckboxUtahMap);
-
-const MapHud = props => {
-	return (
-		<>
-			<h2 className="examples__block__title">
-				Utah County Map
-					</h2>
-			<div className="examples__block__info">
-				<div className="examples__block__info__item">
-					Pointed location: {props.pointedLocation}
-				</div>
-				<div className="examples__block__info__item">
-					Focused location: {props.focusedLocation}
-				</div>
-				<div className="examples__block__info__item">
-					Selected locations:
-							<ul>
-						{
-							[...props.selectedLocations].map(location => (<li key={location}>{location}</li>))
-						}
-					</ul>
-				</div>
-			</div>
-		</>
-	);
-}
