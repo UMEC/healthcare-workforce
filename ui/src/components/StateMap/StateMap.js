@@ -5,6 +5,7 @@ import CheckboxUtahMap from './checkbox-utah-map';
 
 let StateMap = (props) => {
   return (
+    //<SVGMap map={Utah} />
     <CheckboxUtahMap handleGeoFilterUpdate={props.handleGeoFilterUpdate} />
   );
 };
