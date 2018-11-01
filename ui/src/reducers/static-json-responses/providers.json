@@ -914,7 +914,7 @@
     }
   },
   "PA": {
-    "provider_type": "Physician Assistant",
+    "provider_type": "Physicial Assistant",
     "services:": [
       {
         "Behavioral Health Screenings": [
@@ -4375,7 +4375,7 @@
     }
   },
   "Psych": {
-    "provider_type": "Psychologist",
+    "provider_type": "Psychiatrist",
     "services:": [
       {
         "Behavioral Health Screenings": [
@@ -5115,7 +5115,7 @@
     }
   },
   "CMHC": {
-    "provider_type": "Clinical Mental Health Counselor",
+    "provider_type": "Certified Mental Health Counselor",
     "services:": [
       {
         "Behavioral Health Screenings": [
