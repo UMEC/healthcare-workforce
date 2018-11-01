@@ -4,9 +4,14 @@
 const router = require('express').Router();
 const path = require('path');
 
-/* A page for testing file upload. */
+/* Swagger specification index page. */
 router.get('/', (req, res) => {
   res.sendFile(path.join(`${__dirname}/index.html`));
+});
+
+/* Administration page. */
+router.get('/admin', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/admin.html`));
 });
 
 module.exports = router;
