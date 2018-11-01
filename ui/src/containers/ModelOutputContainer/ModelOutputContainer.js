@@ -70,11 +70,13 @@ class ModelOutputContainer extends Component {
               <StateMap
                 handleGeoFilterUpdate={this.handleGeoFilterUpdate} />
             </ViewSection>
-            <ViewSection title={"Team Composition for " + this.props.modelFilters.activeFilters.geo.area}>
+            <ViewSection 
+              title={"Team Composition for " + this.props.modelFilters.activeFilters.geo.area}>
               <TeamComposition supply={this.props.geoProfile[this.props.modelFilters.activeFilters.geo.area].provider_supply}/>
             </ViewSection>
             <ViewSection
-              updateModelAttributes={this.updateModelAttributes} title="">
+              title={"Provider Services for " + this.props.modelFilters.activeFilters.geo.area}
+              updateModelAttributes={this.updateModelAttributes}>
               <ProviderRoles
                 activeFilters={this.props.modelFilters.activeFilters}
                 servicesByProvider={servicesByProvider}
