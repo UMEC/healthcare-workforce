@@ -9,8 +9,8 @@ import numpy as np
 from numpy import dot
 from cvxopt import matrix, solvers
 import matplotlib.pyplot as plt
-#import json
 
+# import json
 # Main function to run the three optimization functions
 # geo: one of area shown in geo_are_list
 # year: year that analysis is conducted
@@ -80,17 +80,17 @@ def main(geo, year, current_year, option, sub_option, sub_option_value, sut_targ
     #print("run optimization")
     s = resource_allocation(option, sub_option, wage, ser_prov, demand, supply, overhead_work, 
                    provider_list, service_name, collapse_group, w_weight, s_weight, wage_max, FTE_time)
-    
-    #plot some outputs
+    return s, supply
+
+def plotall(thisweight, s, supply, option, sub_option, provider_list):
     current_supply =  supply['provider_num']
     if( isinstance(s, dict) ):
         if( ((option =='ideal_staffing') | (option == 'ideal_staffing_current')) & \
            (sub_option == "all_combination")  ):
             # need input from user
-            thisweight = 1
-            getthis = np.where( np.arange(0, 1.1, 0.1) == thisweight)[0]
+            getthis = np.where( np.round(np.arange(0, 1.1, 0.1),1) == thisweight)[0]
             tmp = s['detail_f2f_mini']
-            tmp = tmp.loc[ tmp['weight'] == thisweight, :]
+            tmp = tmp.loc[ np.round(tmp['weight'],1) == thisweight, :]
             plot_wage_sutability(s['total_wage'], s['total_sutab'])
             plot_provider_by_service(tmp , provider_list['provider_abbr'])
             plot_service_by_provider(tmp , provider_list['provider_abbr'])
@@ -101,7 +101,6 @@ def main(geo, year, current_year, option, sub_option, sub_option_value, sut_targ
             plot_provider_by_service(tmp , provider_list['provider_abbr'])
             plot_service_by_provider(tmp , provider_list['provider_abbr'])
             plot_supply_demand(s['FTE'], current_supply)
-    return s
 
 def plot_wage_sutability(total_wage, total_sutab):
     fig, ax1 = plt.subplots()
@@ -169,7 +168,7 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
     d = pd.DataFrame(index = provider_list['provider_abbr'])
     
     if( (option == 'ideal_staffing') | (option == 'ideal_staffing_current') ):
-        if (sub_option == "all_combination" ) :
+        if (sub_option == "all_combination" ):
             co = 0; s = {}
             for i in np.arange(0, 1.1, 0.1):
                 wi_weight = i; si_weight = 1- i; co = co + 1
@@ -200,7 +199,8 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
                     else: 
                         tmp =  pd.concat([service_name, dataset], axis = 1)
                         detail_result = pd.concat([detail_result, tmp], axis = 0)
-        s = {'total_wage': total_wage, 'total_sutab': total_sutab, 'FTE': d, 'detail_f2f_mini': detail_result}
+            d.columns = ['w_0.0','w_0.1','w_0.2','w_0.3','w_0.4','w_0.5','w_0.6','w_0.7','w_0.8','w_0.9', 'w_1.0']
+            s = {'total_wage': total_wage, 'total_sutab': total_sutab, 'FTE': d, 'detail_f2f_mini': detail_result}
         
         if( sub_option == "wage_weight"  ) :
             if( option == 'ideal_staffing'):
@@ -232,8 +232,9 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
                      'ind_sutab': ind_sutab, 'FTE': df, 'detail_f2f_mini': detail_result}
                 
         if(sub_option ==  "wage_max"):
-            s = call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i, col_j, provider_list, overhead_work, FTE_time )
-            
+            s = call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i,\
+                                         col_j, provider_list, overhead_work, FTE_time, service_name )
+                             
     if( option == 'service_allocation' ):
         #================== get pattern 
         if(collapse_group == True):
@@ -280,14 +281,16 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
         else: # not collapsing
             dataset, current_demand = \
             call_assign_service(demand, ser_max, supply, overhead_work, provider_list, FTE_time)
+            dataset = pd.concat([service_name, dataset], axis = 1)
             
         s = {}
-        #s = {'FTE': current_demand,  'detail_f2f_mini': dataset}
+        s = {'FTE': current_demand,  'detail_f2f_mini': dataset}
 
-    return s 
+    return s
 
    
-def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i, col_j, provider_list, overhead_work, FTE_time ):
+def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, ser_max, row_i, col_j, provider_list, 
+                             overhead_work, FTE_time , service_name):
     '''
     core LP to optimize the allocation by wage or priority --- find something that using grid search
     '''
@@ -357,6 +360,7 @@ def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, s
             s = 'Can not find optimal allocation. Change input'
         else:
             dataset.columns = provider_list['provider_abbr']
+            detail_result = pd.concat([service_name, dataset], axis = 1)
             df = dataset.apply(sum, axis = 0)
             doctime = overhead_work.loc[0, provider_list['provider_abbr']  ]
             totaldoctime = overhead_work.loc[0, 'prop_f2f_tot']*demand.sum()[0]*doctime
@@ -369,12 +373,12 @@ def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, s
             total_sutab = np.round( sum((dataset * ser_prov).apply(sum, axis = 0))/sum(dataset.apply(sum, axis = 0)), 2)
             ind_wage = np.round( df*supply['provider_mean_wage'], 0) 
             ind_sutab = np.round( (dataset * ser_prov).apply(sum, axis = 0)/dataset.apply(sum, axis = 0) ,2)
+            tmp =  pd.concat([service_name, dataset], axis = 1)
             s = {}
             s = {'total_wage': total_wage, 'total_sutab': total_sutab, 'ind_wage': ind_wage,
                      'ind_sutab': ind_sutab, 'FTE': df, 'detail_f2f_mini': detail_result}
     return s
-    
-
+                    
 def call_assign_service(demand_mem, ser_max_mem, supply, overhead_work, provider_list, FTE_time):
     '''
     description
