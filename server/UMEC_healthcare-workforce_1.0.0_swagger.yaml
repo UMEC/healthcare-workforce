@@ -1,0 +1,434 @@
+openapi: 3.0.0
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/UMEC/healthcare-workforce/1.0.0
+  - description: SwaggerHub API Auto Mocking
+    url: https://localhost:5000/api/
+info:
+  description: |
+    A series of APIs for the healthcare workforce analytical model.
+  version: "1.0.0"
+  title: UMEC Healthcare Workforce API
+  license:
+    name: Refer to Github for License
+    url: 'https://github.com/UMEC/healthcare-workforce'
+tags:
+  - name: admin
+    description: Administration interface
+  - name: source
+    description: Operations on external data sources
+  - name: analytics
+    description: Operations on the analytical model
+  - name: user
+    description: Operations for users
+paths:
+  /admin:
+    get: 
+      tags:
+        - admin
+      summary: Access the administration interface.
+      responses:
+        '200':
+          description: successful operation
+  /source:
+    post:
+      tags:
+        - source
+      summary: Submit external data source for processing
+      operationId: addSource
+      responses:
+        '400':
+          description: Invalid input
+      requestBody:
+        content: 
+         application/x-www-form-urlencoded:                       
+          schema:                  
+           type: object                    
+           properties:                 
+            filetoupload:
+             type: object
+    get: 
+      tags:
+        - source
+      summary: List active data sources
+      operationId: list
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExternalDataSource'
+  /source/{filename}:
+    get: 
+      tags:
+        - source
+      summary: Download a specific external data source
+      operationId: getExternalDataSource
+      parameters:
+        - name: filename
+          in: path
+          description: filename to download
+          required: true
+          schema:
+            type: string
+            example: service_timings.csv
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: unknown filename
+        '400':
+          description: invalid filename
+  /analytics:
+    get:
+      tags:
+        - analytics
+      summary: Retrieves list of user's requested analytical models
+      description: Returns a list of the requested analytic models
+      operationId: getAnalyticalModels
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticModelGetListResp'
+    post:
+      tags:
+        - analytics
+      summary: Create a new analytic model based on user input
+      operationId: createAnalyticModel
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticModelPostResp'
+        '400':
+          description: Invalid or missing request params
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticModelPostReq'
+        description: Provides user-specific analytic model input params
+        required: true
+  /source/archived:
+    get: 
+      tags:
+        - source
+      summary: List archived data sources
+      operationId: list
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExternalDataSource'        
+  /source/archived/{filename}:
+    get: 
+      tags:
+        - source
+      summary: Download a specific archived external data source
+      operationId: getArchivedExternalDataSource
+      parameters:
+        - name: filename
+          in: path
+          description: filename to download
+          required: true
+          schema:
+            type: string
+            example: service_timings.csv
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: unknown filename
+        '400':
+          description: invalid filename             
+    delete: 
+      tags:
+        - source
+      summary: Delete a specific archived external data source
+      operationId: deleteArchivedExternalDataSource
+      parameters:
+        - name: filename
+          in: path
+          description: filename to delete
+          required: true
+          schema:
+            type: string
+            example: service_timings.csv
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: unknown filename
+        '400':
+          description: invalid filename                       
+  /analytics/{modelId}:
+    get:
+      tags:
+        - analytics
+      summary: Retrieves status and data of this analytical model
+      operationId: getAnalyticModel
+      parameters:
+        - name: modelId
+          in: path
+          description: ID of the analytic model
+          required: true
+          schema:
+            type: integer
+            format: int64      
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticModelGetResp'
+        '404':
+          description: Invalid Analytic Model ID
+    put:
+      tags:
+        - analytics
+      summary: Updates this analytic model
+      operationId: updateAnalyticModel
+      parameters:
+        - name: modelId
+          in: path
+          description: ID of analytic model that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '405':
+          description: Invalid input
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticModelPutResp'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalyticModelPostReq'
+        description: contains user-specific analytic model input params
+        required: true
+  /analytics/{modelId}/persist:
+    post:
+      tags:
+        - analytics
+      summary: Persists this analytical model. User must be authenticated
+      operationId: persistAnalyticModel
+      parameters:
+        - name: modelId
+          in: path
+          description: ID of the analytic model
+          required: true
+          schema:
+            type: integer
+            format: int64      
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Invalid Analytic Model ID
+        '401':
+          description: User is not authorized (unauthenticated)
+  /user/auth:
+    post:
+      tags:
+        - user
+      summary: Set the current user authentication context
+      description: Set the current user into the session.
+      operationId: setCurrentUser
+      responses:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSessionAuth'
+        description: The new user session authentication data.
+        required: true        
+  /user/session:
+    get:
+      tags:
+        - user
+      summary: Get user's session state
+      description: Get the user's session state
+      operationId: getUserSession
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSession'                    
+    post:
+      tags:
+        - user
+      summary: Set user's session state.
+      description: Set the user's session state.
+      operationId: setUserSession
+      responses:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSessionSet'
+        description: The new session data.
+        required: true        
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current user session
+      operationId: logoutUser
+      responses:
+        default:
+          description: successful operation
+  '/user/analytics':
+    get:
+      tags:
+        - user
+      summary: Get analytic models for current user
+      operationId: getAnalyticModelsForUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticModelGetListResp'
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Id not found
+externalDocs:
+  description: Source available at Github
+  url: 'https://github.com/UMEC/healthcare-workforce'
+components:
+  schemas:
+    AnalyticModelPostReq:
+      type: object
+      properties:
+        params:
+          type: string
+          example: {"type": "cost_quality_adjustment", "value": 0.5}
+    AnalyticModelPostResp:
+      type: object
+      properties:
+        modelId:
+          type: string
+          example: 3a5fc876-4ed9-40b0-9747-46a282a31086
+        status:
+          type: string
+          example: new
+          enum:
+            - new
+            - completed
+        request_date:
+          type: string
+          format: date-time
+        params:
+          type: string
+          example: {"type": "cost_quality_adjustment", "value": 0.5}
+    AnalyticModelPutResp:
+      type: object
+      properties:
+        modelId:
+          type: string
+          example: 3a5fc876-4ed9-40b0-9747-46a282a31086
+        status:
+          type: string
+          example: new
+          enum:
+            - new
+            - completed
+        request_date:
+          type: string
+          format: date-time
+        params:
+          type: string
+          example: {"type": "cost_quality_adjustment", "value": 0.5}      
+        historical_params:
+          type: string
+          example: [{"type": "cost_quality_adjustment", "value": 0.1},{"type": "cost_quality_adjustment", "value": 0.9}]          
+    AnalyticModelGetListResp:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnalyticModelPutResp'
+    AnalyticModelGetResp:
+      type: object
+      properties:
+        modelId:
+          type: string
+          example: 3a5fc876-4ed9-40b0-9747-46a282a31086
+        status:
+          type: string
+          example: new
+          enum:
+            - new
+            - completed
+        request_date:
+          type: string
+          format: date-time
+        params:
+          type: string
+          example: {"type": "cost_quality_adjustment", "value": 0.5}        
+        historical_params:
+          type: string
+          example: [{"type": "cost_quality_adjustment", "value": 0.1},{"type": "cost_quality_adjustment", "value": 0.9}]          
+        data:
+          type: string
+          example: {"some_data_name_1": "some_data_value_1", "some_data_name_2": "some_data_value_2"}          
+    UserSession:
+      type: object
+      properties:
+        user_email:
+          type: string
+          example: email@example.com
+        state:
+          type: string
+          example: json_string        
+    UserSessionSet:
+      type: object
+      properties:
+        state:
+          type: string
+          example: json_string
+    UserSessionAuth:
+      type: object
+      properties:
+        user_email:
+          type: string
+          example: email@example.com
+    ExternalDataSource:
+      type: object
+      properties:
+        name:
+          type: string
+          example: service_timings.csv
+        effective_date:
+          type: string
+          format: date-time
+        size:
+          type: integer
+        uri:
+          type: string
+          example: /api/source/service_timings.csv
