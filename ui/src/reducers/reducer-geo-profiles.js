@@ -18,7 +18,7 @@ let raw_providers = [
     "provider_abbr": "RN"
   },
   {
-    "provider_name": "Psychiatrist",
+    "provider_name": "Psychologist",
     "provider_abbr": "Psych"
   },
   {
@@ -26,7 +26,7 @@ let raw_providers = [
     "provider_abbr": "LCSW"
   },
   {
-    "provider_name": "Certified Mental Health Counselor",
+    "provider_name": "Clinical Mental Health Counselor",
     "provider_abbr": "CMHC"
   },
   {

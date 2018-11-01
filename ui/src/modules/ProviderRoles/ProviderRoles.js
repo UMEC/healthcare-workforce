@@ -201,16 +201,12 @@ class ProviderRoles extends Component {
 
     const filteredProviders = this.filteredServicesByProvider();
 
-    let titleString = `ProviderRoles for ${area}`;
     
     return (
-      <>
-        <p>{titleString}</p>
-        <Accordion>
+      <Accordion>
 
-          {this.renderProviders(filteredProviders)}
-        </Accordion>
-      </>
+        {this.renderProviders(filteredProviders)}
+      </Accordion>
     );
   }
 }
