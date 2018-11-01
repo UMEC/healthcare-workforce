@@ -4,7 +4,7 @@ import './ViewHeader.scss'
 let ViewHeader = (props) => {
   return (
     <header className="view-header">
-      Viewing {props.currentGeoName}
+      Analysis for {props.currentGeoName}
     </header>
   );
 };

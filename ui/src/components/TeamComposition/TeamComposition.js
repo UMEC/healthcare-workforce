@@ -3,16 +3,16 @@ import './TeamComposition.scss';
 
 let TeamComposition = (props) => {
   return (
-    <div>
-      <div class="wrapper">
-        <div class="box">Current</div>
-        <div class="box">Role</div>
+    <div className="team-composition__wrapper">
+      <div className="wrapper team-composition__header-row">
+        <div className="box">Current</div>
+        <div className="box">Role</div>
       </div>
         {props.supply.map(item => {
           return (
-            <div class="wrapper">
-              <div class="box">{item.provider_num}</div>
-              <div class="box">{item.provider_name}</div>
+            <div className="wrapper">
+              <div className="box">{item.provider_num}</div>
+              <div className="box">{item.provider_name}</div>
             </div>
           )
         })}
