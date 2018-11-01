@@ -62,33 +62,64 @@ class ModelOutputContainer extends Component {
 
     return (
       <>
-        <ViewContainer>
-          <ViewHeader
-            currentGeoName={this.props.modelFilters.activeFilters.geo.area}  />
-          <div className="view-body">
-            <ViewSection>
-              <StateMap
-                handleGeoFilterUpdate={this.handleGeoFilterUpdate} />
-            </ViewSection>
-            <ViewSection title={"Team Composition for " + this.props.modelFilters.activeFilters.geo.area}>
-              <TeamComposition supply={this.props.geoProfile[this.props.modelFilters.activeFilters.geo.area].provider_supply}/>
-            </ViewSection>
-            <ViewSection
-              updateModelAttributes={this.updateModelAttributes} title="">
-              <ProviderRoles
-                activeFilters={this.props.modelFilters.activeFilters}
-                servicesByProvider={servicesByProvider}
-                updateModelAttributes={this.updateModelAttributes} />
-            </ViewSection>
+          <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">UMEC Gap Analysis Tool</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0 header-county-title" href="#">{this.props.modelFilters.activeFilters.geo.area}</a>
+            <ul class="navbar-nav px-3">
+              <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="container-fluid">
+            <div class="row">
+              <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Dashboard</h1>
+                </div>
+                <ViewContainer>
+                    <ViewHeader
+                      currentGeoName={this.props.modelFilters.activeFilters.geo.area}  />
+                    <div className="view-body">
+                      <ViewSection>
+                        <StateMap
+                          handleGeoFilterUpdate={this.handleGeoFilterUpdate} />
+                      </ViewSection>
+                      <ViewSection title={"Team Composition for " + this.props.modelFilters.activeFilters.geo.area}>
+                        <TeamComposition supply={this.props.geoProfile[this.props.modelFilters.activeFilters.geo.area].provider_supply}/>
+                      </ViewSection>
+                      <ViewSection
+                        updateModelAttributes={this.updateModelAttributes} title="">
+                        <ProviderRoles
+                          activeFilters={this.props.modelFilters.activeFilters}
+                          servicesByProvider={servicesByProvider}
+                          updateModelAttributes={this.updateModelAttributes} />
+                      </ViewSection>
+                    </div>
+
+                    {modelParamsEdited ?
+                      <ViewFooter>
+                        <p>{`You've changed some model params!` }</p>
+                      </ViewFooter>
+                      : null }
+                  </ViewContainer>
+              </main>
+
+              <nav class="col-md-2 d-none d-md-block bg-light sidebar" >
+                <div class="sidebar-sticky">
+                  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Filtering Options</span>
+                    <a class="d-flex align-items-center text-muted" href="#">
+                      <span data-feather="plus-circle"></span>
+                    </a>
+                  </h6>
+                  <Panel modelFilters={this.props.modelFilters} handleGeoFilterUpdate={this.handleGeoFilterUpdate}/>
+                </div>
+              </nav>
+            </div>
           </div>
 
-          {modelParamsEdited ?
-            <ViewFooter>
-              <p>{`You've changed some model params!` }</p>
-            </ViewFooter>
-            : null }
-        </ViewContainer>
-        <Panel modelFilters={this.props.modelFilters} handleGeoFilterUpdate={this.handleGeoFilterUpdate}/>
+
       </>
     );
   }

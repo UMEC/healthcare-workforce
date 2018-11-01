@@ -30,7 +30,7 @@ code {
   max-height: 100vh;
   grid-template-rows: 50px auto;
   grid-template-columns: auto;
-  grid-template-areas: 
+  grid-template-areas:
     "app-header",
     "app-content";
 }
@@ -49,13 +49,13 @@ code {
 }
 
 .view-header {
-  height: 50px;
-  background-color: rgb(206, 206, 206);
+  height: 30px;
+  //background-color: rgb(206, 206, 206);
 }
 
 .view-body {
   flex: 1 ;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 
 .view-container {
@@ -63,7 +63,7 @@ code {
   flex-flow: column nowrap;
   position: relative;
   flex: 1;
-  height: calc(100vh - 100px);
+  /*height: calc(100vh - 100px);*/
   padding-bottom: 50px;
 }
 .view-section {
@@ -80,7 +80,8 @@ code {
 
 .panel {
   width: 400px;
-  background-color: rgb(167, 167, 167);
+  padding-left:25px;
+  //background-color: rgb(167, 167, 167);
 }
 
 
