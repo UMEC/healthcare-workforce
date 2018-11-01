@@ -8,15 +8,15 @@ let defaultFilterState = {
       sdoh_index: 3,
       availableProviders: [
         'Physician',
-      'Physicial Assistant',
+      'Physician Assistant',
       'Nurse Practitioner',
       'Registered Nurse',
       'Doctor of Pharmacy',
       'Medical Assistant',
       'Educator',
-      'Psychiatrist',
+      'Psychologist',
       'Licensed Clinical Social Worker',
-      'Certified Mental Health Counselor',
+      'Clinical Mental Health Counselor',
       'Marriage and Family Therapists'
       ],
     geo_provider_types: {
@@ -25,7 +25,7 @@ let defaultFilterState = {
           provider_abbr: 'Phys'
       },
       PA: {
-        provider_name: 'Physicial Assistant',
+        provider_name: 'Physician Assistant',
           provider_abbr: 'PA'
       },
       NP: {
@@ -49,7 +49,7 @@ let defaultFilterState = {
           provider_abbr: 'Educ'
       },
       Psych: {
-        provider_name: 'Psychiatrist',
+        provider_name: 'Psychologist',
           provider_abbr: 'Psych'
       },
       LCSW: {
@@ -57,7 +57,7 @@ let defaultFilterState = {
           provider_abbr: 'LCSW'
       },
       CMHC: {
-        provider_name: 'Certified Mental Health Counselor',
+        provider_name: 'Clinical Mental Health Counselor',
           provider_abbr: 'CMHC'
       },
       MFT: {

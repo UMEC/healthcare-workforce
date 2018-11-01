@@ -6,7 +6,7 @@ let raw_providers = [
     "provider_abbr": "Phys"
   },
   {
-    "provider_name": "Physicial Assistant",
+    "provider_name": "Physician Assistant",
     "provider_abbr": "PA"
   },
   {
@@ -18,7 +18,7 @@ let raw_providers = [
     "provider_abbr": "RN"
   },
   {
-    "provider_name": "Psychiatrist",
+    "provider_name": "Psychologist",
     "provider_abbr": "Psych"
   },
   {
@@ -26,7 +26,7 @@ let raw_providers = [
     "provider_abbr": "LCSW"
   },
   {
-    "provider_name": "Certified Mental Health Counselor",
+    "provider_name": "Clinical Mental Health Counselor",
     "provider_abbr": "CMHC"
   },
   {
@@ -64,7 +64,7 @@ let geoProfile = Object.values(staticGeoProfileResponse).reduce((previous, item,
       let next = { ...previous, [item]: provider_attrs };
       return next;
     }, {});
-    
+
   let bar = geo_provider_types
     .reduce((previous, item) => {
       let provider_attrs = providers[item];
@@ -73,10 +73,10 @@ let geoProfile = Object.values(staticGeoProfileResponse).reduce((previous, item,
     }, []);
 
   let provider_supply = Object.values(item.supply)
-    .reduce((previous, item) => {
+    .reduce((previous, item, index) => {
       let provider_abbr = geo_provider_types[index];
-      let provider_name = providers[provider_abbr];
-      
+      let provider_name = providers[provider_abbr].provider_name;
+
       let provider_info = {
         provider_abbr,
         provider_name,
@@ -104,7 +104,7 @@ export default (state = geoProfile, action) => {
     case 'value':
       return state;
       break;
-  
+
     default:
       return state;
       break;

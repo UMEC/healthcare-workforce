@@ -20,6 +20,12 @@ code {
     monospace;
 }
 
+abbr[title] {
+  text-decoration: none;
+  border-bottom: 0px solid transparent;
+  cursor: default;
+}
+
 // CSS Grid
 
 .container {
@@ -36,21 +42,34 @@ code {
 }
 
 .app-header {
+  display: flex;
+  flex-flow: row nowrap;
   grid-area: "app-header";
-  background-color: #1b7180;
-  color: #fefefe;
+  background-color: #171717;
+  color: #fcfcfc;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.app-branding h1 {
+  font-size: 18px;
 }
 
 .app-content {
   grid-area: "app-content";
-  background-color: rgb(240, 240, 240);
+  background-color: #fcfcfc;
   display: flex;
   flex-flow: row nowrap;
 }
 
 .view-header {
   height: 50px;
-  background-color: rgb(206, 206, 206);
+  background-color:#fcfcfc;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 0 24px;
 }
 
 .view-body {
@@ -63,10 +82,20 @@ code {
   flex-flow: column nowrap;
   position: relative;
   flex: 1;
-  height: calc(100vh - 100px);
-  padding-bottom: 50px;
+  height: calc(100vh - 50px);
+  // padding-bottom: 50px;
 }
 .view-section {
+  &__title {
+    position: sticky;
+    top: 0;
+    background: #fcfcfc;
+    font-weight: 500;
+    font-size: 20px;
+    border-bottom: 1px solid #595859;
+    padding: 16px 48px;
+    z-index: 1000;
+  }
 
 }
 
@@ -80,7 +109,8 @@ code {
 
 .panel {
   width: 400px;
-  background-color: rgb(167, 167, 167);
+  background-color: #f6f6f6;
+  padding: 24px;
 }
 
 
@@ -101,15 +131,19 @@ code {
     justify-content: center;
     grid-column-start: 1;
     grid-column-end: -1;
-    border: 1px solid #646464;
+    border: 1px solid #eaeaea;
     margin-top: 24px;
+    background-color: #f9f9f9;
+    &:last-of-type {
+        margin-bottom: 32px;
+      }
   }
   &__category-header {
     font-size: 18px;
     font-weight: 500;
     grid-column-start: 1;
     grid-column-end: -1;
-    border-bottom: 1px solid #646464;
+    border-bottom: 1px solid #eaeaea;
     padding: 16px;
   }
   &__category-body {
@@ -131,22 +165,87 @@ code {
 .accordion {
   display: flex;
   flex-flow: column nowrap;
-  &__header {
-    background-color: #fefefe;
-    padding: 20px 50px;
-    border-top: 1px solid rgb(105, 105, 105);
-    border-bottom: 1px solid rgb(105, 105, 105);
+
+  &__section {
+    background: #fcfcfc;
+  }
+  &__section-content {
+    background: #f9f9f9;
+  }
+  
+  &__section-inner,
+  &__section {
+    grid-column-start: 1;
+    grid-column-end: -1;
   }
 
-  &__content {
-    display: grid;
-    grid-auto-flow: row;
-    // width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    // grid-auto-rows: repeat(4, 1fr);
-    grid-gap: 0.5em;
-    justify-content: center;
-    padding-bottom: 40px;
-    padding: 0 50px;
+  &__section-header {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 20px 50px;
+    border-top: 1px solid #eaeaea;
+    cursor: pointer;
+    align-items: center;
+    
+    &:hover,
+    &:focus,
+    &:active {
+      &,
+      &.is-open {
+        background-color: #f6f6f6;
+        color: #00b6cb;
+      }
+    }
+    &.is-open {
+      border-bottom: 1px solid #eaeaea;
+      background-color: #fefefe;
+    }
+  }
+
+    &__section {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    &__section-title {
+      flex: 1;
+    }
+
+    &__trigger-icon {
+      flex: 0 1 auto;
+    }
+
+    
+    &__section-inner {
+      background: linear-gradient(0deg, rgba(201,201,201,1) 5%, rgba(214,214,214,1) 42%, rgba(213,213,213,1) 60%, rgba(212,212,212,0) 99%, rgba(212,212,212,0) 100%);
+      padding: 0 48px 40px 48px;
+    }
+    &__section-content {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 0.5em;
+      justify-content: center;
+      overflow: hidden;
+      
+      &.is-closed {
+        height: 0;
+        transition: height 400ms ease-out;
+        background-color: #fefefe;
+      }
+      &.is-open {
+        transition: height 400ms ease-out;
+      }
+    }
+}
+
+.filter {
+  display: flex;
+  flex-flow: column nowrap;
+  &__input-container * {
+    width: 100%;
   }
 }

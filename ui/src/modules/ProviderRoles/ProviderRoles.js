@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import map from 'lodash/map';
+import { Accordion, AccordionSection } from '../../components/Accordion-new';
 // import { bindActionCreators } from 'redux';
 
 // import { connect } from 'react-redux';
@@ -10,7 +11,7 @@ class ProviderRoles extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addedProviderTypes: ['Physicial Assistant'],
+      addedProviderTypes: [],
       defaultServicesByProvider: this.reshapeNewServicesByProvider(),
       customServicesByProvider: this.reshapeNewServicesByProvider(),
     };
@@ -177,17 +178,18 @@ class ProviderRoles extends Component {
     
     return providers.map(provider => {
       return (
-        <>
-          <div key={this.scrambleString(provider.provider_type)} className="accordion__header">
-            <p 
-              className="provider-roles__section-title"
-              onClick={() => this.props.updateModelAttributes(provider.provider_type, provider)}>{provider.provider_type}
-            </p>
-          </div>
-          <div key={this.scrambleString(provider.provider_type)} className="accordion__content">
-            {this.renderServiceCategories(provider.provider_services, provider)}
-          </div>
-        </>
+        <AccordionSection 
+          label={provider.provider_type}
+          headerClassName="provider-roles__section-title"
+          key={this.scrambleString(provider.provider_type)} >
+          <p 
+            className="provider-roles__section-title">
+            {provider.provider_type} Services
+          </p>
+          {/* 
+            onClick={() => this.props.updateModelAttributes(provider.provider_type, provider)} */}
+          {this.renderServiceCategories(provider.provider_services, provider)}
+        </AccordionSection>
       );
 
     })
@@ -196,18 +198,15 @@ class ProviderRoles extends Component {
   render() {
     const { area } = this.props.activeFilters.geo;
 
-    const filteredProviders = this.filteredServicesByProvider()
 
-    let titleString = `ProviderRoles for ${area}`;
+    const filteredProviders = this.filteredServicesByProvider();
+
     
     return (
-      <>
-        <p>{titleString}</p>
-        <div className="accordion">
+      <Accordion>
 
-          {this.renderProviders(filteredProviders)}
-        </div>
-      </>
+        {this.renderProviders(filteredProviders)}
+      </Accordion>
     );
   }
 }
