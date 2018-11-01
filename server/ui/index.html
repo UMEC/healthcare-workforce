@@ -52,10 +52,10 @@
       $.get('./source').done(function(getData) {
         $("#datasources > tbody").empty();
         if (getData.length <= 0) {
-          $('#datasources tr:last').after('<tr><td>No data sources uploaded.</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
+          $('#datasources tr:last').after('<tr><td>No data sources uploaded.</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
         } else {
           getData.forEach(function(result) {
-            $('#datasources tr:last').after('<tr><td>' + result.name + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/' + result.name + '">Download</a></td></tr>');
+            $('#datasources tr:last').after('<tr><td>' + result.name + '</td><td>' + (result.desc ? result.desc : '&nbsp;') + '</td><td>' + new Date(result.modified).toLocaleString() + '</td><td><a href="./source/' + result.name + '">Download</a></td></tr>');
           });
         }
       });
@@ -79,7 +79,7 @@
 
     function sendRequest(areaId) {
       var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
-      $('#responseData').html('A moment or two, please..');
+      $('#responseData').html('A moment or three, please..');
       $.ajax({
         url: "./analytics",
         type: "POST",
@@ -97,7 +97,7 @@
           .done(function( getData ) {
             if (getData.status === "new") {
               // model hasn't finished
-              if (attempts >= 5) {
+              if (attempts >= 20) {
                 // had enough
                 $('#responseData').html('Request timed out, please try again.');
               } else {
@@ -215,6 +215,7 @@
           <thead class="thead-dark">
             <tr>
               <th scope="col">Name</th>
+              <th scope="col">Description</th>
               <th scope="col">Last Modified</th>
               <th scope="col">Actions</th>
             </tr>
@@ -222,6 +223,7 @@
           <tbody>
             <tr>
               <td>No data sources uploaded.</td>
+              <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>

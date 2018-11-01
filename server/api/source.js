@@ -7,10 +7,43 @@ const router = require('express').Router();
 const formidable = require('formidable');
 const fs = require('fs');
 const XLSX = require('xlsx');
+const parse = require('csv-parse');
 
 /* Logging method for this api. */
 function log(requestType, msg) {
   console.log(`/api/source:${requestType}: ${msg}`);
+}
+
+function outputDataSources(req, res, index) {
+  // now, read all the data sources
+  fs.readdir(DIR_PROCESSED_FILES, (err, items) => {
+    if (err) throw err;
+    const statResults = items.map((item) => {
+      const myfile = DIR_PROCESSED_FILES + item;
+      const stats = fs.statSync(myfile);
+      const result = {};
+      result.name = item;
+      result.modified = stats.mtime;
+      result.size = stats.size;
+      if (req.originalUrl.endsWith('/')) {
+        result.uri = `${req.originalUrl}${result.name}`;
+      } else {
+        result.uri = `${req.originalUrl}/${result.name}`;
+      }
+      if (index) {
+        for (item in index) { // eslint-disable-line
+          if (result.name.includes(index[item].Tab)) {
+            result.desc = index[item].Description;
+            break;
+          }
+        }
+      }
+
+      return result;
+    });
+    res.write(JSON.stringify(statResults));
+    return res.end();
+  });
 }
 
 function getDataSourceFile(req, res, sourceFolder) {
@@ -57,7 +90,7 @@ function deleteDataSourceFile(req, res, sourceFolder) {
     res.status(200);
     res.end();
   } catch (err) {
-    console.log(`Error deleting file: ${err}`);
+    log('DELETE', `Error deleting file: ${err}`);
     res.status(404).json({ error_msg: 'Unknown file', err_detail: err.toString() });
     res.end();
   }
@@ -123,24 +156,20 @@ router.get('/upload', (req, res) => {
 /* Retrieve the list of known external data source files. */
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'application/json' });
-  fs.readdir(DIR_PROCESSED_FILES, (err, items) => {
-    if (err) throw err;
-    const statResults = items.map((item) => {
-      const myfile = DIR_PROCESSED_FILES + item;
-      const stats = fs.statSync(myfile);
-      const result = {};
-      result.name = item;
-      result.modified = stats.mtime;
-      result.size = stats.size;
-      if (req.originalUrl.endsWith('/')) {
-        result.uri = `${req.originalUrl}${result.name}`;
-      } else {
-        result.uri = `${req.originalUrl}/${result.name}`;
-      }
-      return result;
-    });
-    res.write(JSON.stringify(statResults));
-    return res.end();
+  // try and load the index CSV, if available
+  fs.readFile(`${DIR_PROCESSED_FILES}/index.csv`, (err, fileData) => {
+    if (err) {
+      log('GET', `Couldn't open csv index: ${err}`);
+      outputDataSources(req, res);
+    } else {
+      parse(fileData, { delimiter: ',', columns: true, trim: true }, (err2, rows) => {
+        if (err2) {
+          log('GET', `Couldn't parse csv index: ${err2}`);
+        }
+        // Your CSV data is in an array of arrys passed to this callback as rows.
+        outputDataSources(req, res, rows);
+      });
+    }
   });
 });
 
