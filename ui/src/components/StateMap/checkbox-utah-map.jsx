@@ -85,10 +85,6 @@ class CheckboxUtahMap extends React.Component {
 	render() {
 		return (
 			<article className="examples__block">
-				<MapHud
-					pointedLocation={this.state.pointedLocation}
-					focusedLocation={this.state.focusedLocation}
-					selectedLocations={this.state.selectedLocations}/>
 				<div className="examples__block__map">
 					<SVGMap
 						map={Utah}
@@ -98,11 +94,13 @@ class CheckboxUtahMap extends React.Component {
 						onLocationClick={this.handleLocationClick}
 						onLocationFocus={this.handleLocationFocus}
 						onLocationBlur={this.handleLocationBlur}
-                  onLocationMouseMove={this.handleLocationMouseMove}
+						onLocationMouseMove={this.handleLocationMouseMove}
 						isLocationSelected={this.isLocationSelected} />
-                  <div className="svg-map__tooltip" style={this.state.tooltipStyle}>
-                     {this.state.pointedLocation}
-                  </div>
+					<div
+						className="svg-map__tooltip"
+						style={this.state.tooltipStyle}>
+						{this.state.pointedLocation}
+					</div>
 				</div>
 			</article>
 		);
