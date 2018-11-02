@@ -30,7 +30,7 @@ import os
 # collapsed services will get corresponding service time proportionally. 
 # FTE_time: 60x2080, used to convert FTE to min per year
 # from pop_chronic_trend to overhead_work are input files
-
+"""
 def type_of_script():
     ''' Returns jupyter if running in a notebook, otherwise returns server
     '''
@@ -57,6 +57,7 @@ def readcsv(directory):
             dataframes[sheet]=dataframes[sheet].dropna(axis=1,how='all')
     return dataframes
     
+"""
 
 def main(geo, year, current_year, option, sub_option, sub_option_value, sut_target, collapse_group, FTE_time, 
          pop_chronic_trend, pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, 

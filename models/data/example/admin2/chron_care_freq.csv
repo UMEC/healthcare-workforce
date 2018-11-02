@@ -1,0 +1,14 @@
+chron_cond,chron_cond_abbr,Chronic Maintenance Visit: Other,Chronic Maintenance Visit: Anxiety,Chronic Maintenance Visit: Arthritis,Chronic Maintenance Visit: Asthma,Chronic Maintenance Visit: CAD,Chronic Maintenance Visit: COPD,Chronic Maintenance Visit: Diabetes,Chronic Maintenance Visit: Hyperlipidemia,Chronic Maintenance Visit: Hypertension,Chronic Maintenance Visit: Depression,Chronic Maintenance Visit: Osteoporosis,Chronic Care Needs: Obesity,Chronic Care Needs: Smoker
+Anxiety Disorders,Anxiety,0,2,0,0,0,0,0,0,0,0,0,0,0
+Osteoarthritis,Arthritis,0,0,3,0,0,0,0,0,0,0,0,0,0
+Asthma,Asthma,0,0,0,4,0,0,0,0,0,0,0,0,0
+Coronary Artery Disease,CAD,0,0,0,0,1,0,0,0,0,0,0,0,0
+Chronic Obstructive Pulmonary Disease,COPD,0,0,0,0,0,1,0,0,0,0,0,0,0
+Depression,Depression,0,0,0,0,0,0,2,0,0,0,0,0,0
+Diabetes Mellitus,Diabetes,0,0,0,0,0,0,0,3,0,0,0,0,0
+Hyperlipidemia,Hyperlipidemia,0,0,0,0,0,0,0,0,2,0,0,0,0
+Hypertension,Hypertension,0,0,0,0,0,0,0,0,0,4,0,0,0
+Osteoporosis,Osteoporosis,0,0,0,0,0,0,0,0,0,0,1,0,0
+Smoking,Smoking,0,0,0,0,0,0,0,0,0,0,0,0,1
+Obesity,Obesity,0,0,0,0,0,0,0,0,0,0,0,1,0
+<<end>>,,,,,,,,,,,,,,
