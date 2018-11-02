@@ -1,0 +1,98 @@
+svc_category,svc_desc,min_f2f_time,max_f2f_time,Phys,PA,NP,RN,PharmD,MA,Educ,Psych,LCSW,CMHC,MFT
+Behavioral Health Screenings,Alcohol Misuse Screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Autism Spectrum Disorder Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Depression Screening,4,4,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Child Developmental Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Child Developmental Surveillance,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Intimate partner violence screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Maternal Depression Screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Post Partum Depression Screening,5,5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Psychosocial/Behavioral Surveillance,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Behavioral Health Screenings,Tobacco/Alcohol/Drug Use,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Diet/Physical Activity Counseling,5,5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Counseling,Advanced Care Planning,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Alcohol Misuse Counseling,1,1,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Anticipatory Guidance,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,BRCA risk assessment and genetic counseling,5,5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Counseling,Breast Cancer Preventive Medications,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Breast Feeding Interventions,5,5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Counseling,CBT,50,50,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Condition Consultation,10,15,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Folic Acid Supplementation,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Obesity Counseling,0,0,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Psychotherapy,50,50,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Sexually Transmitted Infections Counseling,1,1,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Skin Cancer Behavioral Counseling,1,1,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Tobacco Use Counseling,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Counseling,Tobacco Use Prevention and Counseling ,1,1,NA,NA,NA,NA,NA,NA,NA,NA,0.5,NA,NA
+Counseling,Visit wrap-up/care planning,2,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Asthma action plan,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Control: Weight; Hypertension; Hyperlipidemia; Smoking,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Diabetes Self Management Education/Support,30,30,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Dietary/Physical Activity Guidance,10,10,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Exercise & COPD Management,15,15,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Inhaler use guidance,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Education,Medical Nutrition Therapy (MNT),30,30,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,DTaP,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Hep A,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Hep B,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Hib,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,HPV,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,HZV,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Influenza,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,IPV,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Meningococcal,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,MMR,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,PCV12,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,PCV13,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Polio,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Rotavirus,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Td/Tdap,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,Tdap,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Immunization,VAR,3,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Anemia Screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Bacteriuria Screening,5,5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lab,Cervical Cancer Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Chlamydia Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Dyslipidemia Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Gonorrhea Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Hepatitis B Screening,5,5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lab,Hepititis C Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,HIV Screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Lab,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Lead Screening,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Newborn Bilirubin,0,0,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Newborn Blood,0,0,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Orders,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Results Consultation,2,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,Results Consultation: CHD Risk Assessment; A1c; Microalbuminuria,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Lab,STI Screening,0,0,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA
+Lab,Syphillis Screening,5,5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lab,TB* Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,BMI,0,0,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,BP,1,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,head circumference,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,length/height & weight,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,Temp,1,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Measurements,Weight,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Oral Health,Fluoride Supplementation,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Oral Health,Fluoride Varnish,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Oral Health,Identify Dental Home,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Patient History,Data Collection,2,3,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Patient History,Interval history/Consultation,4,4,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Patient History,Patient History,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Pharmacological Treatment/Mgmt,Medication Consultation,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Pharmacological Treatment/Mgmt,Orders/scripts,2,2,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA,NA
+Physical Exam,Foot Exam,2,2,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Exam,Physical Exam,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Exam,Problem Oriented Physical,2,10,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Abdominal aortic aneurysm screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Breast Cancer Screening,0,0,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Colorectal Cancer Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Diabetes Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Lung Cancer Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Obesity Screening,5,5,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Physical Screening,Osteoporosis Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Sensory Screening,Hearing Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+Sensory Screening,Vision Screening,1,1,0.5,0.5,0.5,0.5,NA,NA,NA,NA,NA,NA,NA
+<<end>>,,,,,,,,,,,,,,
