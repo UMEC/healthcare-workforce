@@ -1,4 +1,5 @@
-FROM umec/node-python-jupyter:0.1
+FROM umec/node-python-jupyter:0.3
+RUN sudo apt-get install unzip procps -y
 COPY docker-entrypoint.sh /usr/local/bin/
 COPY server-install.sh /usr/local/bin/
 COPY ui-install.sh /usr/local/bin/

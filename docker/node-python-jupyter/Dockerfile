@@ -1,4 +1,5 @@
-FROM umec/node-python:0.1
+FROM umec/node-python:0.3
 RUN sudo pip3 install jupyter
-RUN mkdir /home/circleci/.jupyter/
-COPY jupyter_notebook_config.json /home/circleci/.jupyter/
+RUN sudo pip3 install matplotlib
+RUN mkdir /root/.jupyter/
+COPY jupyter_notebook_config.json /root/.jupyter/
