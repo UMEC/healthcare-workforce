@@ -10,7 +10,7 @@ To install the lastest version:
 4. Use Docker Compose to start the application via `docker-compose up umec-hw`
 5. The UI application will be available at http://localhost:80/
 6. The administration page will be available at http://localhost:5000/api/admin
-7. The jupyter notebook model will be available at http://localhost:8888/notebooks/healthcare-workforce-master/models/4.1.1%20Model%20Manipulation/workforce_model.ipynb
+7. The jupyter notebook model will be available at http://localhost:8888/notebooks/healthcare-workforce-master/models/4.1.1%20Model%20Manipulation/workforce_model.ipynb (default password: 'jupyt3r')
 
 ## Development Documentation
 A readme for the UI is available [here](ui/README.md).
