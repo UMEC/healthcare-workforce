@@ -69,7 +69,7 @@ import sys
 import pickle
 import os
 import pandas as pd
-from allo_cal import main
+from allocation_ui import main
 command="null"
 provider_type="null"
 
@@ -107,6 +107,7 @@ directory
 
 geo = "State of Utah"
 year ="2018"
+current_year = '2018'
 option = "ideal_staffing"
 sub_option = "all_combination"
 wage_max = "null"
@@ -592,20 +593,18 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
     provider_list = wfpd.dataframes['provider_list']
     encounter_detail = wfpd.dataframes['encounter_detail']
     overhead_work = wfpd.dataframes['overhead_work']
-    sdoh_score = geo_area.loc[geo_area['geo_area'] == geo,'sdoh_index']
     
     # additional parameters used to call the model but not currently
     # in the spreadsheet or the user interface
     
     sut_target = 0.8 # sutability target 0.8 is ideal status
-    sdoh_target = 3 # Social Determinance of Health - currently impact to F2F: if a county's SDoH < target, then using minimum F2F
     FTE_time = 60*2080 # perhaps default 124,800
     
     # call the model
-    out = main(geo, year, option, sub_option, sub_option_value, sut_target, sdoh_target, collapse_group, FTE_time, 
-     sdoh_score, pop_chronic_trend,  pop_chronic_prev, chron_care_freq, 
-             geo_area, service_characteristics, pop_acute_need , population, provider_supply , pop_prev_need , 
-             provider_list , encounter_detail, overhead_work)
+    out = main(geo, year, current_year, option, sub_option, sub_option_value, sut_target,  collapse_group, FTE_time, 
+         pop_chronic_trend, pop_chronic_prev, chron_care_freq, geo_area, service_characteristics, 
+         pop_acute_need, population, provider_supply , pop_prev_need , provider_list , encounter_detail, overhead_work)
+    
     # return the results dictionary
     return out
 
