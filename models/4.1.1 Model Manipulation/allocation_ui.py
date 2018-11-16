@@ -134,7 +134,7 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
                     else: 
                         tmp =  pd.concat([service_name, dataset], axis = 1)
                         detail_result = pd.concat([detail_result, tmp], axis = 0)
-                df.columns = 'FTE'
+                df.columns = ['FTE']
                 allocation ={}
                 allocation['total_wage'] = total_wage
                 allocation['total_sutab'] = total_sutab
@@ -162,7 +162,7 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
                 df = (((df/FTE_time *10)/5).astype(float).round())/2
                 total_wage = np.round( sum(df*supply['provider_mean_wage']), 0) 
                 total_sutab = np.round( sum((dataset * ser_prov).apply(sum, axis = 0))/sum(dataset.apply(sum, axis = 0)) ,2)
-                df.columns = 'FTE'
+                df.columns = ['FTE']
                 allocation ={}
                 allocation['total_wage'] = total_wage
                 allocation['total_sutab'] = total_sutab
@@ -311,7 +311,7 @@ def call_opt_ideal_maxbudget(option, wage_max, wage, ser_prov, demand, supply, s
             df = (((df/FTE_time *10)/5).astype(float).round())/2
             total_wage = np.round( sum(df*supply['provider_mean_wage']), 0) 
             total_sutab = np.round( sum((dataset * ser_prov).apply(sum, axis = 0))/sum(dataset.apply(sum, axis = 0)), 2)
-            df.columns = 'FTE'
+            df.columns = ['FTE']
             allocation ={}; s={}
             allocation['total_wage'] = total_wage
             allocation['total_sutab'] = total_sutab

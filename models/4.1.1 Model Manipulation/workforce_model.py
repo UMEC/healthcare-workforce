@@ -62,7 +62,7 @@
 
 # In[1]:
 
-
+import datetime
 import workforce_pandas as wfpd
 import json
 import sys
@@ -606,7 +606,7 @@ def run_model(geo,year,option,sub_option,wage_max,wage_weight):
          pop_acute_need, population, provider_supply , pop_prev_need , provider_list , encounter_detail, overhead_work)
     
     # return the results dictionary
-    return out
+    return json.loads(out)
 
 
 # The result returned from the model is a complex structure, so this function breaks it down into name/value pairs and then dumps them to a JSON string for return to the end user
@@ -665,6 +665,11 @@ elif command == "load_model":
     result = load_model(filename) # pickle the current dataframe dictionary
 elif command == "run_model": 
     result = run_model(geo,year,option,sub_option,wage_max,wage_weight) # run the optimizer
+    
+    with open("/workdir/model.txt", mode='a+') as file:
+        file.write('%s - %s\n' % 
+               (datetime.datetime.now(), result))
+        file.close()
     result = process_result(result) # process complex result into a JSON string
 else:
     respond(None,command,provider_type, "ERROR: Unknown function call.")
