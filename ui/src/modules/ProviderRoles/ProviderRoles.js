@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import map from 'lodash/map';
+// import map from 'lodash/map';
 import { Accordion, AccordionSection } from '../../components/Accordion-new';
 // import { bindActionCreators } from 'redux';
 
@@ -16,21 +16,35 @@ class ProviderRoles extends Component {
       customServicesByProvider: this.reshapeNewServicesByProvider(),
     };
   }
-
+  
+  /**
+   * This function takes the value of state.currentModelOutput (provided as a prop) and reshapes it to make it easier to work with
+   * Create a dictionary of service providers from the provided `servicesByProvider` state object
+   * @todo this is a bandaid. The format of the data should match the output of this function. Any data shaping to aid in 
+   * usability should be done by the API before it's delivered to the UI. 
+   * This is also the format for delivering updated values to the model. 
+   */
   reshapeNewServicesByProvider = () => {
+    /** destriucture servicesByProvider, passed in via props, to make it easier to work with */
     let { servicesByProvider } = this.props;
 
-    // TODO: This is temporary
-    // It's a temporary fix to get the data in a easily consumable format 
-    // so it can be easily iterated over. Whether or not it's going to work 
-    // on with the pythin API model output... TBD.
-    // - Dom W
-    let transformedServicesByProvider = map(servicesByProvider, provider => {
+    /** 
+     * a dictionary of service providers, using the provider name as the key
+     * @typedef transformedServicesByProvider - provider attributes and services, using provider name as the key
+     * @property { string } provider_type - the full name of the provider type
+     * @property { string } provider_abbr - the abbrevated name of the provider type
+     * @property { Object } provider_services - the services that a provider can perform  
+     */
+    let transformedServicesByProvider = _.reduce(servicesByProvider, (prev, provider) => {
       // let providerAbbr = Object.getOwnPropertyName(provider);
       let providerType = provider.provider_type;
       // create a list of service categories using keys of the provider services 
       // array (which corespond to the service category) to be used when creating 
       // the service category object.
+
+      /**
+       * @todo fix typo in json response that adds an extra colon.
+       */
       let service_categories = provider['services:'].reduce((prev, item) => { return [...prev, Object.keys(item)[0]] }, [])
 
       // Create a `service_categories` array containing category objects that 
@@ -38,12 +52,12 @@ class ProviderRoles extends Component {
       let services = _.reduce(provider['services:'], (previous, item, index) => {
         // Use the index of the current service to get it's `service_category`
         // from the array of `service_categories.
-        let service_category = service_categories[index];
-      
+        let serviceCategoryName = service_categories[index];
+
         let services = _.reduce(item, (previous, service) => {
 
+          /** iterate over services within a service category and create objects */
           let services = Object.values(service)
-            .map(item => item)
             .reduce((previous, service) => {
               let service_name = Object.getOwnPropertyNames(service)[0];
               let service_info = Object.values(service)[0];
@@ -52,18 +66,18 @@ class ProviderRoles extends Component {
                 service_name,
                 service_info,
               }
-              return previous = [...previous, service_attrs];
-            }, []);
+              return previous = { ...previous, [service_name]: service_attrs};
+            }, {});
 
           let serviceObj = {
-            service_category,
+            service_category: serviceCategoryName,
             services,
           }
 
-          return previous = [...previous, serviceObj];
-        }, [])
-        return [...previous, services]
-      }, [])
+          return previous = {...previous, ...serviceObj};
+        }, {})
+        return { ...previous, [serviceCategoryName]: services}
+      }, {})
 
 
       let newProviderServices = {
@@ -71,11 +85,16 @@ class ProviderRoles extends Component {
         provider_type: providerType,
         provider_services: services,
       };
-      return newProviderServices;
-    });
+      return {...prev, [providerType]: newProviderServices};
+    }, {});
+
     return transformedServicesByProvider;
   }
 
+
+  /**
+   * Filter the provider list by providers available in a specific area
+   */
   filteredServicesByProvider = () => {
     let { availableProviders } = this.props.activeFilters.geo;
     let { addedProviderTypes } = this.state;
@@ -86,11 +105,13 @@ class ProviderRoles extends Component {
 
 
     let foo = providersList.reduce( (previous, provider) => {
-      let current = this.state.customServicesByProvider.filter(item => {
 
-        return provider === item.provider_type;
-      });
-      let next = [...previous, current[0]]
+      let current = this.state.customServicesByProvider[provider];
+      // let current = this.state.customServicesByProvider.filter(item => {
+
+      //   return provider === item.provider_type;
+      // });
+      let next = [...previous, current]
       return next;
       }, [])
       // get only the providers available in a specific area 
@@ -127,9 +148,8 @@ class ProviderRoles extends Component {
     return scrambledString;
   }
   
-  renderServices = (services, providerObject) => {
-    return services.map((service, index) => {
-      let serviceScore = providerObject.provider_services;
+  renderServices = (services) => {
+    return Object.values(services).map((service, index) => {
       
       let usagePercentage = Number.parseFloat(service.service_info.score * 100).toFixed(0);
       let sliderColor = this.sliderColor(usagePercentage);
@@ -154,18 +174,18 @@ class ProviderRoles extends Component {
     )})
   }
 
-  renderServiceCategories = (categories, providerObject) => {
-      return categories.map(providerServices => {
+  renderServiceCategories = (categories) => {
+      return Object.values(categories).map(providerServices => {
         return (
           <div 
-            key={this.scrambleString(providerServices[0].service_category)}
+            key={this.scrambleString(providerServices.service_category)}
             className="provider-roles__category">
             <p
               className="provider-roles__category-header">
-              {providerServices[0].service_category}
+              {providerServices.service_category}
             </p>
             <div className="provider-roles__category-body">
-              {this.renderServices(providerServices[0].services, providerObject)}
+              {this.renderServices(providerServices.services)}
             </div>
           </div>
         )
@@ -176,14 +196,13 @@ class ProviderRoles extends Component {
 
     
     
-    return providers.map(provider => {
+    return Object.values(providers).map(provider => {
       return (
         <AccordionSection 
           label={provider.provider_type}
           headerClassName="provider-roles__section-title"
           key={this.scrambleString(provider.provider_type)} >
-          <p 
-            className="provider-roles__section-title">
+          <p className="provider-roles__section-title">
             {provider.provider_type} Services
           </p>
           {/* 
