@@ -630,14 +630,18 @@ def process_result(result):
     if isinstance(result, str):
         respond(None,command,provider_type, "ERROR: No possible optimization.")
         
-    allocation = (result['allocation'])
-    allocation.rename(columns={'provider_abbr':'name' ,0: 'FTE'}, inplace=True)
+    if 'allocation' in result:
+        allocation = (result['allocation'])
+        allocation.rename(columns={'provider_abbr':'name', 0: 'FTE'}, inplace=True)
+        allocation['total_wage'] = result['total_wage']
+        allocation['total_sutab'] = result['total_sutab']
+        results_dict ={}
+        results_dict = allocation.to_dict()
+    else:
+        results_dict = next(iter(result.values()))
     
-    allocation['total_wage'] = result['total_wage']
-    allocation['total_sutab'] = result['total_sutab']
     
-    results_dict ={}
-    results_dict = allocation.to_dict()
+    
     
     #total_wage = result['total_wage']
     #total_sutab = result['total_sutab']

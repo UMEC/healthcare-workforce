@@ -168,7 +168,7 @@ def resource_allocation(option, sub_option, wage, ser_prov, demand, supply, over
                 allocation['total_sutab'] = total_sutab
                 allocation['FTE'] = df.to_dict()
                 s={}
-                s['wage_weight:'+ np.round(w_weight,1).astype(str)] = allocation
+                s['wage_weight:' + np.round(w_weight,1).astype(str)] = allocation
                 s = json.dumps(s)
                 
         if(sub_option ==  "wage_max"):
