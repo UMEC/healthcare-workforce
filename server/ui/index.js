@@ -14,4 +14,9 @@ router.get('/admin', (req, res) => {
   res.sendFile(path.join(`${__dirname}/admin.html`));
 });
 
+/* Administration page. */
+router.get('/whatif', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/whatif.html`));
+});
+
 module.exports = router;
