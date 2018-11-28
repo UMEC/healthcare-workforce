@@ -670,10 +670,10 @@ elif command == "load_model":
 elif command == "run_model": 
     result = run_model(geo,year,option,sub_option,wage_max,wage_weight) # run the optimizer
     
-    with open("/workdir/model.txt", mode='a+') as file:
-        file.write('%s - %s\n' % 
-               (datetime.datetime.now(), result))
-        file.close()
+    #with open("/workdir/model.txt", mode='a+') as file:
+    #    file.write('%s - %s\n' % 
+    #           (datetime.datetime.now(), result))
+    #    file.close()
     result = process_result(result) # process complex result into a JSON string
 else:
     respond(None,command,provider_type, "ERROR: Unknown function call.")
