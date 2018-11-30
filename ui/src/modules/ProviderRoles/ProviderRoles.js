@@ -12,11 +12,14 @@ class ProviderRoles extends Component {
     super(props);
     this.state = {
       addedProviderTypes: [],
-      defaultServicesByProvider: this.reshapeNewServicesByProvider(),
-      customServicesByProvider: this.reshapeNewServicesByProvider(),
+      servicesByProvider: this.reshapeNewServicesByProvider(),
     };
   }
   
+  componentDidMount() {
+    console.log(this.state.servicesByProvider)
+  }
+
   /**
    * This function takes the value of state.currentModelOutput (provided as a prop) and reshapes it to make it easier to work with
    * Create a dictionary of service providers from the provided `servicesByProvider` state object
@@ -91,7 +94,6 @@ class ProviderRoles extends Component {
     return transformedServicesByProvider;
   }
 
-
   /**
    * Filter the provider list by providers available in a specific area
    */
@@ -99,15 +101,15 @@ class ProviderRoles extends Component {
     let { availableProviders } = this.props.activeFilters.geo;
     let { addedProviderTypes } = this.state;
 
-    if (availableProviders.length === 0 ) return this.state.customServicesByProvider;
+    if (availableProviders.length === 0 ) return this.state.servicesByProvider;
 
     let providersList = [...availableProviders, ...addedProviderTypes]
 
 
     let foo = providersList.reduce( (previous, provider) => {
 
-      let current = this.state.customServicesByProvider[provider];
-      // let current = this.state.customServicesByProvider.filter(item => {
+      let current = this.state.servicesByProvider[provider];
+      // let current = this.state.servicesByProvider.filter(item => {
 
       //   return provider === item.provider_type;
       // });
@@ -121,7 +123,7 @@ class ProviderRoles extends Component {
 
   updateScoreValue = (services, index, e) => {
     let currentServiceAttrs = services[index];
-
+    
     currentServiceAttrs.service_info.score = Number.parseFloat(e.target.value).toFixed(2);
 
     this.props.updateModelAttributes(currentServiceAttrs)
@@ -141,22 +143,38 @@ class ProviderRoles extends Component {
 
   // helpful for scrabmling strings for unique keys when mapping
   scrambleString = (string) => {
+    if (typeof string !== 'string') return;
     let newString = _.camelCase(string);
     let stringArray = newString.split('');
     let scrambledArray = _.shuffle(stringArray);
     let scrambledString = scrambledArray.join('');
     return scrambledString;
   }
+
+  /**
+   * Handle changes to an individual service value attribute
+   * 
+   * @param {SytheticEvent} e the event object 
+   * @param {string} providerType the provider type 
+   * @param {string} serviceCategory the provider type 
+   * @param {string} serviceName the name of the service
+   */
+
+  handleServiceValueChange = (e, providerType, serviceCategory, serviceName) => {
+    /** Use the  */
+    this.state.servicesByProvider[providerType].provider_services[serviceCategory].services[serviceName].service_info.score = e.target.value;
+
+    this.setState({ servicesByProvider: this.state.servicesByProvider })
+  }
   
-  renderServices = (services) => {
-    return Object.values(services).map((service, index) => {
+  renderProviderService = (providerType, serviceCategory, service) => {
       
       let usagePercentage = Number.parseFloat(service.service_info.score * 100).toFixed(0);
       let sliderColor = this.sliderColor(usagePercentage);
 
+
       return (
         <div
-          key={this.scrambleString(`${service.service_name}${usagePercentage}${index}`)}
           className="provider-roles__service-attributes" >
           <p className="provider-roles__service-label">
             {service.service_name}
@@ -169,45 +187,62 @@ class ProviderRoles extends Component {
             value={service.service_info.score}
             step="0.01" 
             className="slider"
-            onChange={(e) => this.updateScoreValue(services, index, e)}></input>
+            onChange={(e) => this.handleServiceValueUpdate(e, providerType, serviceCategory, service.service_name)}></input>
         </div>
-    )})
+        )
   }
 
-  renderServiceCategories = (categories) => {
-      return Object.values(categories).map(providerServices => {
-        return (
+  renderServiceCategory = (providerType) => {
+
+    let providerServicesObject = this.state.servicesByProvider[providerType].provider_services;
+
+    return Object.values(providerServicesObject).map(providerServices => {
+      // debugger;
+
+      let serviceCategory = providerServices.service_category;
+
+      return (
           <div 
-            key={this.scrambleString(providerServices.service_category)}
+            key={providerServices.service_category}
             className="provider-roles__category">
             <p
               className="provider-roles__category-header">
               {providerServices.service_category}
             </p>
             <div className="provider-roles__category-body">
-              {this.renderServices(providerServices.services)}
+              {Object.values(providerServices.services)
+                .map( service => {
+                  // let service = this.state.servicesByProvider[provider].provider_services[serviceName];
+                  // debugger;
+                  return this.renderProviderService(providerType, serviceCategory, service);
+                })
+              }
             </div>
           </div>
         )
-      })
+      }
+    )
   }
 
-  renderProviders = (providers) => {
+  /**
+   * Render the providers and their available services
+   * 
+   * @param {Object} providers - 
+   */
+  renderProviderServices = () => {
+    return Object.values(this.state.servicesByProvider).map(provider => {
 
-    
-    
-    return Object.values(providers).map(provider => {
+      let providerType = provider.provider_type;
+      
       return (
-        <AccordionSection 
+        <AccordionSection
           label={provider.provider_type}
           headerClassName="provider-roles__section-title"
-          key={this.scrambleString(provider.provider_type)} >
+          key={provider.provider_type} >
           <p className="provider-roles__section-title">
             {provider.provider_type} Services
           </p>
-          {/* 
-            onClick={() => this.props.updateModelAttributes(provider.provider_type, provider)} */}
-          {this.renderServiceCategories(provider.provider_services, provider)}
+          {this.renderServiceCategory(providerType)}
         </AccordionSection>
       );
 
@@ -215,16 +250,21 @@ class ProviderRoles extends Component {
   }
 
   render() {
-    const { area } = this.props.activeFilters.geo;
-
+    // const { area } = this.props.activeFilters.geo;
 
     const filteredProviders = this.filteredServicesByProvider();
+    // let { availableProviders } = this.props.activeFilters.geo;
+    // let { servicesByProvider } = this.state;
+    // const filteredProviders = Object.keys(this.state.servicesByProvider)
+    //   .filter(key => availableProviders.includes(key))
+    //   .reduce((obj, key) => {
+    //     obj[key] = servicesByProvider[key];
+    //     return obj;
+    //   }, {});
 
-    
     return (
       <Accordion>
-
-        {this.renderProviders(filteredProviders)}
+        {this.renderProviderServices()}
       </Accordion>
     );
   }
