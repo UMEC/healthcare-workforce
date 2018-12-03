@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,7 +36,6 @@
   ],
   "proxy": "http://localhost:5000/",
   "devDependencies": {
-    "esdoc": "^1.1.0",
-    "esdoc-standard-plugin": "^1.0.0"
+    "react-styleguidist": "^8.0.6"
   }
 }
