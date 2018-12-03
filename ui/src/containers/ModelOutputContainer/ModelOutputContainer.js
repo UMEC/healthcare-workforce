@@ -9,7 +9,7 @@ import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
 import StateMap from '../../components/StateMap';
 import TeamComposition from '../../components/TeamComposition';
-import ProviderRoles from '../../modules/ProviderRoles';
+import ProviderRoles from '../../containers/ProviderRoles';
 
 
 import { SET_MODEL_GEO_FILTER } from '../../actions';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 // import map from 'lodash/map';
-import { Accordion, AccordionSection } from '../../components/Accordion-new';
+import { Accordion, AccordionSection } from '../../components/Accordion';
 // import { bindActionCreators } from 'redux';
 
 // import { connect } from 'react-redux';
@@ -187,7 +187,7 @@ class ProviderRoles extends Component {
             value={service.service_info.score}
             step="0.01" 
             className="slider"
-            onChange={(e) => this.handleServiceValueUpdate(e, providerType, serviceCategory, service.service_name)}></input>
+            onChange={(e) => this.handleServiceValueChange(e, providerType, serviceCategory, service.service_name)}></input>
         </div>
         )
   }
