@@ -1,312 +1,476 @@
-<html>
-<head>
-  <title>UMEC Healthcare Workforce "What If" Analysis</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-  <style>
-    canvas{
-      /*width:75% !important;*/
-      height:75% !important;
-    }    
-    .slidecontainer {
-        width: 200px;
-    }
-    
-    .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 15px;
-        border-radius: 5px;
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-    }
-    
-    .slider:hover {
-        opacity: 1;
-    }
-    
-    .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: #4CAF50;
-        cursor: pointer;
-    }
-    
-    .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: #4CAF50;
-        cursor: pointer;
-    }
-    </style>
-  <script type="text/javascript">
-    $( document ).ready(function() {
-      $('#profile').on('change', function() {
-        var newJson;
-        if (this.value === 'all') {
-          newJson = {"params": {"request_type": "run_model"}};
-        } else if (this.value === 'staffingall') {
-          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"all_combination"}};
-        } else if (this.value === 'wagemax') {
-          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_max", "wage_max":"20000"}};
-        } else if (this.value === 'wageweight') {
-          newJson = {"params": {"request_type":"run_model", "geo":"Wayne County", "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight":"0.5"}};
-        } else if (this.value === 'currentstaffingall') {
-          newJson = {"params": {"request_type":"run_model", "geo":"Beaver County", "year":"2019", "option":"ideal_staffing_current", "sub_option":"all_combination"}};
-        } else if (this.value === 'serviceallocation') {
-          newJson = {"params": {"request_type":"run_model", "geo":"State of Utah", "year":"2018", "option":"service_allocation"}};
-        } else if (this.value === 'provider') {
-          newJson = {"params": {"request_type": "provider_profile","value": "Psych"}};
-        } else if (this.value === 'service') {
-          newJson = {"params": {"request_type": "supplier_profile","value": "Psych"}};
-        } else if (this.value === 'geo') {
-          newJson = {"params": {"request_type": "geo_profile","value": "Psych"}};
-        } else {
-          // you added another profile type? you better update this code then..
-        }
-        $('#inputTextArea').val(JSON.stringify(newJson));
-        if (newJson) {
-          prettyPrint('inputTextArea');
-        }
-      });
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      var slider = document.getElementById("myRange");
-      var output = document.getElementById("demo");
-      output.innerHTML = slider.value;
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-      slider.oninput = function() {
-        output.innerHTML = this.value;
+    <title>UMEC Healthcare Workforce "What If" Analysis</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+    <style>
+      canvas{
+        width:100% !important;
+        height:75% !important;
+      }    
+      .slidecontainer {
+          width: 200px;
       }
-      slider.onchange = function() {
-        output.innerHTML = this.value;
-        sendRequestPayload();
+      
+      .slider {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 15px;
+          border-radius: 5px;
+          background: #d3d3d3;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+      }
+      
+      .slider:hover {
+          opacity: 1;
+      }
+      
+      .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background: #4CAF50;
+          cursor: pointer;
+      }
+      /* dashboard */
+      body {
+        font-size: .875rem;
       }
 
-      $('select').on('change', function() {
-        sendRequestPayload();
+      .feather {
+        width: 16px;
+        height: 16px;
+        vertical-align: text-bottom;
+      }
+
+      /*
+      * Sidebar
+      */
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100; /* Behind the navbar */
+        padding: 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+      }
+
+      .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px; /* Height of navbar */
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+      }
+
+      .sidebar .nav-link {
+        font-weight: 500;
+        color: #333;
+      }
+
+      .sidebar .nav-link .feather {
+        margin-right: 4px;
+        color: #999;
+      }
+
+      .sidebar .nav-link.active {
+        color: #007bff;
+      }
+
+      .sidebar .nav-link:hover .feather,
+      .sidebar .nav-link.active .feather {
+        color: inherit;
+      }
+
+      .sidebar-heading {
+        font-size: .75rem;
+        text-transform: uppercase;
+      }
+
+      /*
+      * Navbar
+      */
+
+      .navbar-brand {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+        font-size: 1rem;
+        background-color: rgba(0, 0, 0, .25);
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+      }
+
+      .navbar .form-control {
+        padding: .75rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+      }
+
+      .form-control-dark {
+        color: #fff;
+        background-color: rgba(255, 255, 255, .1);
+        border-color: rgba(255, 255, 255, .1);
+      }
+
+      .form-control-dark:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+      }
+
+      /*
+      * Utilities
+      */
+
+      .border-top { border-top: 1px solid #e5e5e5; }
+      .border-bottom { border-bottom: 1px solid #e5e5e5; }
+      </style>
+    <script type="text/javascript">
+      var myChart;
+
+      $( document ).ready(function() {
+        $('#profile').on('change', function() {changeProfileOption(this)});
+        $('#profileSidebar').on('change', function() {changeProfileOption(this)});
+        $('#geo').on('change', function() {changeProfileOption(document.getElementById('profileSidebar'));})
+        var slider = document.getElementById("wageWeightRange");
+        var output = document.getElementById("rangeValue");
+        output.innerHTML = slider.value;
+  
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+        slider.onchange = function() {
+          output.innerHTML = this.value;
+          changeProfileOption(document.getElementById('profileSidebar'));
+        }
+  
+        renderChart();
+  
       });
 
-      renderChart();
+      function changeProfileOption(selectObj) {
 
-    });
+          var slider = document.getElementById("wageWeightRange");
+          var geoSelection = $("#geo").val();
+          var newJson;
+          if (selectObj.value === 'all') {
+            newJson = {"params": {"request_type": "run_model"}};
+          } else if (selectObj.value === 'staffingall') {
+            newJson = {"params": {"request_type":"run_model", "geo": geoSelection, "year":"2018", "option":"ideal_staffing", "sub_option":"all_combination"}};
+          } else if (selectObj.value === 'wagemax') {
+            newJson = {"params": {"request_type":"run_model", "geo": geoSelection, "year":"2018", "option":"ideal_staffing", "sub_option":"wage_max", "wage_max":"20000"}};
+          } else if (selectObj.value === 'wageweight') {
+            newJson = {"params": {"request_type":"run_model", "geo": geoSelection, "year":"2018", "option":"ideal_staffing", "sub_option":"wage_weight","wage_weight": slider.value}};
+          } else if (selectObj.value === 'currentstaffingall') {
+            newJson = {"params": {"request_type":"run_model", "geo": geoSelection, "year":"2018", "option":"ideal_staffing_current", "sub_option":"all_combination"}};
+          } else if (selectObj.value === 'serviceallocation') {
+            newJson = {"params": {"request_type":"run_model", "geo": geoSelection, "year":"2018", "option":"service_allocation"}};
+          } else if (selectObj.value === 'provider') {
+            newJson = {"params": {"request_type": "provider_profile","value": "Psych"}};
+          } else if (selectObj.value === 'service') {
+            newJson = {"params": {"request_type": "supplier_profile","value": "Psych"}};
+          } else if (selectObj.value === 'geo') {
+            newJson = {"params": {"request_type": "geo_profile","value": "Psych"}};
+          } else {
+            // you added another profile type? you better update this code then..
+          }
+          $('#inputTextArea').val(JSON.stringify(newJson));
+          if (newJson) {
+            prettyPrint('inputTextArea');
+          }
 
-    function prettyPrint(areaId) {
-      var ugly = document.getElementById(areaId).value;
-      var obj = JSON.parse(ugly);
-      var pretty = JSON.stringify(obj, undefined, 4);
-      document.getElementById(areaId).value = pretty;
-    }
-
-    function sendRequest(areaId) {
-      var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
-      $('#responseData').html('A moment or three, please..');
-      $.ajax({
-        url: "./analytics",
-        type: "POST",
-        dataType: "json",
-        data: payload,
-        contentType: "application/json"
-      }).done(function( postData ) {
-          getResponse(postData.modelId, 1);
-        });
-    }
-
-    function sendRequestPayload() {
-      var geoSelection = $("#geo").val();
-      var wageWeight = $("#myRange").val();
-
-      var payload = {"params": 
-        {"request_type":"run_model",
-        "geo":geoSelection, 
-        "year":"2018", 
-        "option":"ideal_staffing", 
-        "sub_option":"wage_weight",
-        "wage_weight":wageWeight
+          sendRequest('inputTextArea');
+      }
+  
+      function prettyPrint(areaId) {
+        var ugly = document.getElementById(areaId).value;
+        var obj = JSON.parse(ugly);
+        var pretty = JSON.stringify(obj, undefined, 4);
+        document.getElementById(areaId).value = pretty;
+      }
+  
+      function sendRequest(areaId) {
+        var payload = JSON.stringify(JSON.parse(document.getElementById(areaId).value));
+        $('#responseData').html('A moment or three, please..');
+        $.ajax({
+          url: "./analytics",
+          type: "POST",
+          dataType: "json",
+          data: payload,
+          contentType: "application/json"
+        }).done(function( postData ) {
+            getResponse(postData.modelId, 1);
+          });
+      }
+  
+      function renderChart(myLabels, myData) {
+        if (myChart) {
+          removeData(myChart);
+          addData(myChart, myLabels, myData);
+          return;
         }
-      };
+        // chart doesn't exist, create it
+        var ctx = document.getElementById("myChart").getContext('2d');
         
-      $('#responseData').html('A moment or three, please..');
-      $.ajax({
-        url: "./analytics",
-        type: "POST",
-        dataType: "json",
-        data: JSON.stringify(payload),
-        contentType: "application/json"
-      }).done(function( postData ) {
-          getResponse(postData.modelId, 1);
-        });
-    }
+        myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: myLabels,
+                datasets: [{
+                    label: '# of FTE',
+                    data: myData,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                    responsive: false,
+                    maintainAspectRatio : false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+              });
+      }
 
-    function renderChart(myLabels, myData) {
-      var ctx = document.getElementById("myChart").getContext('2d');
-      //labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-      //data: [12, 19, 3, 5, 2, 3],
-      var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: myLabels,
-              datasets: [{
-                  label: '# of FTE',
-                  data: myData,
-                  borderWidth: 1
-              }]
-          },
-          options: {
-                  responsive: true,
-                  maintainAspectRatio : false,
-                  scales: {
-                      yAxes: [{
-                          ticks: {
-                              beginAtZero:true
-                          }
-                      }]
-                  }
+      function addData(chart, labels, myData) {
+        labels.forEach((label) => {
+            chart.data.labels.push(label);
+        });
+        chart.data.datasets.push({
+                    label: '# of FTE',
+                    data: myData,
+                    borderWidth: 1
+                });
+        
+        chart.update();
+      }
+
+      function removeData(chart) {
+        chart.data.datasets.pop();
+        while(chart.data.labels.length > 0) {
+          chart.data.labels.pop();
+        }
+        
+        chart.update();
+      }
+  
+      function getResponse(modelId, attempts) {
+        $(window).delay(3000).queue(function() {
+          $.get( "./analytics/" + modelId)
+            .done(function( getData ) {
+              if (getData.status === "new") {
+                // model hasn't finished
+                if (attempts >= 20) {
+                  // had enough
+                  $('#responseData').html('Request timed out, please try again.');
+                } else {
+                  // try again
+                  getResponse(modelId, attempts+1);
+                }
+              } else {
+                var pretty = JSON.stringify(getData, undefined, 4);
+                $('#responseData').html(pretty);
+                //$('#results').html(pretty);
+                var cols = [];
+                var values = [];
+                if (!getData.data.response) {
+                  // no results available, do nothing, there was an error
+                } else if (getData.data.response.current_demand) {
+                  // todo - add current_supply to the chart
+                  Object.keys(getData.data.response.current_demand).forEach(function(key,index) {
+                    cols.push(key);
+                    values.push(getData.data.response.current_demand[key]);
+                  });
+                } else {
+                  Object.keys(getData.data.response.FTE).forEach(function(key,index) {
+                    cols.push(key);
+                    values.push(getData.data.response.FTE[key]);
+                  });
+                }
+                //{ "modelId": "08586eb2-b133-4fbe-af7c-157cd7c2a6dd", "status": "completed", "request_date": "2018-11-26T13:13:19.089Z", "params": { "request_type": "run_model", "geo": "Beaver County", "year": "2018", "option": "ideal_staffing", "sub_option": "wage_weight", "wage_weight": "0.4" }, "data": { "request": { "request_type": "run_model", "geo": "Beaver County", "year": "2018", "option": "ideal_staffing", "sub_option": "wage_weight", "wage_weight": "0.4" }, "response": { "total_wage": 3034947, "total_sutab": 0.38, "FTE": { "Phys": 6, "PA": 0, "NP": 6, "RN": 9, "PharmD": 0, "MA": 14.5, "Educ": 2.5, "Psych": 0, "LCSW": 0, "CMHC": 5, "MFT": 0 } } } }
+                //"FTE": { "Phys": 6, "PA": 0, "NP": 6, "RN": 9, "PharmD": 0, "MA": 14.5, "Educ": 2.5, "Psych": 0, "LCSW": 0, "CMHC": 5, "MFT": 0 }
+                renderChart(cols, values);
               }
             });
-    }
-
-    function getResponse(modelId, attempts) {
-      $(window).delay(3000).queue(function() {
-        $.get( "./analytics/" + modelId)
-          .done(function( getData ) {
-            if (getData.status === "new") {
-              // model hasn't finished
-              if (attempts >= 20) {
-                // had enough
-                $('#responseData').html('Request timed out, please try again.');
-              } else {
-                // try again
-                getResponse(modelId, attempts+1);
-              }
-            } else {
-              var pretty = JSON.stringify(getData, undefined, 4);
-              $('#responseData').html(pretty);
-              //$('#results').html(pretty);
-              var cols = [];
-              var values = [];
-              Object.keys(getData.data.response.FTE).forEach(function(key,index) {
-                cols.push(key);
-                values.push(getData.data.response.FTE[key]);
-               // key: the name of the object key
-               // index:  the ordinal position of the key within the object 
-              });
-              //{ "modelId": "08586eb2-b133-4fbe-af7c-157cd7c2a6dd", "status": "completed", "request_date": "2018-11-26T13:13:19.089Z", "params": { "request_type": "run_model", "geo": "Beaver County", "year": "2018", "option": "ideal_staffing", "sub_option": "wage_weight", "wage_weight": "0.4" }, "data": { "request": { "request_type": "run_model", "geo": "Beaver County", "year": "2018", "option": "ideal_staffing", "sub_option": "wage_weight", "wage_weight": "0.4" }, "response": { "total_wage": 3034947, "total_sutab": 0.38, "FTE": { "Phys": 6, "PA": 0, "NP": 6, "RN": 9, "PharmD": 0, "MA": 14.5, "Educ": 2.5, "Psych": 0, "LCSW": 0, "CMHC": 5, "MFT": 0 } } } }
-              //"FTE": { "Phys": 6, "PA": 0, "NP": 6, "RN": 9, "PharmD": 0, "MA": 14.5, "Educ": 2.5, "Psych": 0, "LCSW": 0, "CMHC": 5, "MFT": 0 }
-              renderChart(cols, values);
-            }
-          });
-
-        $(this).dequeue();
-      });
-    }
-
-  </script>
-  <style>
-    html{
-      font-size: 1em;
-    }
-
-    .ib-parent{
-      font-size: 0;
-    }
-
-    .ib-child{
-      display: inline-block;
-      font-size: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <div style="margin:10px;">
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <a class="navbar-brand" href="/api">UMEC Healthcare Workforce "What If" Analysis</a>
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/api/admin">Home</a>
-          </li>
-          <li class="active">
-            <a href="/api/whatif">What If</a>
-          </li>
-        </ul>
+  
+          $(this).dequeue();
+        });
+      }
+  
+    </script>
+    <style>
+      html{
+        font-size: 1em;
+      }
+  
+      .ib-parent{
+        font-size: 0;
+      }
+  
+      .ib-child{
+        display: inline-block;
+        font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 justify-content-center">
+        <a class="navbar-brand bg-dark col-sm-3 col-md-2 mr-0" href="#" style="box-shadow: none;padding: 10px 20px 10px 20px;">UMEC "What If" Analysis</a>
+        <a class="navbar-brand bg-dark active" href="/api" style="box-shadow: none;padding: 10px 20px 10px 20px;">Home</a>
+        <a class="navbar-brand bg-dark" href="/api/admin" style="box-shadow: none;padding: 10px 20px 10px 20px;">Admin</a>
+        <a class="navbar-brand bg-dark" href="/api/whatif" style="box-shadow: none;padding: 10px 20px 10px 20px;">What If</a>
+      </nav>
+  
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>
+                    Dashboard <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <!--
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Year-end sale
+                  </a>
+                </li>
+                -->
+              </ul>
+              <div style="padding-left:20px;">
+                <select id="profileSidebar" style="width:200px;margin-bottom:5px;">
+                    <option value="">-- Select a template --</option>
+                    <option value="all">Run All</option>
+                    <option value="staffingall">Ideal Staffing - All Combinations</option>
+                    <option value="wagemax">Ideal Staffing - Wage Max</option>
+                    <option value="wageweight">Ideal Staffing - Wage Weight</option>
+                    <option value="currentstaffingall">Ideal Current Staffing - All Combinations</option>
+                    <option value="serviceallocation">Service Allocation</option>
+                </select>
+                <select id="geo" style="padding-bottom:10px;margin-bottom:10px;">
+                    <option value="Beaver County">Beaver County</option>
+                    <option value="Box Elder County">Box Elder County</option>
+                    <option value="Cache County">Cache County</option>
+                    <option value="Carbon County">Carbon County</option>
+                    <option value="Daggett County">Daggett County</option>
+                    <option value="Davis County">Davis County</option>
+                    <option value="Duchesne County">Duchesne County</option>
+                    <option value="Emery County">Emery County</option>
+                    <option value="Garfield County">Garfield County</option>
+                    <option value="Grand County">Grand County</option>
+                    <option value="Iron County">Iron County</option>
+                    <option value="Juab County">Juab County</option>
+                    <option value="Kane County">Kane County</option>
+                    <option value="Millard County">Millard County</option>
+                    <option value="Piute County">Piute County</option>
+                    <option value="Rich County">Rich County</option>
+                    <option value="Salt Lake County">Salt Lake County</option>
+                    <option value="San Juan County">San Juan County</option>
+                    <option value="Sanpete County">Sanpete County</option>
+                    <option value="Sevier County">Sevier County</option>
+                    <option value="Tooele County">Tooele County</option>
+                    <option value="Uintah County">Uintah County</option>
+                    <option value="Utah County">Utah County</option>
+                    <option value="Wasatch County">Wasatch County</option>
+                    <option value="Washington County">Washington County</option>
+                    <option value="Wayne County">Wayne County</option>
+                    <option value="Weber County">Weber County</option>
+                    <option value="Bear River MCD">Bear River MCD</option>
+                    <option value="Central MCD">Central MCD</option>
+                    <option value="Mountainland MCD">Mountainland MCD</option>
+                    <option value="Southeast MCD">BSoutheast MCD</option>
+                    <option value="Southwest MCD">Southwest MCD</option>
+                    <option value="Uintah Basin MCD">Uintah Basin MCD</option>
+                    <option value="Wasatch MCD">Wasatch MCD</option>
+                    <option value="State of Utah">State of Utah</option>
+                  </select>
+                  <div class="slidecontainer" >
+                    <input type="range" min="0" max="1" value="0.5" step="0.1" class="slider" id="wageWeightRange">
+                    <p>Wage Weight: <span id="rangeValue"></span></p>
+                  </div>
+                </div>
+            </div>
+          </nav>
+          
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <h1 class="h2">Dashboard</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button class="btn btn-sm btn-outline-secondary">Share</button>
+                  <button class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+                <!--
+                <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                  <span data-feather="calendar"></span>
+                  This week
+                </button>
+              -->
+              </div>
+            </div>
+  
+            <div>                
+              <div id="results"></div>
+              <canvas id="myChart" width="800" height="400"></canvas>
+              <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;" id="request">
+                <h2>Model Request</h2>
+                <select id="profile" class="form-control" style="width:400px;margin-bottom:5px;">
+                  <option value="">-- Select a template --</option>
+                  <option value="all">Run All</option>
+                  <option value="staffingall">State of Utah - Ideal Staffing - All Combinations</option>
+                  <option value="wagemax">State of Utah - Ideal Staffing - Wage Max</option>
+                  <option value="wageweight">Wayne County - Ideal Staffing - Wage Weight</option>
+                  <option value="currentstaffingall">Beaver County - Ideal Current Staffing - All Combinations</option>
+                  <option value="serviceallocation">State of Utah - Service Allocation</option>
+                  <option value="provider">Provider Profile</option>
+                  <option value="geo">Geographic Profile</option>
+                </select>
+                <div class="ib-child" style="width:50%;">
+                  <textarea id="inputTextArea" style="width:100%;height:200px;" cols=50 rows=10></textarea>
+                  <button style="margin-top:5px;" onclick="sendRequest('inputTextArea')">Request</button>
+                </div>
+                <div class="ib-child" style="width:50%;vertical-align:top;">
+                  <pre id="responseData" style="width:100%;height:200px;">Response will appear here</pre>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
       </div>
-    </nav>
-
-    <select id="geo" style="padding-bottom:10px;margin-bottom:10px;">
-      <option value="Beaver County">Beaver County</option>
-      <option value="Box Elder County">Box Elder County</option>
-      <option value="Cache County">Cache County</option>
-      <option value="Carbon County">Carbon County</option>
-      <option value="Daggett County">Daggett County</option>
-      <option value="Davis County">Davis County</option>
-      <option value="Duchesne County">Duchesne County</option>
-      <option value="Emery County">Emery County</option>
-      <option value="Garfield County">Garfield County</option>
-      <option value="Grand County">Grand County</option>
-      <option value="Iron County">Iron County</option>
-      <option value="Juab County">Juab County</option>
-      <option value="Kane County">Kane County</option>
-      <option value="Millard County">Millard County</option>
-      <option value="Piute County">Piute County</option>
-      <option value="Rich County">Rich County</option>
-      <option value="Salt Lake County">Salt Lake County</option>
-      <option value="San Juan County">San Juan County</option>
-      <option value="Sanpete County">Sanpete County</option>
-      <option value="Sevier County">Sevier County</option>
-      <option value="Tooele County">Tooele County</option>
-      <option value="Uintah County">Uintah County</option>
-      <option value="Utah County">Utah County</option>
-      <option value="Wasatch County">Wasatch County</option>
-      <option value="Washington County">Washington County</option>
-      <option value="Wayne County">Wayne County</option>
-      <option value="Weber County">Weber County</option>
-      <option value="Bear River MCD">Bear River MCD</option>
-      <option value="Central MCD">Central MCD</option>
-      <option value="Mountainland MCD">Mountainland MCD</option>
-      <option value="Southeast MCD">BSoutheast MCD</option>
-      <option value="Southwest MCD">Southwest MCD</option>
-      <option value="Uintah Basin MCD">Uintah Basin MCD</option>
-      <option value="Wasatch MCD">Wasatch MCD</option>
-      <option value="State of Utah">State of Utah</option>
-    </select>
-    <div class="slidecontainer" >
-      <input type="range" min="0" max="1" value="0.5" step="0.1" class="slider" id="myRange">
-      <p>Wage Weight: <span id="demo"></span></p>
-    </div>
-    
-    <div id="results"></div>
-  </div>
-  <canvas id="myChart" width="400" height="400"></canvas>
-    <div class="jumbotron ib-parent" style="padding:20px;width:100%;vertical-align:top;" id="request">
-      <h2>Model Request</h2>
-      <select id="profile" class="form-control" style="width:400px;margin-bottom:5px;">
-        <option value="">-- Select a template --</option>
-        <option value="all">Run All</option>
-        <option value="staffingall">State of Utah - Ideal Staffing - All Combinations</option>
-        <option value="wagemax">State of Utah - Ideal Staffing - Wage Max</option>
-        <option value="wageweight">Wayne County - Ideal Staffing - Wage Weight</option>
-        <option value="currentstaffingall">Beaver County - Ideal Current Staffing - All Combinations</option>
-        <option value="serviceallocation">State of Utah - Service Allocation</option>
-        <option value="provider">Provider Profile</option>
-        <option value="geo">Geographic Profile</option>
-      </select>
-      <div class="ib-child" style="width:50%;">
-        <textarea id="inputTextArea" style="width:100%;height:200px;" cols=50 rows=10></textarea>
-        <button style="margin-top:5px;" onclick="sendRequest('inputTextArea')">Request</button>
-      </div>
-      <div class="ib-child" style="width:50%;vertical-align:top;">
-        <pre id="responseData" style="width:100%;height:200px;">Response will appear here</pre>
-      </div>
-    </div>
-</body>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>
