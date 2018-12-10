@@ -9,7 +9,7 @@ import ViewFooter from '../../components/ViewFooter';
 import Panel from '../../components/Panel';
 import StateMap from '../../components/StateMap';
 import TeamComposition from '../../components/TeamComposition';
-import ProviderRoles from '../../modules/ProviderRoles';
+import ProviderRoles from '../../containers/ProviderRoles';
 
 
 import { SET_MODEL_GEO_FILTER } from '../../actions';
@@ -40,6 +40,11 @@ class ModelOutputContainer extends Component {
     })
   }
 
+  /**
+   * Sets the geo filter
+   * @param {Object} filter 
+   * @fires this.props.setGeoFilter  
+   */
   handleGeoFilterUpdate(filter) {
 
     // if (filter.geo.area == 'State of Utah') {
@@ -53,6 +58,37 @@ class ModelOutputContainer extends Component {
     //   this.setState({ filtersApplied: true })
     // }
     this.props.setGeoFilter(filter)
+  }
+
+  /**
+   * render model attributes that are only editable on a global level here
+   * As of 11/19/2018, the editing parameters for a service is a global edit, 
+   * because of this the `ProviderRoles` comonent is only shown when viewing data
+   * for the entire state.
+   * 
+   * As implemented, this will render any provider list by county with the correct keys and values. 
+   * The contents of the return inside of the if block can be added to the main `render()` method
+   * and that provider list would populate component 
+   * @param {Object} servicesByProvider - the dictionary of services and service attributes within a providers license
+   */
+
+  renderGlobalModelAttributes(servicesByProvider) {
+
+    // if the active geographic filter is set to the 'State of Utah', then return a list of all 
+  if (this.props.modelFilters.activeFilters.geo.area === 'State of Utah') {
+    return (
+      <ViewSection
+        title={`Provider Services for ${this.props.modelFilters.activeFilters.geo.area}`}
+        updateModelAttributes={this.updateModelAttributes}>
+        <ProviderRoles
+          activeFilters={this.props.modelFilters.activeFilters}
+          servicesByProvider={servicesByProvider}
+          updateModelAttributes={this.updateModelAttributes} />
+      </ViewSection>
+    );
+  }
+  // If the geographic filter is not set to 'State of Utah'
+  return null;
   }
 
   render() {
@@ -74,17 +110,7 @@ class ModelOutputContainer extends Component {
               title={`Team Composition for ${this.props.modelFilters.activeFilters.geo.area}`}>
               <TeamComposition supply={this.props.geoProfile[this.props.modelFilters.activeFilters.geo.area].provider_supply}/>
             </ViewSection>
-            { this.props.modelFilters.activeFilters.geo.area === 'State of Utah'
-              ? <ViewSection
-                title={`Provider Services for ${this.props.modelFilters.activeFilters.geo.area}`}
-                updateModelAttributes={this.updateModelAttributes}>
-                <ProviderRoles
-                  activeFilters={this.props.modelFilters.activeFilters}
-                  servicesByProvider={servicesByProvider}
-                  updateModelAttributes={this.updateModelAttributes} />
-              </ViewSection>
-              : null
-            }
+            {this.renderGlobalModelAttributes(servicesByProvider)}
           </div>
 
           {modelParamsEdited ?

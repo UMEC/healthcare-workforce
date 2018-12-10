@@ -1,50 +1,19 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-
+/** 
+ * The `<AccordionSection>` component
+ */
 class AccordionSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
       containerHeight: 0,
     }
-
-    // this.handleAccordionToggle = this.handleAccordionToggle.bind(this);
-  }
-
-  componentDidMount() {
-    this.handleAccordionHeightChange()
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    
-  }
-
-
-  componentWillUnmount() {
-  }
-  
-  handleAccordionToggle = (e) => {
-    // console.log(this.ref_AccordionSectionInner.clientHeight)
-    // this.handleAccordionHeightChange()
-  }
-
-  handleAccordionHeightChange = () => {
-    // let combinedHeightOfChildren = Object.values(this.ref_AccordionSectionInner.querySelectorAll('.provider-roles__category'))
-    //   .reduce((previous, item) => { 
-    //     var marginTop = parseInt(item.style.marginTop) || 0;
-    //     var marginBottom = parseInt(item.style.marginBottom) || 0;
-    //     let verticalMargin = marginTop + marginBottom;
-
-    //     return item.offsetHeight + verticalMargin + previous 
-    //   }, 0)
-
-    // console.log(combinedHeightOfChildren)
-
   }
 
   handleLabelClick = () => {
-    this.handleAccordionHeightChange()
     this.props.onClick(this.props.label)
   }
 
@@ -91,4 +60,19 @@ export const AccordionSectionHeader = props => {
       {props.children}
     </div>
   )
+}
+
+AccordionSection.propTypes = {
+  /**
+   * 
+   * 
+   * @param {String} label the section label
+   */
+  onClick: PropTypes.func.isRequired,
+
+  /** Will render the first two children,
+   * child one will be the header,
+   * child two will be the content. 
+  */
+  children: PropTypes.element.isRequired,
 }

@@ -1889,7 +1889,7 @@ Offline-first Progressive Web Apps are faster and more reliable than traditional
 
 However, they [can make debugging deployments more challenging](https://github.com/facebook/create-react-app/issues/2398) so, starting with Create React App 2, service workers are opt-in.
 
-The [`workbox-webpack-plugin`](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin)
+The [`workbox-webpack-plugin`](https://developers.google.com/web/tools/workbox/containers/workbox-webpack-plugin)
 is integrated into production configuration,
 and it will take care of generating a service worker file that will automatically
 precache all of your local assets and keep them up to date as you deploy updates.

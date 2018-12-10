@@ -9,7 +9,7 @@ import rootSaga from './sagas';
 import { loadStateFromSessionStorage, saveStateToSessionStorage } from './loadState';
 import throttle from 'lodash/throttle';
 
-import App from './modules/App';
+import App from './containers/App';
 import './scss/index.scss';
 
 import * as serviceWorker from './serviceWorker';
