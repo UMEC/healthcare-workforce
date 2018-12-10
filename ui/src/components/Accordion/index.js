@@ -1,2 +1,5 @@
+/** import all Accordion components */
 import Accordion from './Accordion';
-export default Accordion;
+import AccordionSection, {AccordionSectionHeader} from './AccordionSection';
+
+export { Accordion, AccordionSection, AccordionSectionHeader };
