@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ibm/plex": "^1.2.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
